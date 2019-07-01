@@ -3,13 +3,13 @@
         <ProjectGuid>{6569F6C9-4131-4245-AC0B-BD5E5653DF21}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
-        <Projects Include="10_변수사용\VariableSample.dproj">
+        <Projects Include="10_Variable\VariableSample.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="20_함수사용\FunctionSample.dproj">
+        <Projects Include="20_Function\FunctionSample.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="30_배열사용\ArraySample.dproj">
+        <Projects Include="30_Array\ArraySample.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -21,31 +21,31 @@
         </BorlandProject>
     </ProjectExtensions>
     <Target Name="VariableSample">
-        <MSBuild Projects="10_변수사용\VariableSample.dproj"/>
+        <MSBuild Projects="10_Variable\VariableSample.dproj"/>
     </Target>
     <Target Name="VariableSample:Clean">
-        <MSBuild Projects="10_변수사용\VariableSample.dproj" Targets="Clean"/>
+        <MSBuild Projects="10_Variable\VariableSample.dproj" Targets="Clean"/>
     </Target>
     <Target Name="VariableSample:Make">
-        <MSBuild Projects="10_변수사용\VariableSample.dproj" Targets="Make"/>
+        <MSBuild Projects="10_Variable\VariableSample.dproj" Targets="Make"/>
     </Target>
     <Target Name="FunctionSample">
-        <MSBuild Projects="20_함수사용\FunctionSample.dproj"/>
+        <MSBuild Projects="20_Function\FunctionSample.dproj"/>
     </Target>
     <Target Name="FunctionSample:Clean">
-        <MSBuild Projects="20_함수사용\FunctionSample.dproj" Targets="Clean"/>
+        <MSBuild Projects="20_Function\FunctionSample.dproj" Targets="Clean"/>
     </Target>
     <Target Name="FunctionSample:Make">
-        <MSBuild Projects="20_함수사용\FunctionSample.dproj" Targets="Make"/>
+        <MSBuild Projects="20_Function\FunctionSample.dproj" Targets="Make"/>
     </Target>
     <Target Name="ArraySample">
-        <MSBuild Projects="30_배열사용\ArraySample.dproj"/>
+        <MSBuild Projects="30_Array\ArraySample.dproj"/>
     </Target>
     <Target Name="ArraySample:Clean">
-        <MSBuild Projects="30_배열사용\ArraySample.dproj" Targets="Clean"/>
+        <MSBuild Projects="30_Array\ArraySample.dproj" Targets="Clean"/>
     </Target>
     <Target Name="ArraySample:Make">
-        <MSBuild Projects="30_배열사용\ArraySample.dproj" Targets="Make"/>
+        <MSBuild Projects="30_Array\ArraySample.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
         <CallTarget Targets="VariableSample;FunctionSample;ArraySample"/>
