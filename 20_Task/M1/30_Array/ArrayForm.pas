@@ -51,6 +51,7 @@ var
   I: Integer;
   Sum, MaxNum: Integer;
 begin
+  InitArray;
   // 배열의 합
   Sum := GetArraySum;
 
@@ -65,6 +66,10 @@ begin
     배열의 크기 변경되도 동작하도록 반복의 끝은 Length(FNumArr) - 1로 설정
      예> for I := 0 to Length(FNumArr) - 1 do }
 
+
+  for I := 0 to Length(FNumArr)-1 do
+  Memo1.Lines.Add(' - '+inttostr(FNumArr[I]));
+
   Memo1.Lines.Add('배열의 합은 ' + IntToStr(Sum) + ' 입니다.');
   Memo1.Lines.Add('배열의 최대값은 ' + IntToStr(MaxNum) + ' 입니다.');
 end;
@@ -75,6 +80,10 @@ var
 begin
   Sum := 0;
   { TODO : (2) for 문을 이용해 배열의 값을 모두 더해 반환하도록 구현 }
+
+
+   for I := 0 to Length(FNumArr)-1 do
+   Sum := Sum+FNumArr[i];
 
   Result := Sum;
 end;
@@ -87,6 +96,11 @@ begin
   { TODO :
     (3) for 문을 이용해 배열의 값 중 가장 큰 값을 반환하도록 구현
         if 문을 이용해 숫자를 비교  }
+  for I := 0 to Length(FNumArr)-1 do
+  begin
+     if(MaxNum<=FNumArr[I])  then
+        MaxNum:= FNumArr[I];
+  end;
 
   Result := MaxNum;
 end;
@@ -103,9 +117,19 @@ begin
           50 이상(>=)인 경우 CountOver 1 증가
           50 미만(<)인 경우 CountUnder 1 증가 하도록 구현
   }
+  for I := 0 to Length(FNumArr)-1 do
+  begin
+    if FNumArr[i]>=50 then
+       inc(CountOver)
+       else if FNumArr[i]<50 then
+         inc(CountUnder);
+
+  end;
+
 
   Memo1.Lines.Add('50 이상인 수의 갯수: ' + IntToStr(CountOver));
   Memo1.Lines.Add('50 미만인 수의 갯수: ' + IntToStr(CountUnder));
 end;
 
 end.
+
