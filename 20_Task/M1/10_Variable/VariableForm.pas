@@ -39,7 +39,6 @@ begin
   { TODO :
       (2) FSum 변수에 파라메터 ANum 값을 더합니다.
           FSum 변수 반환 }
-  ANum := StrToInt(edtNum.Text);
   FSum := FSum + ANum;
   result := FSum;
 end;
