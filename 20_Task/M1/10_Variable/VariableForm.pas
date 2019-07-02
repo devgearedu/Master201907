@@ -39,6 +39,7 @@ begin
   { TODO :
       (2) FSum 변수에 파라메터 ANum 값을 더합니다.
           FSum 변수 반환 }
+  Result := 0;
   FSum := FSum + ANum;
   Result := FSum;
 end;
