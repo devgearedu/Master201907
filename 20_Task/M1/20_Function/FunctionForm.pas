@@ -26,7 +26,9 @@ type
     function GetNameMsg(AName: string): string;
 
     function GetAgeMsg(AName: string; AAge: Integer): string;
-    { TODO :
+
+    function GetUserInfoMsg(AName: string; AAge: Integer; AGender : Boolean) : string;
+      { TODO :
         (2-1) GetUserInfoMsg 함수를 선언
           파라메터: 이름(문자), 나이(숫자), 남자여부(Boolean)
           반환값: 문자열(메시지)
@@ -53,12 +55,32 @@ begin
   Result := Msg;
 end;
 
+function TForm2.GetUserInfoMsg(AName: string; AAge: Integer;
+  AGender: Boolean): string;
+  var
+  Msg, Gender:string;
+begin
+    Msg:=GetAgeMsg(AName, AAge)+#13#10;;
+      if AGender then
+        Gender:='남자'
+      else
+        Gender:='여자';
+    Msg:= Msg + AName+'님은'+Gender+'입니다.';
+    result:=Msg;
+end;
+
 function TForm2.GetAgeMsg(AName: string; AAge: Integer): string;
 var
   Msg, Adult: string;
 begin
   Msg := GetNameMsg(AName); // 인사말 표시는 재사용
   Msg := Msg + #13#10;      // 한줄 내려쓰기(일명 캐리지리턴)
+    if AAge>=20 then
+      Adult:='성인'
+    else
+      Adult:='미성년';
+  Msg := Msg+AName+'님은'+IntToStr(AAge)+'세로'+(Adult)+'입니다.';
+
 
 { TODO :
     (1) Msg 변수에 '(AName)님은 (AAge)세로 (성인/미성년)입니다.' 메시지 추가
@@ -103,6 +125,7 @@ begin
   Name := edtName.Text;
   Age := StrToInt(edtAge.Text);
   IsMan := rdoMan.Checked;
+  Msg := GetUserInfoMsg(Name,Age,Isman);
 
 { TODO :
     (2) 인사말 + 성인여부 확인 + 성별확인 메시지를
