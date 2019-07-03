@@ -26,6 +26,7 @@ type
     function GetNameMsg(AName: string): string;
 
     function GetAgeMsg(AName: string; AAge: Integer): string;
+    function GetUserInfoMsg(AName: string; AAge: Integer; IsMan : boolean): string;
     { TODO :
         (2-1) GetUserInfoMsg 함수를 선언
           파라메터: 이름(문자), 나이(숫자), 남자여부(Boolean)
@@ -53,12 +54,31 @@ begin
   Result := Msg;
 end;
 
+function TForm2.GetUserInfoMsg(AName: string; AAge: Integer;
+  IsMan: boolean): string;
+  var AMan,Msg : string;
+begin
+  AMan := '남자';
+  if Isman = false then
+  AMan := '여자';
+
+  Msg := GetAgeMsg(AName, AAge );
+  Msg :=  Msg + #13#10 + AName + '님 은' + AMan + '입니다.' ;
+
+   result := Msg;
+end;
+
 function TForm2.GetAgeMsg(AName: string; AAge: Integer): string;
 var
-  Msg, Adult: string;
+  Msg: string;
+  Adult : string;
 begin
+  Adult := '미성년';
+  if AAge >= 20  then
+  Adult := '성인';
+
   Msg := GetNameMsg(AName); // 인사말 표시는 재사용
-  Msg := Msg + #13#10;      // 한줄 내려쓰기(일명 캐리지리턴)
+  Msg := Msg + #13#10 + AName + '님은 ' + inttostr(AAge) + '세로 ' + Adult + '입니다.' ;      // 한줄 내려쓰기(일명 캐리지리턴)
 
 { TODO :
     (1) Msg 변수에 '(AName)님은 (AAge)세로 (성인/미성년)입니다.' 메시지 추가
@@ -66,9 +86,9 @@ begin
         문자열과 변수를 조합(더하기) 하세요.
         정수는 문자로 변환(IntToStr)하세요.
   }
-
   Result := Msg;
 end;
+
 
 procedure TForm2.Button1Click(Sender: TObject);
 var
@@ -104,12 +124,12 @@ begin
   Age := StrToInt(edtAge.Text);
   IsMan := rdoMan.Checked;
 
+  MSg := GetUserInfoMsg(Name, Age, IsMan);
 { TODO :
     (2) 인사말 + 성인여부 확인 + 성별확인 메시지를
         반환하는 함수(GetUserInfoMsg)를 작성하세요
   Msg := GetUserInfoMsg(Name, Age, IsMan);
 }
-
   ShowMessage(Msg);
 end;
 
