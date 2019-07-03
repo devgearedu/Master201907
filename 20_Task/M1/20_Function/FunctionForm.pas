@@ -57,7 +57,8 @@ end;
 
 function TForm2.GetUserInfoMsg(AName: string; AAge: Integer;
   A: boolean): string;
-  var Aman,Msg : string;
+var
+  Aman,Msg : string;
 begin
    AMan := '³²ÀÚ';
    if A = false then

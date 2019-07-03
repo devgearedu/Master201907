@@ -118,6 +118,7 @@ begin
           50 이상(>=)인 경우 CountOver 1 증가
           50 미만(<)인 경우 CountUnder 1 증가 하도록 구현
   }
+
   for I := 0 to Length(FNumArr) - 1 do
    begin
     if FNumArr[i] >= 50 then
