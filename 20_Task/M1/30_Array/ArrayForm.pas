@@ -20,6 +20,7 @@ type
     procedure InitArray;
     function GetArraySum: Integer;
     function GetArrayMaxNum: Integer;
+
   public
     { Public declarations }
   end;
@@ -32,6 +33,7 @@ implementation
 {$R *.dfm}
 
 procedure TForm3.FormCreate(Sender: TObject);
+
 begin
   InitArray;
 end;
@@ -40,6 +42,7 @@ end;
 procedure TForm3.InitArray;
 var
   I: Integer;
+
 begin
   // 배열(FNumArr)의 길이만큼 반복하며 임의의 값(1~100)을 설정
   for I := 0 to Length(FNumArr) - 1 do
@@ -50,6 +53,7 @@ procedure TForm3.Button1Click(Sender: TObject);
 var
   I: Integer;
   Sum, MaxNum: Integer;
+
 begin
 
   // 배열의 합
@@ -78,6 +82,7 @@ end;
 function TForm3.GetArraySum: Integer;
 var
   I, Sum: Integer;
+
 begin
   Sum := 0;
   { TODO : (2) for 문을 이용해 배열의 값을 모두 더해 반환하도록 구현 }
@@ -91,6 +96,7 @@ end;
 function TForm3.GetArrayMaxNum: Integer;
 var
   I, MaxNum: Integer;
+
 begin
   MaxNum := 0;
   { TODO :
@@ -110,6 +116,7 @@ procedure TForm3.Button2Click(Sender: TObject);
 var
   I,
   CountOver, CountUnder: Integer;
+
 begin
   CountOver := 0;
   CountUnder := 0;

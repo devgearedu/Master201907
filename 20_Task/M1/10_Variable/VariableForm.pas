@@ -14,6 +14,7 @@ type
     edtSum: TEdit;
     Label2: TLabel;
     procedure Button1Click(Sender: TObject);
+
   private
     // 이 폼(유닛)에서만 사용하는 변수와 함수를 선언
 
@@ -35,19 +36,20 @@ implementation
 function TForm1.AddNum(ANum: Integer): Integer;
 var
 Num, Sum : integer;
+
 begin
   { TODO :
       (2) FSum 변수에 파라메터 ANum 값을 더합니다.
           FSum 변수 반환 }
 
-  Result := 0;
   FSum := FSum + ANum;
   Result := FSum;
 end;
 
 procedure TForm1.Button1Click(Sender: TObject);
 var
-  Num, Sum: Integer;  // 이곳에 선언된 변수는 이 함수에서만 사용합니다.
+  Num, Sum: Integer;
+  // 이곳에 선언된 변수는 이 함수에서만 사용합니다.
 begin
   Num := StrToInt(edtNum.Text);
   Sum := AddNum(Num);

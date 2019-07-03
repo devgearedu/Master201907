@@ -28,6 +28,7 @@ type
     function GetAgeMsg(AName: string; AAge: Integer): string;
 
     function GetUserInfoMsg(AName: string; AAge: Integer; A : boolean): string;
+
     { TODO :
         (2-1) GetUserInfoMsg 함수를 선언
           파라메터: 이름(문자), 나이(숫자), 남자여부(Boolean)
@@ -59,6 +60,7 @@ function TForm2.GetUserInfoMsg(AName: string; AAge: Integer;
   A: boolean): string;
 var
   Aman,Msg : string;
+
 begin
    AMan := '남자';
    if A = false then
@@ -97,6 +99,7 @@ end;
 procedure TForm2.Button1Click(Sender: TObject);
 var
   Name, Msg: string;
+
 begin
   Name := edtName.Text;
 
@@ -109,6 +112,7 @@ procedure TForm2.Button2Click(Sender: TObject);
 var
   Name, Msg: string;
   Age: Integer;
+
 begin
   Name := edtName.Text;
   Age := StrToInt(edtAge.Text);
