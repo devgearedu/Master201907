@@ -45,9 +45,13 @@ type
     Address:string;
     function GetName:string;
   end;
+//  p_person = ^person;
 
   country = array [0..2] of string;
 var
+  p:^person;
+  pa:pchar; //pansichar, pwidechar,punicodechar
+  pi:^integer;
   a1:array of string;          //동적배열 1차원
   a2:array of array of string; //동적배열 2차원
   Countries:array [0..2] of string; // = ('korea', 'japan', 'america');
@@ -71,6 +75,8 @@ implementation
 var
   j:integer;
 procedure Hellow;
+var
+  k:integer;
 begin
   ShowMessage('안녕');
 end;
