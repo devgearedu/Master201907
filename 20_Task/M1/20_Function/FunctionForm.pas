@@ -32,6 +32,8 @@ type
           반환값: 문자열(메시지)
         (2-2) 함수 선언 후 Ctrl + Shift + C를 눌러 구현부 생성
     }
+    function GetUserInfoMsg(AName: string; AAge: Integer; Sex: Boolean): string;    // GetUserInfoMsg 함수 선언
+
   public
     // 다른 유닛에서 참조할 수 있는 변수와 함수 선언
   end;
@@ -53,6 +55,12 @@ begin
   Result := Msg;
 end;
 
+function TForm2.GetUserInfoMsg(AName: string; AAge: Integer;
+  Sex: Boolean): string;
+begin
+
+end;
+
 function TForm2.GetAgeMsg(AName: string; AAge: Integer): string;
 var
   Msg, Adult: string;
@@ -66,7 +74,7 @@ begin
         문자열과 변수를 조합(더하기) 하세요.
         정수는 문자로 변환(IntToStr)하세요.
   }
-
+//  Msg := (AName)님은 (AAge)세로 (성인/미성년)입니다.
   Result := Msg;
 end;
 
