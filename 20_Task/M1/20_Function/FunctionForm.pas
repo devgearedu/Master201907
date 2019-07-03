@@ -32,6 +32,7 @@ type
           반환값: 문자열(메시지)
         (2-2) 함수 선언 후 Ctrl + Shift + C를 눌러 구현부 생성
     }
+   function GetUserInfoMsg(AName: string; AAge: Integer; AIsMan: boolean): string;
   public
     // 다른 유닛에서 참조할 수 있는 변수와 함수 선언
   end;
@@ -66,6 +67,12 @@ begin
         문자열과 변수를 조합(더하기) 하세요.
         정수는 문자로 변환(IntToStr)하세요.
   }
+    if AAge >= 20  then
+    Adult := '성인'
+    else
+    Adult := '미성년';
+  Msg := GetNameMsg(AName); // 인사말 표시는 재사용
+  Msg := Msg + #13#10 + AName + '님은 ' + inttostr(AAge) + '세로 ' + Adult + '입니다.' ;
 
   Result := Msg;
 end;
@@ -103,7 +110,7 @@ begin
   Name := edtName.Text;
   Age := StrToInt(edtAge.Text);
   IsMan := rdoMan.Checked;
-
+  MSg := GetUserInfoMsg(Name, Age, IsMan);
 { TODO :
     (2) 인사말 + 성인여부 확인 + 성별확인 메시지를
         반환하는 함수(GetUserInfoMsg)를 작성하세요
@@ -113,6 +120,20 @@ begin
   ShowMessage(Msg);
 end;
 
+function TForm2.GetUserInfoMsg(AName: string; AAge: Integer;
+  AIsMan: boolean): string;
+  var
+  s,Msg:string;
+begin
+  if AIsMan = True then
+    s := '남자'
+  else
+    s := '여자';
+  Msg := GetAgeMsg(AName, AAge );
+  Msg :=  Msg + #13#10 + AName + '님은 ' + s + '입니다.' ;
+
+   result := Msg;
+end;
 { TODO :
   (2-2) GetUserInfoMsg 함수의 구현부에는
     인사말 + 성인여부 확인 + 성별확인 메시지를 반환하도록 작성하세요.
