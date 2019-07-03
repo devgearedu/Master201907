@@ -1,0 +1,60 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{6569F6C9-4131-4245-AC0B-BD5E5653DF21}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="10_Variable\VariableSample.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="20_Function\FunctionSample.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="30_Array\ArraySample.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="VariableSample">
+        <MSBuild Projects="10_Variable\VariableSample.dproj"/>
+    </Target>
+    <Target Name="VariableSample:Clean">
+        <MSBuild Projects="10_Variable\VariableSample.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="VariableSample:Make">
+        <MSBuild Projects="10_Variable\VariableSample.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="FunctionSample">
+        <MSBuild Projects="20_Function\FunctionSample.dproj"/>
+    </Target>
+    <Target Name="FunctionSample:Clean">
+        <MSBuild Projects="20_Function\FunctionSample.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="FunctionSample:Make">
+        <MSBuild Projects="20_Function\FunctionSample.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ArraySample">
+        <MSBuild Projects="30_Array\ArraySample.dproj"/>
+    </Target>
+    <Target Name="ArraySample:Clean">
+        <MSBuild Projects="30_Array\ArraySample.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ArraySample:Make">
+        <MSBuild Projects="30_Array\ArraySample.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="VariableSample;FunctionSample;ArraySample"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="VariableSample:Clean;FunctionSample:Clean;ArraySample:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="VariableSample:Make;FunctionSample:Make;ArraySample:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
