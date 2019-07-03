@@ -116,7 +116,6 @@ begin
         반환하는 함수(GetUserInfoMsg)를 작성하세요
   Msg := GetUserInfoMsg(Name, Age, IsMan);
 }
-
   ShowMessage(Msg);
 end;
 
