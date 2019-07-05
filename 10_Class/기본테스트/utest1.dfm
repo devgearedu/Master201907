@@ -1,17 +1,23 @@
 object Form1: TForm1
   Left = 0
   Top = 0
+  ActiveControl = Edit1
   Caption = 'Form1'
   ClientHeight = 370
-  ClientWidth = 387
+  ClientWidth = 764
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
+  KeyPreview = True
   OldCreateOrder = False
+  Position = poScreenCenter
   OnActivate = FormActivate
+  OnCloseQuery = FormCloseQuery
+  OnCreate = FormCreate
+  OnKeyDown = FormKeyDown
   PixelsPerInch = 96
   TextHeight = 13
   object MyButton: TButton
@@ -121,6 +127,7 @@ object Form1: TForm1
       Width = 121
       Height = 21
       TabOrder = 1
+      OnKeyPress = Edit2KeyPress
     end
     object Edit3: TEdit
       Left = 88
@@ -135,13 +142,16 @@ object Form1: TForm1
       Width = 121
       Height = 21
       TabOrder = 3
+      OnKeyDown = Edit1KeyDown
     end
     object Edit5: TEdit
       Left = 88
       Top = 124
       Width = 121
       Height = 21
+      NumbersOnly = True
       TabOrder = 4
+      OnKeyDown = Edit1KeyDown
     end
     object Edit6: TEdit
       Left = 88
@@ -192,17 +202,29 @@ object Form1: TForm1
     Height = 25
     Caption = 'Show'
     TabOrder = 13
+    OnClick = Button11Click
   end
   object Button13: TButton
     Left = 24
-    Top = 336
+    Top = 335
     Width = 75
     Height = 22
     Caption = 'Sjowmodal'
     TabOrder = 14
+    OnClick = Button13Click
+  end
+  object Panel1: TPanel
+    Left = 377
+    Top = 0
+    Width = 387
+    Height = 370
+    Align = alRight
+    Caption = 'Panel1'
+    DockSite = True
+    TabOrder = 15
   end
   object ColorDialog1: TColorDialog
-    Left = 112
-    Top = 200
+    Left = 32
+    Top = 184
   end
 end

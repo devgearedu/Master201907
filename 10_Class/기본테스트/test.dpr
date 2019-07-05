@@ -7,8 +7,7 @@ uses
   utest4 in 'utest4.pas',
   utest3 in 'utest3.pas' {Form3},
   Vcl.Themes,
-  Vcl.Styles,
-  mtframe in 'mtframe.pas' {Frame1: TFrame};
+  Vcl.Styles;
 
 {$R *.res}
 
