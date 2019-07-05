@@ -6,7 +6,7 @@
         <Projects Include="VariableTest\VariableTest.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="FunctionTest\ConditionTest.dproj">
+        <Projects Include="ConditionTest\ConditionTest.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="LoopTest\LoopTest.dproj">
@@ -33,13 +33,13 @@
         <MSBuild Projects="VariableTest\VariableTest.dproj" Targets="Make"/>
     </Target>
     <Target Name="ConditionTest">
-        <MSBuild Projects="FunctionTest\ConditionTest.dproj"/>
+        <MSBuild Projects="ConditionTest\ConditionTest.dproj"/>
     </Target>
     <Target Name="ConditionTest:Clean">
-        <MSBuild Projects="FunctionTest\ConditionTest.dproj" Targets="Clean"/>
+        <MSBuild Projects="ConditionTest\ConditionTest.dproj" Targets="Clean"/>
     </Target>
     <Target Name="ConditionTest:Make">
-        <MSBuild Projects="FunctionTest\ConditionTest.dproj" Targets="Make"/>
+        <MSBuild Projects="ConditionTest\ConditionTest.dproj" Targets="Make"/>
     </Target>
     <Target Name="LoopTest">
         <MSBuild Projects="LoopTest\LoopTest.dproj"/>

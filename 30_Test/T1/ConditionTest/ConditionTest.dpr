@@ -2,7 +2,7 @@ program ConditionTest;
 
 uses
   Vcl.Forms,
-  FunctionForm in 'FunctionForm.pas' {frmCondition};
+  ConditionForm in 'ConditionForm.pas' {frmCondition};
 
 {$R *.res}
 

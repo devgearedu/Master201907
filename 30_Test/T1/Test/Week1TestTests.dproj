@@ -84,11 +84,11 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="..\VariableTest\VariableForm.pas"/>
-        <DCCReference Include="..\FunctionTest\FunctionForm.pas">
+        <DCCReference Include="..\ConditionTest\ConditionForm.pas">
             <Form>frmCondition</Form>
         </DCCReference>
         <DCCReference Include="TestVariableForm.pas"/>
-        <DCCReference Include="TestFunctionForm.pas"/>
+        <DCCReference Include="TestConditionForm.pas"/>
         <DCCReference Include="TestLoopForm.pas"/>
         <DCCReference Include="..\LoopTest\LoopForm.pas">
             <Form>frmLoop</Form>

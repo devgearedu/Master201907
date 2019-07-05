@@ -19,7 +19,7 @@ uses
 type
   // Test methods for class TfrmFunction
 
-  TestTfrmFunction = class(TTestCase)
+  TestTfrmCondition = class(TTestCase)
   strict private
     FfrmCondition: TfrmCondition;
   public
@@ -34,18 +34,18 @@ type
 
 implementation
 
-procedure TestTfrmFunction.SetUp;
+procedure TestTfrmCondition.SetUp;
 begin
   FfrmCondition := TfrmCondition.Create(nil);
 end;
 
-procedure TestTfrmFunction.TearDown;
+procedure TestTfrmCondition.TearDown;
 begin
   FfrmCondition.Free;
   FfrmCondition := nil;
 end;
 
-procedure TestTfrmFunction.TestLoginCheckEmpty;
+procedure TestTfrmCondition.TestLoginCheckEmpty;
 var
   ReturnValue: Integer;
 begin
@@ -53,7 +53,7 @@ begin
   CheckEquals(ReturnValue, LOGIN_RESULT_EMPTY, '공백 확인');
 end;
 
-procedure TestTfrmFunction.TestLoginCheckNotfound;
+procedure TestTfrmCondition.TestLoginCheckNotfound;
 var
   ReturnValue: Integer;
 begin
@@ -61,7 +61,7 @@ begin
   CheckEquals(ReturnValue, LOGIN_RESULT_NOTFOUND_ID, 'Id 없음');
 end;
 
-procedure TestTfrmFunction.TestLoginCheckIncorrect;
+procedure TestTfrmCondition.TestLoginCheckIncorrect;
 var
   ReturnValue: Integer;
 begin
@@ -69,7 +69,7 @@ begin
   CheckEquals(ReturnValue, LOGIN_RESULT_INCORRECT, 'Id와 비밀번호 비일치');
 end;
 
-procedure TestTfrmFunction.TestLoginCheckOK;
+procedure TestTfrmCondition.TestLoginCheckOK;
 var
   ReturnValue: Integer;
 begin
@@ -79,6 +79,6 @@ end;
 
 initialization
   // Register any test cases with the test runner
-  RegisterTest(TestTfrmFunction.Suite);
+  RegisterTest(TestTfrmCondition.Suite);
 end.
 

@@ -17,9 +17,9 @@ program Week1TestTests;
 uses
   DUnitTestRunner,
   VariableForm in '..\VariableTest\VariableForm.pas',
-  FunctionForm in '..\FunctionTest\FunctionForm.pas' {frmCondition},
+  ConditionForm in '..\ConditionTest\ConditionForm.pas' {frmCondition},
   TestVariableForm in 'TestVariableForm.pas',
-  TestFunctionForm in 'TestFunctionForm.pas',
+  TestConditionForm in 'TestConditionForm.pas',
   TestLoopForm in 'TestLoopForm.pas',
   LoopForm in '..\LoopTest\LoopForm.pas' {frmLoop};
 

@@ -98,7 +98,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="FunctionForm.pas">
+        <DCCReference Include="ConditionForm.pas">
             <Form>frmCondition</Form>
             <FormType>dfm</FormType>
         </DCCReference>
