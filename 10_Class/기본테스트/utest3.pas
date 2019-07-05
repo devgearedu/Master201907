@@ -4,10 +4,19 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.Buttons, Vcl.StdCtrls;
 
 type
-  TForm2 = class(TForm)
+  TForm3 = class(TForm)
+    Button1: TButton;
+    Button2: TButton;
+    BitBtn1: TBitBtn;
+    BitBtn2: TBitBtn;
+    DateTimePicker1: TDateTimePicker;
+    MonthCalendar1: TMonthCalendar;
+    procedure DateTimePicker1UserInput(Sender: TObject;
+      const UserString: string; var DateAndTime: TDateTime;
+      var AllowChange: Boolean);
   private
     { Private declarations }
   public
@@ -15,10 +24,17 @@ type
   end;
 
 var
-  Form2: TForm2;
+  Form3: TForm3;
 
 implementation
 
 {$R *.dfm}
+
+procedure TForm3.DateTimePicker1UserInput(Sender: TObject;
+  const UserString: string; var DateAndTime: TDateTime;
+  var AllowChange: Boolean);
+begin
+   showmessage('input');
+end;
 
 end.
