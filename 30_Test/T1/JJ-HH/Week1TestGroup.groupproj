@@ -1,0 +1,72 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{F1BA179E-23C1-4698-8561-0FB7759A3D5E}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="VariableTest\VariableTest.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="ConditionTest\ConditionTest.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="LoopTest\LoopTest.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Test\Week1TestTests.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="VariableTest">
+        <MSBuild Projects="VariableTest\VariableTest.dproj"/>
+    </Target>
+    <Target Name="VariableTest:Clean">
+        <MSBuild Projects="VariableTest\VariableTest.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="VariableTest:Make">
+        <MSBuild Projects="VariableTest\VariableTest.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ConditionTest">
+        <MSBuild Projects="ConditionTest\ConditionTest.dproj"/>
+    </Target>
+    <Target Name="ConditionTest:Clean">
+        <MSBuild Projects="ConditionTest\ConditionTest.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ConditionTest:Make">
+        <MSBuild Projects="ConditionTest\ConditionTest.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="LoopTest">
+        <MSBuild Projects="LoopTest\LoopTest.dproj"/>
+    </Target>
+    <Target Name="LoopTest:Clean">
+        <MSBuild Projects="LoopTest\LoopTest.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="LoopTest:Make">
+        <MSBuild Projects="LoopTest\LoopTest.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Week1TestTests">
+        <MSBuild Projects="Test\Week1TestTests.dproj"/>
+    </Target>
+    <Target Name="Week1TestTests:Clean">
+        <MSBuild Projects="Test\Week1TestTests.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Week1TestTests:Make">
+        <MSBuild Projects="Test\Week1TestTests.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="VariableTest;ConditionTest;LoopTest;Week1TestTests"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="VariableTest:Clean;ConditionTest:Clean;LoopTest:Clean;Week1TestTests:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="VariableTest:Make;ConditionTest:Make;LoopTest:Make;Week1TestTests:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
