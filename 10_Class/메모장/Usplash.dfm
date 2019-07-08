@@ -24,10 +24,6 @@ object SplashForm: TSplashForm
     BevelInner = bvLowered
     Caption = 'Panel1'
     TabOrder = 0
-    ExplicitLeft = 80
-    ExplicitTop = 64
-    ExplicitWidth = 185
-    ExplicitHeight = 41
     object Image1: TImage
       Left = 16
       Top = 16

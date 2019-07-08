@@ -35,7 +35,7 @@ object MainForm: TMainForm
         Caption = #44592#53440
         Page = RibbonPage2
       end>
-    ExplicitTop = 1
+    TabIndex = 1
     DesignSize = (
       754
       143)
@@ -44,41 +44,6 @@ object MainForm: TMainForm
       ActionManager = ActionManager1
       OptionItems = <>
       RecentItems = <>
-    end
-    object RibbonPage2: TRibbonPage
-      Left = 0
-      Top = 50
-      Width = 753
-      Height = 93
-      Caption = #44592#53440
-      Index = 1
-      object RibbonGroup5: TRibbonGroup
-        Left = 4
-        Top = 3
-        Width = 103
-        Height = 86
-        ActionManager = ActionManager1
-        Caption = #49828#53440#51068
-        GroupIndex = 0
-      end
-      object RibbonGroup6: TRibbonGroup
-        Left = 109
-        Top = 3
-        Width = 144
-        Height = 86
-        ActionManager = ActionManager1
-        Caption = #44160#49353
-        GroupIndex = 1
-      end
-      object RibbonGroup7: TRibbonGroup
-        Left = 255
-        Top = 3
-        Width = 132
-        Height = 86
-        ActionManager = ActionManager1
-        Caption = #44592#53440
-        GroupIndex = 2
-      end
     end
     object RibbonQuickAccessToolbar1: TRibbonQuickAccessToolbar
       Left = 49
@@ -142,6 +107,41 @@ object MainForm: TMainForm
         end
       end
     end
+    object RibbonPage2: TRibbonPage
+      Left = 0
+      Top = 50
+      Width = 753
+      Height = 93
+      Caption = #44592#53440
+      Index = 1
+      object RibbonGroup5: TRibbonGroup
+        Left = 4
+        Top = 3
+        Width = 103
+        Height = 86
+        ActionManager = ActionManager1
+        Caption = #49828#53440#51068
+        GroupIndex = 0
+      end
+      object RibbonGroup6: TRibbonGroup
+        Left = 109
+        Top = 3
+        Width = 144
+        Height = 86
+        ActionManager = ActionManager1
+        Caption = #44160#49353
+        GroupIndex = 1
+      end
+      object RibbonGroup7: TRibbonGroup
+        Left = 255
+        Top = 3
+        Width = 132
+        Height = 86
+        ActionManager = ActionManager1
+        Caption = #44592#53440
+        GroupIndex = 2
+      end
+    end
   end
   object StatusBar1: TStatusBar
     Left = 0
@@ -158,6 +158,8 @@ object MainForm: TMainForm
       item
         Width = 50
       end>
+    ExplicitLeft = 32
+    ExplicitTop = 357
   end
   object GridPanel1: TGridPanel
     Left = 0
@@ -174,7 +176,7 @@ object MainForm: TMainForm
         Value = 72.914273811030520000
       end
       item
-        Value = 2.021444566427746000
+        Value = 2.021444566427745000
       end>
     ControlCollection = <
       item
@@ -211,6 +213,138 @@ object MainForm: TMainForm
       HeaderFont.Name = 'Tahoma'
       HeaderFont.Style = []
       TabOrder = 0
+      object CategoryPanel3: TCategoryPanel
+        Top = 400
+        Caption = 'CategoryPanel3'
+        TabOrder = 0
+      end
+      object CategoryPanel2: TCategoryPanel
+        Top = 200
+        Caption = #45944#54028#51060#44368#50977
+        TabOrder = 1
+        object ButtonGroup1: TButtonGroup
+          Left = 0
+          Top = 0
+          Width = 167
+          Height = 174
+          Align = alClient
+          ButtonOptions = [gboFullSize, gboShowCaptions]
+          Items = <
+            item
+              Caption = #44592#48376#44368#50977
+            end
+            item
+              Caption = #50952#46020#50864#54532#47196#44536#47000#48141
+            end
+            item
+              Caption = #53804#54000#50612#44284#51221
+            end
+            item
+              Caption = #48516#49328#52376#47532
+            end
+            item
+              Caption = #47784#48148#51068#44284#51221
+            end
+            item
+              Caption = #49324#47932#51064#53552#45367
+            end>
+          TabOrder = 0
+          ExplicitLeft = 24
+          ExplicitTop = 48
+          ExplicitWidth = 100
+          ExplicitHeight = 100
+        end
+      end
+      object CategoryPanel1: TCategoryPanel
+        Top = 0
+        Caption = #49660#54609#47785#47197
+        TabOrder = 2
+        object CategoryButtons1: TCategoryButtons
+          Left = 0
+          Top = 0
+          Width = 167
+          Height = 174
+          Align = alClient
+          ButtonFlow = cbfVertical
+          ButtonOptions = [boFullSize, boGradientFill, boShowCaptions, boVerticalCategoryCaptions, boUsePlusMinus]
+          Categories = <
+            item
+              Caption = #51032#47448
+              Color = 16053492
+              Collapsed = False
+              Items = <
+                item
+                  Caption = #53076#53944#47448
+                end
+                item
+                  Caption = #49836#47001#49828
+                end
+                item
+                  Caption = #51088#53011#47448
+                end
+                item
+                  Caption = #49492#52768
+                end
+                item
+                  Caption = #50896#54588#49828
+                end
+                item
+                  Caption = #49828#52964#53944
+                end
+                item
+                  Caption = #51652#47448
+                end
+                item
+                  Caption = #45768#53944
+                end>
+            end
+            item
+              Caption = #50501#49464#49436#47532
+              Color = 15395839
+              Collapsed = False
+              Items = <>
+            end
+            item
+              Caption = #49800#51592
+              Color = 16771839
+              Collapsed = False
+              Items = <>
+            end
+            item
+              Caption = #44032#51204#51228#54408
+              Color = 16771818
+              Collapsed = False
+              Items = <>
+            end
+            item
+              Caption = #44032#44396
+              Color = 15400959
+              Collapsed = False
+              Items = <>
+            end
+            item
+              Caption = #49885#54408
+              Color = 16777194
+              Collapsed = False
+              Items = <>
+            end
+            item
+              Caption = #46020#49436
+              Color = 15395839
+              Collapsed = False
+              Items = <>
+            end
+            item
+              Caption = #51020#48152
+              Color = 15466474
+              Collapsed = False
+              Items = <>
+            end>
+          RegularButtonColor = clWhite
+          SelectedButtonColor = 15132390
+          TabOrder = 0
+        end
+      end
     end
     object RichEdit1: TRichEdit
       Left = 189
@@ -665,6 +799,7 @@ object MainForm: TMainForm
       Hint = #45824#54868#49345#51088#54364#49884
       ImageIndex = 18
       ShortCut = 117
+      OnExecute = About_ActionExecute
     end
     object Top_Action: TAction
       Category = #44592#53440
