@@ -17,7 +17,6 @@ begin
   Application.CreateForm(Tcal, cal);
   SplashForm.show;
   SplashForm.Refresh;
-  Application.CreateForm(Tcal, cal);
   SplashForm.Hide;
   SplashForm.Free;
   Application.Run;
