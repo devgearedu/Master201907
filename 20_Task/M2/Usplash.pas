@@ -14,6 +14,7 @@ type
     Label2: TLabel;
   private
     { Private declarations }
+
   public
     { Public declarations }
   end;

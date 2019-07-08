@@ -45,6 +45,7 @@ type
     procedure SumCalc();
   public
     { Public declarations }
+
   end;
 
 var
