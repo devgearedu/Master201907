@@ -2,8 +2,8 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'Form1'
-  ClientHeight = 318
-  ClientWidth = 229
+  ClientHeight = 272
+  ClientWidth = 214
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,8 +15,8 @@ object Form1: TForm1
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
-    Left = 95
-    Top = 6
+    Left = 96
+    Top = 0
     Width = 34
     Height = 23
     Caption = #50672#49328
@@ -28,8 +28,8 @@ object Form1: TForm1
     ParentFont = False
   end
   object Label2: TLabel
-    Left = 118
-    Top = 35
+    Left = 110
+    Top = 29
     Width = 14
     Height = 23
     Caption = '='
@@ -41,8 +41,8 @@ object Form1: TForm1
     ParentFont = False
   end
   object Button1: TButton
-    Left = 8
-    Top = 174
+    Left = 0
+    Top = 168
     Width = 49
     Height = 49
     Caption = '1'
@@ -56,8 +56,8 @@ object Form1: TForm1
     OnClick = Button1Click
   end
   object Button2: TButton
-    Left = 63
-    Top = 174
+    Left = 55
+    Top = 168
     Width = 49
     Height = 49
     Caption = '2'
@@ -71,8 +71,8 @@ object Form1: TForm1
     OnClick = Button2Click
   end
   object Button3: TButton
-    Left = 118
-    Top = 174
+    Left = 110
+    Top = 168
     Width = 49
     Height = 49
     Caption = '3'
@@ -86,8 +86,8 @@ object Form1: TForm1
     OnClick = Button3Click
   end
   object Button4: TButton
-    Left = 8
-    Top = 119
+    Left = 0
+    Top = 113
     Width = 49
     Height = 49
     Caption = '4'
@@ -101,8 +101,8 @@ object Form1: TForm1
     OnClick = Button4Click
   end
   object Button5: TButton
-    Left = 63
-    Top = 119
+    Left = 55
+    Top = 113
     Width = 49
     Height = 49
     Caption = '5'
@@ -116,8 +116,8 @@ object Form1: TForm1
     OnClick = Button5Click
   end
   object Button6: TButton
-    Left = 118
-    Top = 119
+    Left = 110
+    Top = 113
     Width = 49
     Height = 49
     Caption = '6'
@@ -131,8 +131,8 @@ object Form1: TForm1
     OnClick = Button6Click
   end
   object Button7: TButton
-    Left = 8
-    Top = 64
+    Left = 0
+    Top = 58
     Width = 49
     Height = 49
     Caption = '7'
@@ -146,8 +146,8 @@ object Form1: TForm1
     OnClick = Button7Click
   end
   object Button8: TButton
-    Left = 63
-    Top = 64
+    Left = 55
+    Top = 58
     Width = 49
     Height = 49
     Caption = '8'
@@ -161,8 +161,8 @@ object Form1: TForm1
     OnClick = Button8Click
   end
   object Button9: TButton
-    Left = 118
-    Top = 64
+    Left = 110
+    Top = 58
     Width = 49
     Height = 49
     Caption = '9'
@@ -176,8 +176,8 @@ object Form1: TForm1
     OnClick = Button9Click
   end
   object Button10: TButton
-    Left = 63
-    Top = 229
+    Left = 55
+    Top = 223
     Width = 49
     Height = 49
     Caption = '0'
@@ -191,8 +191,8 @@ object Form1: TForm1
     OnClick = Button10Click
   end
   object Button11: TButton
-    Left = 118
-    Top = 229
+    Left = 110
+    Top = 223
     Width = 49
     Height = 49
     Caption = '='
@@ -206,8 +206,8 @@ object Form1: TForm1
     OnClick = Button11Click
   end
   object Button12: TButton
-    Left = 8
-    Top = 229
+    Left = 0
+    Top = 223
     Width = 49
     Height = 49
     Caption = 'C'
@@ -221,8 +221,8 @@ object Form1: TForm1
     OnClick = Button12Click
   end
   object Button13: TButton
-    Left = 173
-    Top = 64
+    Left = 165
+    Top = 58
     Width = 49
     Height = 49
     Caption = '+'
@@ -236,8 +236,8 @@ object Form1: TForm1
     OnClick = Button13Click
   end
   object Button14: TButton
-    Left = 173
-    Top = 119
+    Left = 165
+    Top = 113
     Width = 49
     Height = 49
     Caption = '-'
@@ -251,8 +251,8 @@ object Form1: TForm1
     OnClick = Button14Click
   end
   object Button15: TButton
-    Left = 173
-    Top = 174
+    Left = 165
+    Top = 168
     Width = 49
     Height = 49
     Caption = '*'
@@ -266,8 +266,8 @@ object Form1: TForm1
     OnClick = Button15Click
   end
   object Button16: TButton
-    Left = 173
-    Top = 229
+    Left = 165
+    Top = 223
     Width = 49
     Height = 49
     Caption = '/'
@@ -281,22 +281,22 @@ object Form1: TForm1
     OnClick = Button16Click
   end
   object Edit1: TEdit
-    Left = 8
-    Top = 8
+    Left = 0
+    Top = 2
     Width = 81
     Height = 21
     TabOrder = 16
   end
   object Edit2: TEdit
-    Left = 144
-    Top = 8
+    Left = 136
+    Top = 2
     Width = 78
     Height = 21
     TabOrder = 17
   end
   object Edit3: TEdit
-    Left = 144
-    Top = 37
+    Left = 136
+    Top = 31
     Width = 78
     Height = 21
     TabOrder = 18

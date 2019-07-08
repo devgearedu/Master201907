@@ -75,12 +75,17 @@ begin
     ShowMessage('자료를 모두 입력하신 후 사용하세요!')
   else
   begin
+    Try
     case op of
       '+': ans := StrToFloat(Edit1.Text) + StrToFloat(Edit2.Text);
       '-': ans := StrToFloat(Edit1.Text) * StrToFloat(Edit2.Text);
       '*': ans := StrToFloat(Edit1.Text) * StrToFloat(Edit2.Text);
       '/': ans := StrToFloat(Edit1.Text) * StrToFloat(Edit2.Text);
     end;
+    Except
+      on E:EMathError Do
+        ShowMessage(E.Message);
+    End;
     Edit3.Text := FloatToStr(ans);
   end;
 end;
