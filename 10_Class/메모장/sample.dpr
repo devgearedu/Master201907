@@ -5,8 +5,9 @@ uses
   UMain in 'UMain.pas' {MainForm},
   Vcl.Themes,
   Vcl.Styles,
+  uABOUT in 'uABOUT.pas' {AboutBox},
   Usplash in 'Usplash.pas' {SplashForm},
-  Umyframe in 'Umyframe.pas' {Frame1: TFrame};
+  Uchart_Frame in 'Uchart_Frame.pas' {Frame1: TFrame};
 
 {$R *.res}
 
