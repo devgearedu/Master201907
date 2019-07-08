@@ -122,7 +122,7 @@ begin
   except
     if (Edit1.Text = '') And (Num1 = 0) And (Num2 = 0) then       //(Error처리) 숫자 없이 = 입력시
       begin
-        Showmessage('숫자를 입력하세요');
+        Showmessage('숫자를 입력하세요.');
         Exit;
       end;
 
@@ -194,6 +194,8 @@ begin
     Oper_Check := True;                                //연산자 2번클릭
     Max := '';                                         //Edit1.MaxLength
   except
+    On E : Exception Do                                //알수 없는 에러를 위해
+      ShowMessage(E.Message+'관리자에게 문의하세요.');
   end;
 
 end;
@@ -227,12 +229,20 @@ end;
 
 function TForm1.Add(Num1, Num2: Real ) : Extended;   //계산 함수
 begin
+Try
   case Str of
     96 : result := Num2 + Num1;                      //정수형 더하기
     97 : result := Num2 - Num1;                      //정수형 빼기기
     98 : result := Num2 * Num1;                      //정수형 곱하기
     99 : result := Num2 / Num1;                      //실수형 나누기
   end;
+Except
+  On E : Exception do
+  begin
+    ShowMessage (E.Message+'관리자에게 문의하세요.');                         //알수 없는 에러를 위해
+    Btn_CE.Click;
+  end;
+End;
 
 end;
 

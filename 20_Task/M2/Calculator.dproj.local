@@ -1,10 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>1899-12-30 00:00:00.000.545,C:\Users\sinwn\OneDrive\문서\Embarcadero\Studio\Projects\Unit1.dfm=C:\Users\sinwn\OneDrive\바탕 화면\계산기\UCalculator.dfm</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.197,C:\Users\sinwn\OneDrive\문서\Embarcadero\Studio\Projects\Project1.dproj=C:\Users\sinwn\OneDrive\바탕 화면\계산기\Calculator.dproj</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.545,C:\Users\sinwn\OneDrive\문서\Embarcadero\Studio\Projects\Unit1.pas=C:\Users\sinwn\OneDrive\바탕 화면\계산기\UCalculator.pas</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.689,=C:\Users\sinwn\OneDrive\문서\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.545,C:\Users\sinwn\OneDrive\바탕 화면\계산기\UCalculator.dfm=C:\Users\sinwn\OneDrive\문서\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
     <Transaction>1899-12-30 00:00:00.000.873,=C:\Users\sinwn\OneDrive\문서\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-  </Transactions>
+    <Transaction>1899-12-30 00:00:00.000.689,=C:\Users\sinwn\OneDrive\문서\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.545,C:\Users\sinwn\OneDrive\바탕 화면\계산기\UCalculator.pas=C:\Users\sinwn\OneDrive\문서\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.197,C:\Users\sinwn\OneDrive\바탕 화면\계산기\Calculator.dproj=C:\Users\sinwn\OneDrive\문서\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+  </Transactions>  <ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="UCalculator.pas"/>
+    <File Path="UCalculator.dfm"/>
+  </ProjectSortOrder>
 </BorlandProject>
