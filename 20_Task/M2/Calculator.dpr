@@ -14,9 +14,9 @@ begin
   Application.MainFormOnTaskbar := True;
   SplashForm := TSplashForm.Create(Application);
   TStyleManager.TrySetStyle('Sky');
-  Application.CreateForm(Tcal, cal);
   SplashForm.show;
   SplashForm.Refresh;
+  Application.CreateForm(Tcal, cal);
   SplashForm.Hide;
   SplashForm.Free;
   Application.Run;

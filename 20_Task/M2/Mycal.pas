@@ -92,6 +92,7 @@ end;
 
 procedure TCal.SumCalc;
 begin
+try
   if PreSign = '+' then
     Sum := Sum + StrToFloat(Edit1.Text)
   else if PreSign = '-' then
@@ -108,6 +109,11 @@ begin
     else
       Sum := Sum / StrToFloat(Edit1.Text);
   end;
+except
+  on e:EMathError do
+    showmessage(e.Message);
+end;
+
 
   Edit1.Text := FloatToStr(Sum);
 end;
