@@ -86,11 +86,19 @@ begin
 
   // 아이디를 찾을 수 없는 경우 10 반환
   if not CheckNotFoundId(AId, APwd) then
+<<<<<<< HEAD
     Exit(LOGIN_RESULT_NOTFOUND_ID);
 
   // 아이디의 비밀번호가 맞지 않는 경우 20 반환
   if not CheckIncorrect(AId, APwd) then
     Exit(LOGIN_RESULT_INCORRECT);
+=======
+    Exit(LOGIN_RESULT_EMPTY);
+
+  // 아이디의 비밀번호가 맞지 않는 경우 20 반환
+  if not CheckIncorrect(AId, APwd) then
+    Exit(LOGIN_RESULT_EMPTY);
+>>>>>>> 934e54ebf8961e71c3e897d0a326c7fcb4dae6ab
 
   // 아이디 비밀번호가 유효한 경우 0 반환
   Result := LOGIN_RESULT_OK;
