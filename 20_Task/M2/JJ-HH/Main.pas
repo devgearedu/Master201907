@@ -13,6 +13,7 @@ type
     TFrameCalc1: TFrameCalc;
     procedure FormCreate(Sender: TObject);
     procedure AddInputToBuffer(_inputNum:string);
+    // Procedure ButtonClickHandler(Sender: TObject; var Action:);
     procedure SetOpr_Opd_Arrs(_inputOpr:string);
     procedure TFrameCalc1Button7Click(Sender: TObject);
     procedure TFrameCalc1Button8Click(Sender: TObject);
@@ -73,11 +74,16 @@ begin
       exit;
   end;
 
-  if bufString='0' then
-    bufString:='';
-
   if Length(bufString) < 11 then
+  begin
     bufString := bufString + _inputNum;
+    //bufString := bufString + self.Caption;
+  end;
+ if (Length(bufString)=2) and (bufString.Substring(0,1)= '0') then
+  begin
+    bufString := bufString.Substring(1,1);
+    TFrameCalc1.BufferPanel.Caption := bufString;
+  end;
 
   TFrameCalc1.BufferPanel.Caption := bufString;
 end;
@@ -85,6 +91,7 @@ end;
 procedure TMainForm.FormCreate(Sender: TObject);
 begin
   Calc:=Accumulator.TCalc.create;
+  //buttonClickHandler;
 end;
 
 procedure TMainForm.SetOpr_Opd_Arrs(_inputOpr: string);
@@ -119,9 +126,10 @@ end;
 procedure TMainForm.TFrameCalc1Button0Click(Sender: TObject);
 begin
   AddInputToBuffer(TFrameCalc1.Button0.Caption);
-  if (Length(bufString) = 1) and (bufString = '0') then
+  if bufString = '00' then
   begin
-    bufString := '';
+    bufString := '0';
+    TFrameCalc1.BufferPanel.Caption := bufString;
   end;
 end;
 
@@ -178,7 +186,7 @@ begin
   if (bufString='0') or (bufString = '')then
     exit;
 
-  if strtoint(bufString) > 0  then
+  if strtofloat(bufString) > 0  then
   begin
     bufString := '-' + bufString;
   end
@@ -194,14 +202,6 @@ procedure TMainForm.TFrameCalc1ButtonFloatingPointClick(Sender: TObject);
 var
   I:integer;
 begin
-//
-  if (bufString='0') or (bufString = '')then
-  begin
-    bufString := '0.';
-    TFrameCalc1.BufferPanel.Caption := bufString;
-    exit;
-  end;
-
   for I := 1 to Length(bufString) do
   begin
   if bufString.Substring(I, 1) = '.' then
@@ -244,7 +244,6 @@ begin
 
   expString := '';
   TFrameCalc1.ExpressionPanel.Caption := expString;
-  //SetLength(Expression,0);
   SetLength(Opds_Arr,0);
   SetLength(Symbols,0);
 
@@ -267,10 +266,6 @@ end;
 // ↑ 사칙연산, clear, backspace 버튼 onClick
 // ↓ Return버튼 onClick (입력 받은 모든 계산 수행)
 procedure TMainForm.TFrameCalc1ButtonReturnClick(Sender: TObject);
-var
-  I,J,K,LC, Len:integer;
-  extA : extended;
-
 begin
 //
   calc:=Tcalc.create;
@@ -278,83 +273,11 @@ begin
   SetLength(Opds_Arr,Length(Opds_Arr)+1);
   Opds_Arr[Length(Opds_Arr)-1] := bufString;
 
-  bufString := '';
   expString := '';
-
-  // ↓ 입력 중 곱셈과 나눗셈을 먼저 실행
-  I:=0;
-  LC:=0;
-  Len:=Length(Opds_Arr);
-
-  while Length(Opds_Arr) > 1 do
-  begin
-    LC:=LC+1;
-
-    if Symbols[I] = '*' then
-    begin
-      Opds_Arr[I]:=floattostr(Calc.Multi(strtofloat(Opds_Arr[I]),strtofloat(Opds_Arr[I+1])));
-
-      for J := I to Length(Symbols)-2 do
-      begin
-        Opds_Arr[J+1] := Opds_Arr[J+2];
-        Symbols[J] := Symbols[J+1];
-      end;
-
-      SetLength(Symbols, Length(Symbols)-1);
-      SetLength(Opds_Arr, Length(Opds_Arr)-1);
-
-
-      bufString:=Opds_Arr[I];
-
-      I:=0;
-    end
-    else
-      if Symbols[I] = '/' then
-      begin
-
-        extA:=Calc.Divide(strtofloat(Opds_Arr[I]),strtofloat(Opds_Arr[I+1]));
-        Opds_Arr[I] :=floattostr(extA);
-        for J := I to Length(Symbols)-2 do
-        begin
-          Opds_Arr[J+1] := Opds_Arr[J+2];
-          Symbols[J] := Symbols[J+1];
-        end;
-
-        SetLength(Symbols, Length(Symbols)-1);
-        SetLength(Opds_Arr, Length(Opds_Arr)-1);
-
-
-        bufString:=Opds_Arr[I];
-
-        I:=0;
-      end
-      else
-        I:=I+1;
-
-    if LC > Len then
-      break;
-  end;
-  // ↑ 입력 중 곱셈과 나눗셈을 먼저 실행
-
-
-  for K := 0 to Length(Symbols)-1 do
-  begin
-    if Symbols[K] = '+' then
-    begin
-      Opds_Arr[K+1]:=floattostr(calc.Add(strtofloat(Opds_Arr[K]),strtofloat(Opds_Arr[K+1])));
-    end
-    else
-    begin
-      if Symbols[K] = '-' then
-        Opds_Arr[K+1]:=floattostr(calc.Sub(strtofloat(Opds_Arr[K]),strtofloat(Opds_Arr[K+1])));
-    end;
-  end;
-
-  bufString:=Opds_Arr[Length(Opds_Arr)-1];
+  bufString := Calc.Accumulate(Opds_Arr, Symbols);
 
   SetLength(Symbols,0);
   SetLength(Opds_Arr,0);
-  expString := '';
 
   TFrameCalc1.ExpressionPanel.Caption := expString;
   TFrameCalc1.BufferPanel.Caption := bufString;
@@ -367,7 +290,7 @@ initialization
   SetLength(Opds_Arr,0);
   SetLength(Symbols,0);
 
-  bufString := '';  // 10
+  bufString := '0';  // 10
   expString := '';
 
 end.
