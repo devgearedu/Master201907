@@ -34,8 +34,12 @@ object MainForm: TMainForm
       item
         Caption = #44592#53440
         Page = RibbonPage2
+      end
+      item
+        Caption = #45936#51060#53552#48288#51060#49828
+        Page = RibbonPage3
       end>
-    TabIndex = 1
+    TabIndex = 2
     DesignSize = (
       754
       143)
@@ -142,6 +146,23 @@ object MainForm: TMainForm
         GroupIndex = 2
       end
     end
+    object RibbonPage3: TRibbonPage
+      Left = 0
+      Top = 50
+      Width = 753
+      Height = 93
+      Caption = #45936#51060#53552#48288#51060#49828
+      Index = 2
+      object RibbonGroup8: TRibbonGroup
+        Left = 4
+        Top = 3
+        Width = 79
+        Height = 86
+        ActionManager = ActionManager1
+        Caption = #44288#47532
+        GroupIndex = 0
+      end
+    end
   end
   object StatusBar1: TStatusBar
     Left = 0
@@ -215,13 +236,11 @@ object MainForm: TMainForm
         Top = 400
         Caption = 'CategoryPanel3'
         TabOrder = 0
-        ExplicitWidth = 186
       end
       object CategoryPanel2: TCategoryPanel
         Top = 200
         Caption = #45944#54028#51060#44368#50977
         TabOrder = 1
-        ExplicitWidth = 185
         object ButtonGroup1: TButtonGroup
           Left = 0
           Top = 0
@@ -255,7 +274,6 @@ object MainForm: TMainForm
         Top = 0
         Caption = #49660#54609#47785#47197
         TabOrder = 2
-        ExplicitWidth = 186
         object CategoryButtons1: TCategoryButtons
           Left = 0
           Top = 0
@@ -649,6 +667,20 @@ object MainForm: TMainForm
           end>
         ActionBar = RibbonQuickAccessToolbar1
         AutoSize = False
+      end
+      item
+        Items = <
+          item
+            Action = Insa_Action
+            Caption = #49324#50896#44288#47532'(&Y)'
+            ImageIndex = 21
+          end
+          item
+            Action = Dept_Action
+            Caption = #48512#49436#44288#47532'(&Z)'
+            ImageIndex = 20
+          end>
+        ActionBar = RibbonGroup8
       end>
     Images = ImageList1
     Left = 656
@@ -834,6 +866,19 @@ object MainForm: TMainForm
       Hint = 'dll '#49884#50857
       ImageIndex = 18
       OnExecute = About_dll_ActionExecute
+    end
+    object Dept_Action: TAction
+      Category = #44288#47532
+      Caption = #48512#49436#44288#47532
+      Hint = #48512#49436' '#46321#47197' '#49688#51221' '#49325#51228' '#51312#54924
+      ImageIndex = 20
+    end
+    object Insa_Action: TAction
+      Category = #44288#47532
+      Caption = #49324#50896#44288#47532
+      Hint = #49324#50896' '#46321#47197' '#49688#51221' '#49325#51228' '#51312#54924
+      ImageIndex = 21
+      OnExecute = Insa_ActionExecute
     end
   end
   object ImageList1: TImageList

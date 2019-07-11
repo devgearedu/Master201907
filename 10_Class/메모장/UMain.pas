@@ -81,6 +81,10 @@ type
     CategoryButtons1: TCategoryButtons;
     ButtonGroup1: TButtonGroup;
     About_dll_Action: TAction;
+    Dept_Action: TAction;
+    Insa_Action: TAction;
+    RibbonPage3: TRibbonPage;
+    RibbonGroup8: TRibbonGroup;
     procedure RichEdit1Gesture(Sender: TObject;
       const EventInfo: TGestureEventInfo; var Handled: Boolean);
     procedure Window_ActionExecute(Sender: TObject);
@@ -100,6 +104,7 @@ type
     procedure About_ActionExecute(Sender: TObject);
     procedure exceptionHandler(sender:tobject; e:exception);
     procedure About_dll_ActionExecute(Sender: TObject);
+    procedure Insa_ActionExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -112,7 +117,7 @@ var
 
 implementation
 
-uses uABOUT;
+uses uABOUT, UInsa;
 var
   curr_path:string;
   h:thandle;
@@ -244,6 +249,12 @@ end;
 procedure TMainForm.greeting(value: string);
 begin
   showmessage(value);
+end;
+
+procedure TMainForm.Insa_ActionExecute(Sender: TObject);
+begin
+   InsaForm := TInsaForm.create(Application);
+   InsaForm.Show;
 end;
 
 procedure TMainForm.New_ActionExecute(Sender: TObject);
