@@ -24,7 +24,6 @@ var
   AboutBox: TAboutBox;
 
 procedure Display_About; export; stdcall;
-<<<<<<< HEAD
 function Add(x,y:integer):integer; export; stdcall;
 function Sub(x,y:integer):integer; export; stdcall;
 function Divide(x,y:real):real; export; stdcall;
@@ -54,12 +53,6 @@ begin
   result := x / y;
 end;
 
-=======
-
-implementation
-
-{$R *.dfm}
->>>>>>> d8b010b9e3be5cdf4a778512695cdc67730e02d9
 
 end.
  

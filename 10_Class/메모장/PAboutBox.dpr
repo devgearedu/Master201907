@@ -1,4 +1,4 @@
-library PAboutBox;
+.library PAboutBox;
 
 { Important note about DLL memory management: ShareMem must be the
   first unit in your library's USES clause AND your project's (select
@@ -12,7 +12,6 @@ library PAboutBox;
 
 uses
   System.SysUtils,
-<<<<<<< HEAD
   System.Classes,
   ABOUT in 'ABOUT.pas' {AboutBox};
 
@@ -22,11 +21,6 @@ exports
   Add,
   Sub,
   Divide;
-=======
-  System.Classes;
-
-{$R *.res}
->>>>>>> d8b010b9e3be5cdf4a778512695cdc67730e02d9
 
 begin
 end.

@@ -80,14 +80,11 @@ type
     CategoryPanel3: TCategoryPanel;
     CategoryButtons1: TCategoryButtons;
     ButtonGroup1: TButtonGroup;
-<<<<<<< HEAD
     About_dll_Action: TAction;
     Dept_Action: TAction;
     Insa_Action: TAction;
     RibbonPage3: TRibbonPage;
     RibbonGroup8: TRibbonGroup;
-=======
->>>>>>> d8b010b9e3be5cdf4a778512695cdc67730e02d9
     procedure RichEdit1Gesture(Sender: TObject;
       const EventInfo: TGestureEventInfo; var Handled: Boolean);
     procedure Window_ActionExecute(Sender: TObject);
@@ -106,11 +103,9 @@ type
     procedure ShowHint(Sender:tobject);
     procedure About_ActionExecute(Sender: TObject);
     procedure exceptionHandler(sender:tobject; e:exception);
-<<<<<<< HEAD
     procedure About_dll_ActionExecute(Sender: TObject);
     procedure Insa_ActionExecute(Sender: TObject);
-=======
->>>>>>> d8b010b9e3be5cdf4a778512695cdc67730e02d9
+    procedure Dept_ActionExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -123,11 +118,7 @@ var
 
 implementation
 
-<<<<<<< HEAD
-uses uABOUT, UInsa;
-=======
-uses uABOUT;
->>>>>>> d8b010b9e3be5cdf4a778512695cdc67730e02d9
+uses uABOUT, UInsa, UDept;
 var
   curr_path:string;
   h:thandle;
@@ -135,13 +126,10 @@ var
   calcFunc:TcalcFunc<real>;
 {$R *.dfm}
 
-<<<<<<< HEAD
 procedure Display_About; stdcall;
 external  'PAboutBox.dll';   //+2010 delayed
 
 
-=======
->>>>>>> d8b010b9e3be5cdf4a778512695cdc67730e02d9
 procedure TMainForm.About_ActionExecute(Sender: TObject);
 begin
   AboutBox := TAboutBOx.create(application);
@@ -152,7 +140,6 @@ begin
   end;
 end;
 
-<<<<<<< HEAD
 procedure TMainForm.About_dll_ActionExecute(Sender: TObject);
 begin
 //    Display_About;
@@ -170,11 +157,15 @@ begin
      FreeLibrary(h);
 end;
 
-=======
->>>>>>> d8b010b9e3be5cdf4a778512695cdc67730e02d9
 procedure TMainForm.Auric_ActionExecute(Sender: TObject);
 begin
   TStyleManager.TrySetStyle('auric');
+end;
+
+procedure TMainForm.Dept_ActionExecute(Sender: TObject);
+begin
+   DeptForm := TDeptForm.create(application);
+   DeptForm.Show;
 end;
 
 procedure TMainForm.exceptionHandler(sender: tobject; e: exception);
@@ -206,22 +197,12 @@ begin
   else if e is einouterror then
      showmessage('입출력장치오류')
   else application.ShowException(e);
-<<<<<<< HEAD
-=======
-
-
-
-
->>>>>>> d8b010b9e3be5cdf4a778512695cdc67730e02d9
 end;
 
 procedure TMainForm.FileOpen1Accept(Sender: TObject);
 begin
    try
-<<<<<<< HEAD
      greeting('hi');
-=======
->>>>>>> d8b010b9e3be5cdf4a778512695cdc67730e02d9
      richEdit1.Lines.LoadFromFile(FileOpen1.Dialog.FileName);
    Except
       on eFopenError do
@@ -270,7 +251,6 @@ begin
   curr_path := ExtractFilePath(Application.ExeName);
   application.OnHint := ShowHint;
   application.OnException := exceptionHandler;
-<<<<<<< HEAD
 end;
 
 procedure TMainForm.greeting(value: string);
@@ -282,8 +262,6 @@ procedure TMainForm.Insa_ActionExecute(Sender: TObject);
 begin
    InsaForm := TInsaForm.create(Application);
    InsaForm.Show;
-=======
->>>>>>> d8b010b9e3be5cdf4a778512695cdc67730e02d9
 end;
 
 procedure TMainForm.New_ActionExecute(Sender: TObject);

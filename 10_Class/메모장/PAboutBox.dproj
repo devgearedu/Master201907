@@ -2,11 +2,7 @@
     <PropertyGroup>
         <ProjectGuid>{DC6BD2D2-7CCA-4B1B-96B1-507ACB6B8E75}</ProjectGuid>
         <ProjectVersion>18.6</ProjectVersion>
-<<<<<<< HEAD
         <FrameworkType>VCL</FrameworkType>
-=======
-        <FrameworkType>None</FrameworkType>
->>>>>>> d8b010b9e3be5cdf4a778512695cdc67730e02d9
         <MainSource>PAboutBox.dpr</MainSource>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>
@@ -62,11 +58,7 @@
         <DCC_F>false</DCC_F>
         <DCC_K>false</DCC_K>
         <GenDll>true</GenDll>
-<<<<<<< HEAD
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
-=======
-        <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;$(DCC_Namespace)</DCC_Namespace>
->>>>>>> d8b010b9e3be5cdf4a778512695cdc67730e02d9
         <SanitizedProjectName>PAboutBox</SanitizedProjectName>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Linux64)'!=''">
@@ -96,10 +88,7 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
-<<<<<<< HEAD
         <Debugger_HostApplication>D:\201907_델파이교육\메모장\Win32\Debug\sample.exe</Debugger_HostApplication>
-=======
->>>>>>> d8b010b9e3be5cdf4a778512695cdc67730e02d9
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
@@ -111,13 +100,10 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-<<<<<<< HEAD
         <DCCReference Include="ABOUT.pas">
             <Form>AboutBox</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-=======
->>>>>>> d8b010b9e3be5cdf4a778512695cdc67730e02d9
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -139,7 +125,6 @@
                     <Source Name="MainSource">PAboutBox.dpr</Source>
                 </Source>
             </Delphi.Personality>
-<<<<<<< HEAD
             <Deployment Version="3">
                 <DeployFile LocalName="Win32\Debug\PAboutBox.dll" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
@@ -616,9 +601,6 @@
                 <ProjectRoot Platform="OSX64" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="iOSSimulator" Name="$(PROJECTNAME).app"/>
             </Deployment>
-=======
-            <Deployment Version="3"/>
->>>>>>> d8b010b9e3be5cdf4a778512695cdc67730e02d9
             <Platforms>
                 <Platform value="Linux64">False</Platform>
                 <Platform value="OSX32">False</Platform>

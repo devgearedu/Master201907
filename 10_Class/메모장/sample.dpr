@@ -7,13 +7,10 @@ uses
   Vcl.Styles,
   uABOUT in 'uABOUT.pas' {AboutBox},
   Usplash in 'Usplash.pas' {SplashForm},
-<<<<<<< HEAD
   Uchart_Frame in 'Uchart_Frame.pas' {Frame1: TFrame},
   Udm in 'Udm.pas' {dm: TDataModule},
-  UInsa in 'UInsa.pas' {InsaForm};
-=======
-  Uchart_Frame in 'Uchart_Frame.pas' {Frame1: TFrame};
->>>>>>> d8b010b9e3be5cdf4a778512695cdc67730e02d9
+  UInsa in 'UInsa.pas' {InsaForm},
+  UDept in 'UDept.pas' {DeptForm};
 
 {$R *.res}
 

@@ -39,11 +39,7 @@ object MainForm: TMainForm
         Caption = #45936#51060#53552#48288#51060#49828
         Page = RibbonPage3
       end>
-<<<<<<< HEAD
     TabIndex = 2
-=======
-    TabIndex = 1
->>>>>>> d8b010b9e3be5cdf4a778512695cdc67730e02d9
     DesignSize = (
       754
       143)
@@ -150,7 +146,6 @@ object MainForm: TMainForm
         GroupIndex = 2
       end
     end
-<<<<<<< HEAD
     object RibbonPage3: TRibbonPage
       Left = 0
       Top = 50
@@ -168,8 +163,6 @@ object MainForm: TMainForm
         GroupIndex = 0
       end
     end
-=======
->>>>>>> d8b010b9e3be5cdf4a778512695cdc67730e02d9
   end
   object StatusBar1: TStatusBar
     Left = 0
@@ -186,8 +179,6 @@ object MainForm: TMainForm
       item
         Width = 50
       end>
-    ExplicitLeft = 32
-    ExplicitTop = 357
   end
   object GridPanel1: TGridPanel
     Left = 0
@@ -277,13 +268,6 @@ object MainForm: TMainForm
               Caption = #49324#47932#51064#53552#45367
             end>
           TabOrder = 0
-<<<<<<< HEAD
-=======
-          ExplicitLeft = 24
-          ExplicitTop = 48
-          ExplicitWidth = 100
-          ExplicitHeight = 100
->>>>>>> d8b010b9e3be5cdf4a778512695cdc67730e02d9
         end
       end
       object CategoryPanel1: TCategoryPanel
@@ -888,6 +872,7 @@ object MainForm: TMainForm
       Caption = #48512#49436#44288#47532
       Hint = #48512#49436' '#46321#47197' '#49688#51221' '#49325#51228' '#51312#54924
       ImageIndex = 20
+      OnExecute = Dept_ActionExecute
     end
     object Insa_Action: TAction
       Category = #44288#47532

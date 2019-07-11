@@ -2,19 +2,23 @@ object InsaForm: TInsaForm
   Left = 0
   Top = 0
   Caption = #49324#50896#44288#47532
-  ClientHeight = 319
-  ClientWidth = 532
+  ClientHeight = 403
+  ClientWidth = 590
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
+  KeyPreview = True
   OldCreateOrder = False
+  OnActivate = FormActivate
   OnClose = FormClose
+  OnCreate = FormCreate
+  OnKeyDown = FormKeyDown
   DesignSize = (
-    532
-    319)
+    590
+    403)
   PixelsPerInch = 96
   TextHeight = 13
   object SpeedButton1: TSpeedButton
@@ -115,27 +119,50 @@ object InsaForm: TInsaForm
     ParentFont = False
   end
   object Label2: TLabel
-    Left = 224
+    Left = 208
     Top = 18
     Width = 48
     Height = 13
     Caption = #44160#49353#51060#47492
   end
+  object ComboBox1: TComboBox
+    Left = 88
+    Top = 15
+    Width = 105
+    Height = 21
+    ItemIndex = 1
+    TabOrder = 0
+    Text = #51060#47492
+    OnChange = ComboBox1Change
+    Items.Strings = (
+      #48264#54840
+      #51060#47492
+      #48512#49436)
+  end
+  object Edit1: TEdit
+    Left = 270
+    Top = 8
+    Width = 131
+    Height = 21
+    TabOrder = 1
+    OnChange = Edit1Change
+    OnKeyPress = Edit1KeyPress
+  end
   object PageControl1: TPageControl
     Left = 8
     Top = 56
-    Width = 521
-    Height = 255
-    ActivePage = TabSheet1
+    Width = 579
+    Height = 339
+    ActivePage = TabSheet2
     Anchors = [akLeft, akTop, akRight, akBottom]
-    TabOrder = 0
+    TabOrder = 2
     object TabSheet1: TTabSheet
       Caption = #51312#54924
       object TabControl1: TTabControl
         Left = 0
         Top = 0
-        Width = 513
-        Height = 227
+        Width = 571
+        Height = 311
         Align = alClient
         TabOrder = 0
         Tabs.Strings = (
@@ -155,11 +182,12 @@ object InsaForm: TInsaForm
           #44053#49324
           #44256#47928)
         TabIndex = 0
+        OnChange = TabControl1Change
         object DBGrid1: TDBGrid
           Left = 4
           Top = 24
-          Width = 505
-          Height = 199
+          Width = 563
+          Height = 283
           Align = alClient
           DataSource = dm.InsaSource
           Options = [dgEditing, dgAlwaysShowEditor, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
@@ -175,33 +203,237 @@ object InsaForm: TInsaForm
     object TabSheet2: TTabSheet
       Caption = #54200#51665
       ImageIndex = 1
+      object Label3: TLabel
+        Left = 40
+        Top = 35
+        Width = 24
+        Height = 13
+        Caption = #49324#48264
+      end
+      object Label4: TLabel
+        Left = 40
+        Top = 75
+        Width = 24
+        Height = 13
+        Caption = #51060#47492
+      end
+      object Label5: TLabel
+        Left = 40
+        Top = 115
+        Width = 24
+        Height = 13
+        Caption = #45208#51060
+      end
+      object Label6: TLabel
+        Left = 40
+        Top = 155
+        Width = 24
+        Height = 13
+        Caption = #51649#44553
+      end
+      object Label7: TLabel
+        Left = 40
+        Top = 195
+        Width = 24
+        Height = 13
+        Caption = #48512#49436
+      end
+      object Label8: TLabel
+        Left = 40
+        Top = 235
+        Width = 48
+        Height = 13
+        Caption = #51077#51088#51068#51088
+      end
+      object Label9: TLabel
+        Left = 40
+        Top = 275
+        Width = 24
+        Height = 13
+        Caption = #44553#50668
+      end
+      object Label10: TLabel
+        Left = 272
+        Top = 40
+        Width = 24
+        Height = 13
+        Caption = #49324#51652
+        OnClick = Label10Click
+      end
+      object DBEdit1: TDBEdit
+        Left = 112
+        Top = 32
+        Width = 121
+        Height = 21
+        DataField = 'ID'
+        DataSource = dm.InsaSource
+        TabOrder = 0
+      end
+      object DBEdit2: TDBEdit
+        Left = 112
+        Top = 72
+        Width = 121
+        Height = 21
+        DataField = 'NAME'
+        DataSource = dm.InsaSource
+        TabOrder = 1
+      end
+      object DBEdit3: TDBEdit
+        Left = 112
+        Top = 112
+        Width = 121
+        Height = 21
+        DataField = 'AGE'
+        DataSource = dm.InsaSource
+        TabOrder = 2
+      end
+      object DBEdit4: TDBEdit
+        Left = 112
+        Top = 232
+        Width = 121
+        Height = 21
+        DataField = 'IPSA_DATE'
+        DataSource = dm.InsaSource
+        MaxLength = 10
+        TabOrder = 5
+      end
+      object DBEdit5: TDBEdit
+        Left = 112
+        Top = 272
+        Width = 121
+        Height = 21
+        DataField = 'SALARY'
+        DataSource = dm.InsaSource
+        TabOrder = 6
+      end
+      object DBComboBox1: TDBComboBox
+        Left = 112
+        Top = 152
+        Width = 121
+        Height = 21
+        DataField = 'CLASS'
+        DataSource = dm.InsaSource
+        Items.Strings = (
+          #49324#50896
+          #45824#47532
+          #44284#51109
+          #48512#51109
+          #52264#51109
+          #51060#49324)
+        TabOrder = 3
+      end
+      object DBLookupComboBox1: TDBLookupComboBox
+        Left = 112
+        Top = 187
+        Width = 121
+        Height = 21
+        DataField = 'DEPT_CODE'
+        DataSource = dm.InsaSource
+        KeyField = 'CODE'
+        ListField = 'SECTION'
+        ListSource = dm.DeptSource
+        TabOrder = 4
+      end
+      object DBImage1: TDBImage
+        Left = 312
+        Top = 28
+        Width = 121
+        Height = 140
+        DataField = 'PHOTO'
+        DataSource = dm.InsaSource
+        TabOrder = 7
+      end
+      object DBRadioGroup1: TDBRadioGroup
+        Left = 454
+        Top = 28
+        Width = 102
+        Height = 140
+        Caption = #50628#48512#45733#47141
+        DataField = 'GRADE'
+        DataSource = dm.InsaSource
+        Items.Strings = (
+          #47588#50864#51339#51020
+          #51339#51020
+          #48372#53685
+          #44536#51200#44536#47100)
+        TabOrder = 8
+        Values.Strings = (
+          '1'
+          '2'
+          '3'
+          '4')
+      end
+      object Button1: TButton
+        Left = 312
+        Top = 192
+        Width = 121
+        Height = 33
+        Caption = 'Insert'
+        TabOrder = 9
+        OnClick = Button1Click
+      end
+      object Button2: TButton
+        Left = 454
+        Top = 192
+        Width = 102
+        Height = 33
+        Caption = 'Delete'
+        TabOrder = 10
+        OnClick = Button2Click
+      end
+      object Button3: TButton
+        Left = 312
+        Top = 248
+        Width = 121
+        Height = 33
+        Caption = 'Cancel'
+        TabOrder = 11
+        OnClick = Button3Click
+      end
+      object Button4: TButton
+        Left = 454
+        Top = 248
+        Width = 102
+        Height = 33
+        Caption = 'Post'
+        TabOrder = 12
+        OnClick = Button4Click
+      end
     end
     object TabSheet3: TTabSheet
       Caption = #52264#53944
       ImageIndex = 2
+      inline TFrame11: TFrame1
+        Left = 3
+        Top = -56
+        Width = 417
+        Height = 355
+        TabOrder = 0
+        ExplicitLeft = 3
+        ExplicitTop = -56
+        inherited DBChart1: TDBChart
+          Left = 16
+          Top = 64
+          Height = 217
+          ExplicitLeft = 16
+          ExplicitTop = 64
+          ExplicitHeight = 217
+          PrintMargins = (
+            15
+            17
+            15
+            17)
+          inherited Series1: TBarSeries
+            DataSource = dm.Insa
+            XLabelsSource = 'NAME'
+            YValues.ValueSource = 'SALARY'
+          end
+        end
+      end
     end
   end
-  object ComboBox1: TComboBox
-    Left = 88
-    Top = 15
-    Width = 121
-    Height = 21
-    ItemIndex = 1
-    TabOrder = 1
-    Text = #51060#47492
-    OnChange = ComboBox1Change
-    Items.Strings = (
-      #48264#54840
-      #51060#47492
-      #48512#49436)
-  end
-  object Edit1: TEdit
-    Left = 288
-    Top = 16
-    Width = 137
-    Height = 21
-    TabOrder = 2
-    OnChange = Edit1Change
-    OnKeyPress = Edit1KeyPress
+  object OpenPictureDialog1: TOpenPictureDialog
+    Left = 328
+    Top = 56
   end
 end
