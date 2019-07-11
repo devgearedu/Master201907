@@ -12,6 +12,7 @@ library PAboutBox;
 
 uses
   System.SysUtils,
+<<<<<<< HEAD
   System.Classes,
   ABOUT in 'ABOUT.pas' {AboutBox};
 
@@ -21,6 +22,11 @@ exports
   Add,
   Sub,
   Divide;
+=======
+  System.Classes;
+
+{$R *.res}
+>>>>>>> d8b010b9e3be5cdf4a778512695cdc67730e02d9
 
 begin
 end.
