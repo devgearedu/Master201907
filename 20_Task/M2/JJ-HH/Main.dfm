@@ -12,6 +12,9 @@ object MainForm: TMainForm
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnCreate = FormCreate
+  OnKeyDown = TFrameCalc1Button1KeyDown
+  OnKeyPress = TFrameCalc1Button1KeyPress
   PixelsPerInch = 96
   TextHeight = 13
   object MainPanel: TPanel
@@ -39,12 +42,14 @@ object MainForm: TMainForm
         ExplicitHeight = 303
         inherited BPSub1: TPanel
           inherited ButtonDivision: TButton
-            OnClick = TFrameCalc1ButtonDivisionClick
+            Tag = 68
+            OnClick = TFrameCalc1ArithmeticButtonClick
           end
           inherited ButtonClear: TButton
             OnClick = TFrameCalc1ButtonClearClick
           end
           inherited ButtonBackspace: TButton
+            Caption = #8592
             OnClick = TFrameCalc1ButtonBackspaceClick
           end
         end
@@ -53,7 +58,7 @@ object MainForm: TMainForm
             OnClick = TFrameCalc1ButtonSignClick
           end
           inherited Button0: TButton
-            OnClick = TFrameCalc1Button0Click
+            OnClick = TFrameCalc1NumericButtonClick
           end
           inherited ButtonFloatingPoint: TButton
             OnClick = TFrameCalc1ButtonFloatingPointClick
@@ -64,45 +69,57 @@ object MainForm: TMainForm
         end
         inherited BPSub4: TPanel
           inherited Button1: TButton
-            OnClick = TFrameCalc1Button1Click
+            Tag = 1
+            OnClick = TFrameCalc1NumericButtonClick
           end
           inherited Button2: TButton
-            OnClick = TFrameCalc1Button2Click
+            Tag = 2
+            OnClick = TFrameCalc1NumericButtonClick
           end
           inherited Button3: TButton
-            OnClick = TFrameCalc1Button3Click
+            Tag = 3
+            OnClick = TFrameCalc1NumericButtonClick
           end
           inherited ButtonAdd: TButton
-            OnClick = TFrameCalc1ButtonAddClick
+            Tag = 65
+            OnClick = TFrameCalc1ArithmeticButtonClick
           end
         end
         inherited BPSub3: TPanel
           inherited Button4: TButton
-            OnClick = TFrameCalc1Button4Click
+            Tag = 4
+            OnClick = TFrameCalc1NumericButtonClick
           end
           inherited Button5: TButton
-            OnClick = TFrameCalc1Button5Click
+            Tag = 5
+            OnClick = TFrameCalc1NumericButtonClick
           end
           inherited Button6: TButton
-            OnClick = TFrameCalc1Button6Click
+            Tag = 6
+            OnClick = TFrameCalc1NumericButtonClick
           end
           inherited ButtonSub: TButton
-            OnClick = TFrameCalc1ButtonSubClick
+            Tag = 83
+            OnClick = TFrameCalc1ArithmeticButtonClick
           end
         end
         inherited BPSub2: TPanel
           inherited Button7: TButton
-            OnClick = TFrameCalc1Button7Click
+            Tag = 7
+            OnClick = TFrameCalc1NumericButtonClick
           end
           inherited Button8: TButton
-            OnClick = TFrameCalc1Button8Click
+            Tag = 8
+            OnClick = TFrameCalc1NumericButtonClick
           end
           inherited Button9: TButton
-            OnClick = TFrameCalc1Button9Click
+            Tag = 9
+            OnClick = TFrameCalc1NumericButtonClick
           end
           inherited ButtonMultiple: TButton
+            Tag = 77
             Caption = '*'
-            OnClick = TFrameCalc1ButtonMultipleClick
+            OnClick = TFrameCalc1ArithmeticButtonClick
           end
         end
       end
