@@ -277,7 +277,7 @@ end;
 // ↓ Return버튼 onClick (입력 받은 모든 계산 수행, BufString := 결과값, 나머지 초기화)
 procedure TMainForm.TFrameCalc1ButtonReturnClick(Sender: TObject);
 begin
-  if not (bufString = '') then
+  if (not (bufString = '')) or (not(expString='')) then
   begin
     calc:=Tcalc.create;
 
@@ -286,11 +286,8 @@ begin
 
     expString := '';
 
-    try
-      bufString := Calc.Accumulate(Opds_Arr, Symbols);
-    except
-      showMessage('왜냐');
-    end;
+
+    bufString := Calc.Accumulate(Opds_Arr, Symbols);
 
     SetLength(Symbols,0);
     SetLength(Opds_Arr,0);

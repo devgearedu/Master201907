@@ -73,12 +73,12 @@ begin
   begin
     tmpOpd[I] := _opds_Arr[I];
     tmpSym[I] := _symbols[I];
-    ShowMessage('sym:'+tmpSym[I]);
-    ShowMessage('opd:'+ FloatToStr(tmpopd[I]));
+    //ShowMessage('sym:'+tmpSym[I]);
+    //ShowMessage('opd:'+ FloatToStr(tmpopd[I]));
 
   end;
   tmpOpd[Length(_Opds_ARr)-1] := _Opds_ARr[Length(_Opds_ARr)-1];
-  ShowMessage('opd:'+ FloatToStr(tmpopd[Length(_Opds_ARr)-1]));
+  //ShowMessage('opd:'+ FloatToStr(tmpopd[Length(_Opds_ARr)-1]));
 
   I:=0;
 
@@ -146,7 +146,7 @@ begin
   end;
 
   accResult:=tmpOpd[length(tmpOpd)-1];
-  ShowMessage(FloatToStr(accResult));
+  //ShowMessage(FloatToStr(accResult));
   Result:=FloatToStr(accResult);
 end;
 
