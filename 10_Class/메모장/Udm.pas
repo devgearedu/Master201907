@@ -8,7 +8,8 @@ uses
   FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.IB,
   FireDAC.Phys.IBDef, FireDAC.VCLUI.Wait, FireDAC.Stan.Param, FireDAC.DatS,
   FireDAC.DApt.Intf, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet,
-  FireDAC.Comp.Client, FireDAC.Comp.UI, FireDAC.Phys.IBBase, FireDAC.VCLUI.Error;
+  FireDAC.Comp.Client, FireDAC.Comp.UI, FireDAC.Phys.IBBase, FireDAC.VCLUI.Error,
+  FireDAC.Moni.Base, FireDAC.Moni.FlatFile;
 
 type
   Tdm = class(TDataModule)
@@ -34,6 +35,7 @@ type
     FDGUIxErrorDialog1: TFDGUIxErrorDialog;
     InsaQuery: TFDQuery;
     InsaquerySource: TDataSource;
+    FDMoniFlatFileClientLink1: TFDMoniFlatFileClientLink;
     procedure InsaCalcFields(DataSet: TDataSet);
     procedure InsaAfterInsert(DataSet: TDataSet);
     procedure InsaNewRecord(DataSet: TDataSet);

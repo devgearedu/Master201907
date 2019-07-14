@@ -10,7 +10,11 @@ uses
   Uchart_Frame in 'Uchart_Frame.pas' {Frame1: TFrame},
   Udm in 'Udm.pas' {dm: TDataModule},
   UInsa in 'UInsa.pas' {InsaForm},
-  UDept in 'UDept.pas' {DeptForm};
+  UDept in 'UDept.pas' {DeptForm},
+  Utrans in 'Utrans.pas' {TransForm},
+  Uupdate in 'Uupdate.pas' {UpdateForm},
+  uTree in 'uTree.pas' {TreeForm},
+  UbatchMove in 'UbatchMove.pas' {BatchForm};
 
 {$R *.res}
 

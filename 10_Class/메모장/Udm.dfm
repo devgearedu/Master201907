@@ -4,6 +4,7 @@ object dm: Tdm
   Width = 541
   object FDConnection1: TFDConnection
     Params.Strings = (
+      'MonitorBy=FlatFile'
       'ConnectionDef=Sample')
     Connected = True
     LoginPrompt = False
@@ -163,5 +164,10 @@ object dm: Tdm
     DataSet = InsaQuery
     Left = 336
     Top = 120
+  end
+  object FDMoniFlatFileClientLink1: TFDMoniFlatFileClientLink
+    Tracing = True
+    Left = 264
+    Top = 200
   end
 end

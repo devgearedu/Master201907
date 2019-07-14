@@ -12,6 +12,7 @@ object MainForm: TMainForm
   Font.Style = []
   OldCreateOrder = False
   WindowState = wsMaximized
+  OnClose = FormClose
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   PixelsPerInch = 96
@@ -162,6 +163,33 @@ object MainForm: TMainForm
         Caption = #44288#47532
         GroupIndex = 0
       end
+      object RibbonGroup9: TRibbonGroup
+        Left = 85
+        Top = 3
+        Width = 195
+        Height = 86
+        ActionManager = ActionManager1
+        Caption = #49444#51221
+        GroupIndex = 1
+      end
+      object RibbonGroup10: TRibbonGroup
+        Left = 282
+        Top = 3
+        Width = 53
+        Height = 86
+        ActionManager = ActionManager1
+        Caption = #51312#54924
+        GroupIndex = 2
+      end
+      object RibbonGroup11: TRibbonGroup
+        Left = 337
+        Top = 3
+        Width = 133
+        Height = 86
+        ActionManager = ActionManager1
+        Caption = #48176#52824#52376#47532
+        GroupIndex = 3
+      end
     end
   end
   object StatusBar1: TStatusBar
@@ -192,7 +220,7 @@ object MainForm: TMainForm
         Value = 25.064281622541730000
       end
       item
-        Value = 72.914273811030510000
+        Value = 72.914273811030530000
       end
       item
         Value = 2.021444566427745000
@@ -232,15 +260,59 @@ object MainForm: TMainForm
       HeaderFont.Name = 'Tahoma'
       HeaderFont.Style = []
       TabOrder = 0
+      object CategoryPanel4: TCategoryPanel
+        Top = 600
+        Caption = #47532#49828#53944#48624
+        TabOrder = 0
+        object ListView1: TListView
+          Left = 0
+          Top = 0
+          Width = 167
+          Height = 174
+          Align = alClient
+          Columns = <
+            item
+              Caption = #54016#51109#51060#47492
+            end
+            item
+              Caption = #51064#50896#49688
+            end>
+          Items.ItemData = {
+            05560000000200000000000000FFFFFFFFFFFFFFFF01000000FFFFFFFF000000
+            00034DD638AED9B3023100300040FDBB1C00000000FFFFFFFFFFFFFFFF010000
+            00FFFFFFFF000000000374C71CC2E0C202320030004004BC1CFFFFFFFF}
+          TabOrder = 0
+          ViewStyle = vsReport
+        end
+      end
       object CategoryPanel3: TCategoryPanel
         Top = 400
-        Caption = 'CategoryPanel3'
-        TabOrder = 0
+        Caption = #53944#47532#48624
+        TabOrder = 1
+        object TreeView1: TTreeView
+          Left = 0
+          Top = 0
+          Width = 167
+          Height = 174
+          Align = alClient
+          Indent = 19
+          TabOrder = 0
+          OnClick = TreeView1Click
+          Items.NodeData = {
+            0302000000240000000000000000000000FFFFFFFFFFFFFFFF00000000000000
+            000200000001031DCD34BB34BB240000000000000000000000FFFFFFFFFFFFFF
+            FF000000000000000000000000010344BE1CC1E4C22400000000000000000000
+            00FFFFFFFFFFFFFFFF00000000000000000000000001034DD6F4BCE4C2240000
+            000000000000000000FFFFFFFFFFFFFFFF000000000000000002000000010350
+            AD21C780BD220000000000000000000000FFFFFFFFFFFFFFFF00000000000000
+            0000000000010290C714BC240000000000000000000000FFFFFFFFFFFFFFFF00
+            00000000000000000000000103A8BA14BC7CC7}
+        end
       end
       object CategoryPanel2: TCategoryPanel
         Top = 200
         Caption = #45944#54028#51060#44368#50977
-        TabOrder = 1
+        TabOrder = 2
         object ButtonGroup1: TButtonGroup
           Left = 0
           Top = 0
@@ -273,7 +345,7 @@ object MainForm: TMainForm
       object CategoryPanel1: TCategoryPanel
         Top = 0
         Caption = #49660#54609#47785#47197
-        TabOrder = 2
+        TabOrder = 3
         object CategoryButtons1: TCategoryButtons
           Left = 0
           Top = 0
@@ -681,6 +753,37 @@ object MainForm: TMainForm
             ImageIndex = 20
           end>
         ActionBar = RibbonGroup8
+      end
+      item
+        Items = <
+          item
+            Action = update_Action
+            Caption = #51312#51064#46108#53244#47532#50629#45936#51060#53944'('#52880#49772#49324#50857')(&Y)'
+          end
+          item
+            Action = Trans_Action
+            Caption = #53944#47004#51117#49496#52376#47532'(&Z)'
+            ImageIndex = 22
+          end>
+        ActionBar = RibbonGroup9
+      end
+      item
+        Items = <
+          item
+            Action = tree_Action
+            Caption = #51312#51649#46020'(&Z)'
+            ImageIndex = 23
+          end>
+        ActionBar = RibbonGroup10
+      end
+      item
+        Items = <
+          item
+            Action = Batch_Action
+            Caption = #48176#52824#52376#47532'('#45936#51060#53552#51060#46041')(&Z)'
+            ImageIndex = 24
+          end>
+        ActionBar = RibbonGroup11
       end>
     Images = ImageList1
     Left = 656
@@ -880,6 +983,31 @@ object MainForm: TMainForm
       Hint = #49324#50896' '#46321#47197' '#49688#51221' '#49325#51228' '#51312#54924
       ImageIndex = 21
       OnExecute = Insa_ActionExecute
+    end
+    object Trans_Action: TAction
+      Category = #49444#51221
+      Caption = #53944#47004#51117#49496#52376#47532
+      Hint = #52964#48120#53944'/'#47213#48177#52376#47532
+      ImageIndex = 22
+      OnExecute = Trans_ActionExecute
+    end
+    object update_Action: TAction
+      Category = #49444#51221
+      Caption = #51312#51064#46108#53244#47532#50629#45936#51060#53944'('#52880#49772#49324#50857')'
+      OnExecute = update_ActionExecute
+    end
+    object tree_Action: TAction
+      Category = #51312#54924
+      Caption = #51312#51649#46020
+      Hint = #48512#49436#48337#49324#50896#51312#54924
+      ImageIndex = 23
+      OnExecute = tree_ActionExecute
+    end
+    object Batch_Action: TAction
+      Caption = #48176#52824#52376#47532'('#45936#51060#53552#51060#46041')'
+      Hint = #50668#47084#44032#51648#53440#51077#51004#47196#45936#51060#53552#51060#46041
+      ImageIndex = 24
+      OnExecute = Batch_ActionExecute
     end
   end
   object ImageList1: TImageList

@@ -85,6 +85,16 @@ type
     Insa_Action: TAction;
     RibbonPage3: TRibbonPage;
     RibbonGroup8: TRibbonGroup;
+    Trans_Action: TAction;
+    RibbonGroup9: TRibbonGroup;
+    update_Action: TAction;
+    TreeView1: TTreeView;
+    CategoryPanel4: TCategoryPanel;
+    ListView1: TListView;
+    tree_Action: TAction;
+    RibbonGroup10: TRibbonGroup;
+    Batch_Action: TAction;
+    RibbonGroup11: TRibbonGroup;
     procedure RichEdit1Gesture(Sender: TObject;
       const EventInfo: TGestureEventInfo; var Handled: Boolean);
     procedure Window_ActionExecute(Sender: TObject);
@@ -106,6 +116,12 @@ type
     procedure About_dll_ActionExecute(Sender: TObject);
     procedure Insa_ActionExecute(Sender: TObject);
     procedure Dept_ActionExecute(Sender: TObject);
+    procedure Trans_ActionExecute(Sender: TObject);
+    procedure update_ActionExecute(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure TreeView1Click(Sender: TObject);
+    procedure tree_ActionExecute(Sender: TObject);
+    procedure Batch_ActionExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -117,14 +133,23 @@ var
   MainForm: TMainForm;
 
 implementation
+uses uABOUT, UInsa, UDept, Utrans, Uupdate, uTree, UbatchMove;
+type
+  Team_Inform = record
+    Manager_name:string;
+    cnt:integer;
+  end;
+  p_team = ^Team_Inform;
 
-uses uABOUT, UInsa, UDept;
 var
+  p:p_team;
   curr_path:string;
   h:thandle;
   AboutProc:TAboutProc;
   calcFunc:TcalcFunc<real>;
+  Listitem:TlistItem;
 {$R *.dfm}
+
 
 procedure Display_About; stdcall;
 external  'PAboutBox.dll';   //+2010 delayed
@@ -160,6 +185,12 @@ end;
 procedure TMainForm.Auric_ActionExecute(Sender: TObject);
 begin
   TStyleManager.TrySetStyle('auric');
+end;
+
+procedure TMainForm.Batch_ActionExecute(Sender: TObject);
+begin
+   BatchForm := TBatchForm.create(application);
+   batchForm.Show;
 end;
 
 procedure TMainForm.Dept_ActionExecute(Sender: TObject);
@@ -235,6 +266,16 @@ begin
   FileSaveAs1.Dialog.InitialDir := curr_path;
 end;
 
+procedure TMainForm.FormClose(Sender: TObject; var Action: TCloseAction);
+var
+  i:byte;
+begin
+  for I := 0 to treeView1.Items.Count - 1 do
+    if not treeview1.Items[i].HasChildren then
+       if treeview1.Items[i].Data <> nil then
+          dispose(p_team(treeview1.Items[i].Data));
+end;
+
 procedure TMainForm.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
 begin
   if richEdit1.lines.text  <> ''  then
@@ -251,6 +292,12 @@ begin
   curr_path := ExtractFilePath(Application.ExeName);
   application.OnHint := ShowHint;
   application.OnException := exceptionHandler;
+  treeview1.Selected :=  TreeView1.Items.Add(treeview1.Selected, '包府何');
+  treeview1.Items.AddChild(treeview1.Selected,'犁绊包府');
+  new(p);
+  p^.Manager_name := '辫盔版';
+  p^.cnt := 10;
+  treeview1.Items.AddChildObject(treeview1.Selected, '荤盔包府',p);
 end;
 
 procedure TMainForm.greeting(value: string);
@@ -309,6 +356,36 @@ begin
      FormStyle := fsStayOnTop
   else
      FormStyle := fsNormal;
+end;
+
+procedure TMainForm.Trans_ActionExecute(Sender: TObject);
+begin
+  TransForm := TTransForm.create(Application);
+  TransForm.Show;
+end;
+
+procedure TMainForm.TreeView1Click(Sender: TObject);
+begin
+   if not treeview1.Selected.HasChildren then
+      if treeview1.Selected.Data <> nil then
+      begin
+         ListItem := ListView1.Items.Add;
+         ListItem.Caption :=
+         p_team(treeview1.Selected.Data)^.Manager_name;
+         ListItem.SubItems.Add(inttostr(p_team(treeview1.Selected.Data)^.cnt));
+      end;
+end;
+
+procedure TMainForm.tree_ActionExecute(Sender: TObject);
+begin
+  treeForm := TTreeForm.create(application);
+  treeform.show;
+end;
+
+procedure TMainForm.update_ActionExecute(Sender: TObject);
+begin
+  UpdateForm := TUpdateForm.create(application);
+  UpdateForm.show;
 end;
 
 procedure TMainForm.Window_ActionExecute(Sender: TObject);
