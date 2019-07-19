@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{8DFD6C5A-8450-482A-99BE-3A8B6D4CED57}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="sample.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="PAboutBox.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="sample">
+        <MSBuild Projects="sample.dproj"/>
+    </Target>
+    <Target Name="sample:Clean">
+        <MSBuild Projects="sample.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="sample:Make">
+        <MSBuild Projects="sample.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="PAboutBox">
+        <MSBuild Projects="PAboutBox.dproj"/>
+    </Target>
+    <Target Name="PAboutBox:Clean">
+        <MSBuild Projects="PAboutBox.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PAboutBox:Make">
+        <MSBuild Projects="PAboutBox.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="sample;PAboutBox"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="sample:Clean;PAboutBox:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="sample:Make;PAboutBox:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

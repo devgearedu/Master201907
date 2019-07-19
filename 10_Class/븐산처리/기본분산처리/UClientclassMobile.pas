@@ -1,9 +1,9 @@
-//
+// 
 // Created by the DataSnap proxy generator.
-// 2019-07-18 오후 3:55:36
-//
+// 2019-07-18 오전 10:07:16
+// 
 
-unit UClientClass;
+unit UClientclassMobile;
 
 interface
 
@@ -19,14 +19,14 @@ type
     constructor Create(ADBXConnection: TDBXConnection); overload;
     constructor Create(ADBXConnection: TDBXConnection; AInstanceOwner: Boolean); overload;
     destructor Destroy; override;
-    function EchoString(Value: string; CallBackid: TDBXCallback): string;
+    function EchoString(Value: string): string;
     function ReverseString(Value: string): string;
     function Get_Count(value: string): Integer;
   end;
 
 implementation
 
-function TServerMethods1Client.EchoString(Value: string; CallBackid: TDBXCallback): string;
+function TServerMethods1Client.EchoString(Value: string): string;
 begin
   if FEchoStringCommand = nil then
   begin
@@ -36,9 +36,8 @@ begin
     FEchoStringCommand.Prepare;
   end;
   FEchoStringCommand.Parameters[0].Value.SetWideString(Value);
-  FEchoStringCommand.Parameters[1].Value.SetCallbackValue(CallBackid);
   FEchoStringCommand.ExecuteUpdate;
-  Result := FEchoStringCommand.Parameters[2].Value.GetWideString;
+  Result := FEchoStringCommand.Parameters[1].Value.GetWideString;
 end;
 
 function TServerMethods1Client.ReverseString(Value: string): string;
@@ -88,4 +87,3 @@ begin
 end;
 
 end.
-

@@ -6,9 +6,13 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DbxDatasnap, Data.DBXCommon,
   IPPeerClient, Data.DB, Data.SqlExpr, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.DBCtrls,
-  Vcl.Grids, Vcl.DBGrids, Datasnap.DBClient, Datasnap.DSConnect, Data.FMTBcd;
+  Vcl.Grids, system.json,Vcl.DBGrids, Datasnap.DBClient, Datasnap.DSConnect, Data.FMTBcd,dbxjson;
 
 type
+  TCallBackClient = class(TDBXCALLBack)
+    function execute(const arg:TJSONValue):tjsonvalue; override;
+  end;
+
   TForm221 = class(TForm)
     SQLConnection1: TSQLConnection;
     DSProviderConnection1: TDSProviderConnection;
@@ -41,6 +45,7 @@ type
     procedure DeptReconcileError(DataSet: TCustomClientDataSet;
       E: EReconcileError; UpdateKind: TUpdateKind;
       var Action: TReconcileAction);
+    procedure Button7Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -85,6 +90,14 @@ begin
   Inttostr(ServerMethods1Client.Get_Count(dept.Fields[0].asstring));
 end;
 
+procedure TForm221.Button7Click(Sender: TObject);
+var
+  MycallBack:TCallbackClient;
+begin
+   MycallBack := TCallbackClient.Create;
+   button7.Caption := ServerMethods1Client.EchoString('hi',mycallback);
+end;
+
 procedure TForm221.Button8Click(Sender: TObject);
 begin
   SqlServerMethod1.Close;
@@ -114,6 +127,17 @@ end;
 procedure TForm221.FormCreate(Sender: TObject);
 begin
 ServerMethods1Client := TServerMethods1Client.create(sqlconnection1.DBXConnection);
+end;
+
+{ TCallBackClient }
+
+function TCallBackClient.execute(const arg: TJSONValue): tjsonvalue;
+var
+  Data:TJSONValue;
+begin
+  Data := TJSONValue(arg.Clone);
+  Showmessage('콜백결과:' + tjsonobject(data).Get(0).jsonvalue.value);
+  result := data;
 end;
 
 end.

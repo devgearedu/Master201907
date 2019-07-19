@@ -98,6 +98,7 @@ object Form221: TForm221
     Height = 25
     Caption = 'Echo'
     TabOrder = 8
+    OnClick = Button7Click
   end
   object Button8: TButton
     Left = 611
@@ -199,7 +200,7 @@ object Form221: TForm221
       end>
     SQLConnection = SQLConnection1
     ServerMethodName = 'TServerMethods1.ReverseString'
-    Left = 192
+    Left = 184
     Top = 232
   end
 end

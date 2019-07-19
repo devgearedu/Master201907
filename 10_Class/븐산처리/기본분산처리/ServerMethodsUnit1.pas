@@ -9,7 +9,7 @@ uses System.SysUtils, System.Classes, System.Json,
   FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.IB,
   FireDAC.Phys.IBDef, FireDAC.VCLUI.Wait, FireDAC.Stan.Param, FireDAC.DatS,
   FireDAC.DApt.Intf, FireDAC.DApt, FireDAC.Comp.Client, Datasnap.Provider,
-  Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.UI, FireDAC.Phys.IBBase;
+  Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.UI, FireDAC.Phys.IBBase,dbxjson;
 
 type
   TServerMethods1 = class(TDSServerModule)
@@ -25,7 +25,7 @@ type
     { Private declarations }
   public
     { Public declarations }
-    function EchoString(Value: string): string;
+    function EchoString(Value: string; CallBackid:TDBXCallback): string;
     function ReverseString(Value: string): string;
     function Get_Count(value:string):integer;
   end;
@@ -38,8 +38,16 @@ implementation
 
 uses System.StrUtils;
 
-function TServerMethods1.EchoString(Value: string): string;
+function TServerMethods1.EchoString(Value: string;CallBackid:TDBXCallback): string;
+var
+  Msg:TJSONObject;
+  Pair:TJSONPair;
 begin
+  Msg := TJSONObject.Create;
+  Pair := TJSONPair.Create('ECHO°á°ú',value);
+  Pair.Owned := true;
+  Msg.AddPair(Pair);
+  callbackid.Execute(msg);
   Result := Value;
 end;
 
