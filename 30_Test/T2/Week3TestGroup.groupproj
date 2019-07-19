@@ -1,0 +1,96 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{F1BA179E-23C1-4698-8561-0FB7759A3D5E}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="VariableTest\VariableTestWithDll.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="ConditionTest\ConditionTestWithDB.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="LoopTest\LoopTestWithDataSnap.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="VariableTest\VariableTestDll.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="LoopTest\LoopTestDataSnap.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Test\Week3TestTests.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="VariableTestWithDll">
+        <MSBuild Projects="VariableTest\VariableTestWithDll.dproj"/>
+    </Target>
+    <Target Name="VariableTestWithDll:Clean">
+        <MSBuild Projects="VariableTest\VariableTestWithDll.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="VariableTestWithDll:Make">
+        <MSBuild Projects="VariableTest\VariableTestWithDll.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ConditionTestWithDB">
+        <MSBuild Projects="ConditionTest\ConditionTestWithDB.dproj"/>
+    </Target>
+    <Target Name="ConditionTestWithDB:Clean">
+        <MSBuild Projects="ConditionTest\ConditionTestWithDB.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ConditionTestWithDB:Make">
+        <MSBuild Projects="ConditionTest\ConditionTestWithDB.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="LoopTestWithDataSnap">
+        <MSBuild Projects="LoopTest\LoopTestWithDataSnap.dproj"/>
+    </Target>
+    <Target Name="LoopTestWithDataSnap:Clean">
+        <MSBuild Projects="LoopTest\LoopTestWithDataSnap.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="LoopTestWithDataSnap:Make">
+        <MSBuild Projects="LoopTest\LoopTestWithDataSnap.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="VariableTestDll">
+        <MSBuild Projects="VariableTest\VariableTestDll.dproj"/>
+    </Target>
+    <Target Name="VariableTestDll:Clean">
+        <MSBuild Projects="VariableTest\VariableTestDll.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="VariableTestDll:Make">
+        <MSBuild Projects="VariableTest\VariableTestDll.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="LoopTestDataSnap">
+        <MSBuild Projects="LoopTest\LoopTestDataSnap.dproj"/>
+    </Target>
+    <Target Name="LoopTestDataSnap:Clean">
+        <MSBuild Projects="LoopTest\LoopTestDataSnap.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="LoopTestDataSnap:Make">
+        <MSBuild Projects="LoopTest\LoopTestDataSnap.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Week3TestTests">
+        <MSBuild Projects="Test\Week3TestTests.dproj"/>
+    </Target>
+    <Target Name="Week3TestTests:Clean">
+        <MSBuild Projects="Test\Week3TestTests.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Week3TestTests:Make">
+        <MSBuild Projects="Test\Week3TestTests.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="VariableTestWithDll;ConditionTestWithDB;LoopTestWithDataSnap;VariableTestDll;LoopTestDataSnap;Week3TestTests"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="VariableTestWithDll:Clean;ConditionTestWithDB:Clean;LoopTestWithDataSnap:Clean;VariableTestDll:Clean;LoopTestDataSnap:Clean;Week3TestTests:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="VariableTestWithDll:Make;ConditionTestWithDB:Make;LoopTestWithDataSnap:Make;VariableTestDll:Make;LoopTestDataSnap:Make;Week3TestTests:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
