@@ -26,8 +26,9 @@ type
   public
     { Public declarations }
     function EchoString(Value: string; CallBackid:TDBXCallback): string;
-    function ReverseString(Value: string): string;
     function Get_Count(value:string):integer;
+    [TroleAuth('Admin')]
+    function ReverseString(Value: string): string;
   end;
 
 implementation

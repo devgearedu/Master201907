@@ -32,7 +32,7 @@ object Form221: TForm221
   object DBNavigator1: TDBNavigator
     Left = 24
     Top = 16
-    Width = 510
+    Width = 360
     Height = 25
     DataSource = DataSource1
     TabOrder = 1
@@ -123,6 +123,22 @@ object Form221: TForm221
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
   end
+  object Edit1: TEdit
+    Left = 408
+    Top = 16
+    Width = 121
+    Height = 21
+    TabOrder = 11
+    Text = 'delphi'
+  end
+  object Edit2: TEdit
+    Left = 544
+    Top = 16
+    Width = 121
+    Height = 21
+    TabOrder = 12
+    Text = 'delphi'
+  end
   object SQLConnection1: TSQLConnection
     DriverName = 'DataSnap'
     LoginPrompt = False
@@ -137,6 +153,7 @@ object Form221: TForm221
         '.Data.DbxClientDriver,Version=24.0.0.0,Culture=neutral,PublicKey' +
         'Token=91d62ebb5b0d1b1b'
       'Filters={}')
+    BeforeConnect = SQLConnection1BeforeConnect
     Connected = True
     Left = 40
     Top = 24
@@ -150,7 +167,6 @@ object Form221: TForm221
     Top = 24
   end
   object Dept: TClientDataSet
-    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'DeptProvider'

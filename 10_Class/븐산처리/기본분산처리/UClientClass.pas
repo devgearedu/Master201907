@@ -1,6 +1,6 @@
 //
 // Created by the DataSnap proxy generator.
-// 2019-07-18 오후 3:55:36
+// 2019-07-19 오후 3:13:53
 //
 
 unit UClientClass;
@@ -13,15 +13,15 @@ type
   TServerMethods1Client = class(TDSAdminClient)
   private
     FEchoStringCommand: TDBXCommand;
-    FReverseStringCommand: TDBXCommand;
     FGet_CountCommand: TDBXCommand;
+    FReverseStringCommand: TDBXCommand;
   public
     constructor Create(ADBXConnection: TDBXConnection); overload;
     constructor Create(ADBXConnection: TDBXConnection; AInstanceOwner: Boolean); overload;
     destructor Destroy; override;
     function EchoString(Value: string; CallBackid: TDBXCallback): string;
-    function ReverseString(Value: string): string;
     function Get_Count(value: string): Integer;
+    function ReverseString(Value: string): string;
   end;
 
 implementation
@@ -41,20 +41,6 @@ begin
   Result := FEchoStringCommand.Parameters[2].Value.GetWideString;
 end;
 
-function TServerMethods1Client.ReverseString(Value: string): string;
-begin
-  if FReverseStringCommand = nil then
-  begin
-    FReverseStringCommand := FDBXConnection.CreateCommand;
-    FReverseStringCommand.CommandType := TDBXCommandTypes.DSServerMethod;
-    FReverseStringCommand.Text := 'TServerMethods1.ReverseString';
-    FReverseStringCommand.Prepare;
-  end;
-  FReverseStringCommand.Parameters[0].Value.SetWideString(Value);
-  FReverseStringCommand.ExecuteUpdate;
-  Result := FReverseStringCommand.Parameters[1].Value.GetWideString;
-end;
-
 function TServerMethods1Client.Get_Count(value: string): Integer;
 begin
   if FGet_CountCommand = nil then
@@ -67,6 +53,20 @@ begin
   FGet_CountCommand.Parameters[0].Value.SetWideString(value);
   FGet_CountCommand.ExecuteUpdate;
   Result := FGet_CountCommand.Parameters[1].Value.GetInt32;
+end;
+
+function TServerMethods1Client.ReverseString(Value: string): string;
+begin
+  if FReverseStringCommand = nil then
+  begin
+    FReverseStringCommand := FDBXConnection.CreateCommand;
+    FReverseStringCommand.CommandType := TDBXCommandTypes.DSServerMethod;
+    FReverseStringCommand.Text := 'TServerMethods1.ReverseString';
+    FReverseStringCommand.Prepare;
+  end;
+  FReverseStringCommand.Parameters[0].Value.SetWideString(Value);
+  FReverseStringCommand.ExecuteUpdate;
+  Result := FReverseStringCommand.Parameters[1].Value.GetWideString;
 end;
 
 constructor TServerMethods1Client.Create(ADBXConnection: TDBXConnection);
@@ -82,8 +82,8 @@ end;
 destructor TServerMethods1Client.Destroy;
 begin
   FEchoStringCommand.DisposeOf;
-  FReverseStringCommand.DisposeOf;
   FGet_CountCommand.DisposeOf;
+  FReverseStringCommand.DisposeOf;
   inherited;
 end;
 

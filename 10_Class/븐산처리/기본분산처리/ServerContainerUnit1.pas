@@ -48,7 +48,10 @@ procedure TServerContainer1.DSAuthenticationManager1UserAuthenticate(
 begin
   { TODO : Validate the client user and password.
     If role-based authorization is needed, add role names to the UserRoles parameter  }
-  valid := True;
+  if (USER = 'DELPHI') and (Password = 'DELPHI') then
+     UserRoles.add('Admin')
+  else
+     UserRoles.Add('Guest')
 end;
 
 procedure TServerContainer1.DSAuthenticationManager1UserAuthorize(

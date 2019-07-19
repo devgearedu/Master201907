@@ -32,6 +32,8 @@ type
     DataSource2: TDataSource;
     DBGrid2: TDBGrid;
     SqlServerMethod1: TSqlServerMethod;
+    Edit1: TEdit;
+    Edit2: TEdit;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
@@ -46,6 +48,7 @@ type
       E: EReconcileError; UpdateKind: TUpdateKind;
       var Action: TReconcileAction);
     procedure Button7Click(Sender: TObject);
+    procedure SQLConnection1BeforeConnect(Sender: TObject);
   private
     { Private declarations }
   public
@@ -100,10 +103,17 @@ end;
 
 procedure TForm221.Button8Click(Sender: TObject);
 begin
-  SqlServerMethod1.Close;
-  SqlServerMethod1.Params[0].asstring := 'abc';
-  SqlServerMethod1.ExecuteMethod;
-  button8.Caption := SqlServerMethod1.Params[1].asstring;
+//  SqlServerMethod1.Close;
+//  SqlServerMethod1.Params[0].asstring := 'abc';
+//  SqlServerMethod1.ExecuteMethod;
+//  button8.Caption := SqlServerMethod1.Params[1].asstring;
+  try
+   button8.Caption :=
+   ServerMethods1Client.reverseString('abc');
+  except
+    on e:exception do
+       showmessage('이 권한으로는 호출 못함');
+  end;
 end;
 
 procedure TForm221.DataSource1DataChange(Sender: TObject; Field: TField);
@@ -126,7 +136,20 @@ end;
 
 procedure TForm221.FormCreate(Sender: TObject);
 begin
-ServerMethods1Client := TServerMethods1Client.create(sqlconnection1.DBXConnection);
+ try
+  sqlconnection1.Open;
+  dept.Open;
+  ServerMethods1Client := TServerMethods1Client.create(sqlconnection1.DBXConnection);
+ except
+   on e:exception do
+      showmessage(e.Message);
+ end;
+end;
+
+procedure TForm221.SQLConnection1BeforeConnect(Sender: TObject);
+begin
+  sqlconnection1.Params.Values[TDBXPropertyNames.DSAuthenticationUser] := edit1.Text;
+  sqlconnection1.Params.Values[TDBXPropertyNames.DSAuthenticationPassword] := edit2.Text;
 end;
 
 { TCallBackClient }
