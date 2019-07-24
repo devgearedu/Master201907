@@ -2,15 +2,15 @@ program Project_Novel;
 
 uses
   Vcl.Forms,
-  AdminForm in 'AdminForm.pas' {Form1},
-  DM_Novel in 'DM_Novel.pas' {DataModule2: TDataModule};
+  AdminForm in 'AdminForm.pas' {Admin},
+  DM_Novel in 'DM_Novel.pas' {DM: TDataModule};
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TForm1, Form1);
-  Application.CreateForm(TDataModule2, DataModule2);
+  Application.CreateForm(TAdmin, Admin);
+  Application.CreateForm(TDM, DM);
   Application.Run;
 end.
