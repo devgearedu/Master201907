@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899-12-30 00:00:00.000.188,=C:\Users\양명환\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.600,=D:\201907_델파이교육\계산기\계산기.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.620,D:\201907_델파이교육\계산기\계산기.pas=D:\git hub\20_Task\M2\M2(calculation)_yangmyungwhan\계산기.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.632,=C:\Users\양명환\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.620,D:\201907_델파이교육\계산기\계산기.dfm=D:\git hub\20_Task\M2\M2(calculation)_yangmyungwhan\계산기.dfm</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.628,C:\Users\양명환\Documents\Embarcadero\Studio\Projects\Project1.dproj=D:\git hub\20_Task\M2\M2(calculation)_yangmyungwhan\Project1.dproj</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.145,=C:\Users\양명환\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+  </Transactions>
+</BorlandProject>
