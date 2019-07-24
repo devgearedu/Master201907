@@ -277,18 +277,16 @@ end;
 // ↓ Return버튼 onClick (입력 받은 모든 계산 수행, BufString := 결과값, 나머지 초기화)
 procedure TMainForm.TFrameCalc1ButtonReturnClick(Sender: TObject);
 begin
-  if (not (bufString = '')) or (not(expString='')) then
+  if not(bufString='') or not(expString='') then
   begin
     calc:=Tcalc.create;
 
     SetLength(Opds_Arr,Length(Opds_Arr)+1);
     Opds_Arr[Length(Opds_Arr)-1] := StrToFloat(bufString);
 
-    expString := '';
-
-
     bufString := Calc.Accumulate(Opds_Arr, Symbols);
 
+    expString := '';
     SetLength(Symbols,0);
     SetLength(Opds_Arr,0);
     TFrameCalc1.ExpressionPanel.Caption := expString;

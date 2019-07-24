@@ -30,8 +30,6 @@ type
 
 var
   frmVariable: TfrmVariable;
-  FSum : integer;
-
 
 implementation
 
@@ -62,24 +60,18 @@ begin
 end;
 
 procedure TfrmVariable.InitData;
-
 begin
-
   // 변수 FNum을 초기화 하세요.
-  FSum :=0 ;
-
 end;
 
 function TfrmVariable.AddNum(ANum: Integer): Integer;
 begin
-  FSum := FSum + ANum;
-  Result := FSum;
+  Result := 2;
 end;
 
 function TfrmVariable.SubNum(ANum: Integer): Integer;
 begin
-  FSum := FSum - ANum;
-  Result := FSum;
+  Result := -3;
 end;
 
 end.

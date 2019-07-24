@@ -60,8 +60,7 @@ end;
 
 function TfrmLoop.CalcOddNumCount(AStartNum, AEndNum: Integer): Integer;
 var
-    oddNumCount, I :integer;
-
+  oddNumCount,I:integer;
 begin
   {
     TODO : AStartNum과 AEndNum 사이의 홀수의 갯수를 반환합니다.
@@ -72,16 +71,19 @@ begin
   for I := AstartNum to AEndNum do
     if I mod 2 = 1 then
       oddNumCount := oddNumCount+1;
+
+
   Result := oddNumCount;
 end;
 
 function TfrmLoop.CalcMul3NumSum(AStartNum, AEndNum: Integer): Integer;
 var
-  sum, I :integer;
+  sum, I:integer;
 begin
   {
     TODO : AStartNum과 AEndNum 사이의 3의 배수의 합을 반환합니다.
   }
+
   sum := 0;
 
   for I := 0 to AEndNum do
