@@ -1,0 +1,71 @@
+object frmDeptAdd: TfrmDeptAdd
+  Left = 0
+  Top = 0
+  Caption = 'frmDeptAdd'
+  ClientHeight = 164
+  ClientWidth = 341
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 341
+    Height = 164
+    Align = alClient
+    TabOrder = 0
+    ExplicitWidth = 313
+    object Label1: TLabel
+      Left = 25
+      Top = 68
+      Width = 52
+      Height = 18
+      Alignment = taCenter
+      Caption = #48512#49436#49440#53469
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentFont = False
+    end
+    object btsSelect: TButton
+      Left = 240
+      Top = 65
+      Width = 73
+      Height = 25
+      Caption = #49440#53469
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 0
+    end
+    object DBLookupComboBox1: TDBLookupComboBox
+      Left = 87
+      Top = 63
+      Width = 105
+      Height = 28
+      DataField = 'DEPT_SEQ'
+      DataSource = dmDataAccess.dsInformationDept
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Arial Narrow'
+      Font.Style = []
+      KeyField = 'DEPT_SEQ'
+      ListField = 'DEPT_DEPT'
+      ListSource = dmDataAccess.dsDept
+      ParentFont = False
+      TabOrder = 1
+    end
+  end
+end
