@@ -12,78 +12,20 @@ uses
   FireDAC.Phys, FireDAC.Phys.IB, FireDAC.Phys.IBDef, FireDAC.VCLUI.Wait,
   FireDAC.Comp.Client, Datasnap.DBClient, FireDAC.Stan.Param, FireDAC.DatS,
   FireDAC.DApt.Intf, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.UI,
-  FireDAC.Phys.IBBase;
+  FireDAC.Phys.IBBase, System.Actions, Vcl.ActnList, Vcl.ExtActns,
+  Vcl.PlatformDefaultStyleActnCtrls, Vcl.Menus, System.ImageList, Vcl.ImgList;
 
 type
   TForm1 = class(TForm)
-    Ribbon1: TRibbon;
-    RibbonPage1: TRibbonPage;
-    RibbonGroup1: TRibbonGroup;
-    RibbonPage2: TRibbonPage;
-    RibbonPage3: TRibbonPage;
-    RibbonPage4: TRibbonPage;
-    RibbonGroup2: TRibbonGroup;
-    RibbonGroup3: TRibbonGroup;
-    Panel2: TPanel;
-    InformPnl: TPanel;
-    DBGrid1: TDBGrid;
-    PageControl1: TPageControl;
-    TabSheet1: TTabSheet;
-    TabSheet2: TTabSheet;
-    DBGrid2: TDBGrid;
-    TabSheet3: TTabSheet;
-    Splitter1: TSplitter;
-    SearchPnl: TPanel;
-    Edit1: TEdit;
-    CheckBox1: TCheckBox;
-    CheckBox2: TCheckBox;
-    CheckBox3: TCheckBox;
-    DBGrid3: TDBGrid;
-    DBGrid4: TDBGrid;
-    DataSource1: TDataSource;
-    FDConnection1: TFDConnection;
-    FDPhysIBDriverLink1: TFDPhysIBDriverLink;
-    FDGUIxWaitCursor1: TFDGUIxWaitCursor;
-    FDTable1: TFDTable;
-    GroupBox1: TGroupBox;
-    DBImage1: TDBImage;
-    GroupBox2: TGroupBox;
-    FDQuery1: TFDQuery;
-    DBEdit11: TDBEdit;
-    Label3: TLabel;
-    Label13: TLabel;
-    DBEdit14: TDBEdit;
-    DBEdit13: TDBEdit;
-    Label11: TLabel;
-    DBEdit12: TDBEdit;
-    Label8: TLabel;
-    Label2: TLabel;
-    DBEdit10: TDBEdit;
-    DBEdit4: TDBEdit;
-    Label12: TLabel;
-    DBEdit3: TDBEdit;
-    Label10: TLabel;
-    DBEdit9: TDBEdit;
-    Label9: TLabel;
-    DBEdit2: TDBEdit;
-    Label4: TLabel;
-    DBEdit8: TDBEdit;
-    lblStudentCode: TLabel;
-    DBEdit1: TDBEdit;
-    Label1: TLabel;
-    GroupBox3: TGroupBox;
-    Label7: TLabel;
-    DBEdit5: TDBEdit;
-    DBEdit6: TDBEdit;
-    Label5: TLabel;
-    Label6: TLabel;
-    DBEdit7: TDBEdit;
-    GroupBox4: TGroupBox;
-    Label14: TLabel;
-    DBMemo1: TDBMemo;
-    Label15: TLabel;
-    DBMemo2: TDBMemo;
-    Label16: TLabel;
+    ToolBar1: TToolBar;
+    ToolButton1: TToolButton;
+    ImageList1: TImageList;
+    ToolButton2: TToolButton;
+    PnlLayout: TPanel;
+    ToolButton4: TToolButton;
+    procedure ToolButton2Click(Sender: TObject);
+    procedure ToolButton1Click(Sender: TObject);
+    procedure ToolButton4Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -96,5 +38,32 @@ var
 implementation
 
 {$R *.dfm}
+
+uses UDataModule, UStudent, UClass;
+
+procedure TForm1.ToolButton1Click(Sender: TObject);
+begin
+  if not Assigned(frmStudent) then
+    frmStudent := TfrmStudent.Create(Self);
+  frmStudent.Parent := PnlLayout;
+  frmStudent.BorderStyle := bsNone;
+  frmStudent.Align := alClient;
+  frmStudent.Show;
+end;
+
+procedure TForm1.ToolButton2Click(Sender: TObject);
+begin
+  if not Assigned(frmClass) then
+    frmClass := TfrmClass.Create(Self);
+  frmClass.Parent := PnlLayout;
+  frmClass.BorderStyle := bsNone;
+  frmClass.Align := alClient;
+  frmClass.Show;
+end;
+
+procedure TForm1.ToolButton4Click(Sender: TObject);
+begin
+  Close;
+end;
 
 end.
