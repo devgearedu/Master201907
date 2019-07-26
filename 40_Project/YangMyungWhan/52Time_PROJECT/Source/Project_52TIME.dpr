@@ -8,7 +8,10 @@ uses
   CommonFunctions in 'CommonFunctions.pas',
   Vcl.Themes,
   Vcl.Styles,
-  TimeInsert in 'TimeInsert.pas' {frmTimeInsert};
+  TimeInsert in 'TimeInsert.pas' {frmTimeInsert},
+  Statistics in 'Statistics.pas' {frmStatisics},
+  DBFrame in 'DBFrame.pas' {Form1},
+  LogIn in 'LogIn.pas' {frmLogin};
 
 {$R *.res}
 
@@ -20,5 +23,8 @@ begin
   Application.CreateForm(TdmDataAccess, dmDataAccess);
   Application.CreateForm(TfrmWorkerInformation, frmWorkerInformation);
   Application.CreateForm(TfrmTimeInsert, frmTimeInsert);
+  Application.CreateForm(TfrmStatisics, frmStatisics);
+  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TfrmLogin, frmLogin);
   Application.Run;
 end.

@@ -21,7 +21,6 @@ type
     Label3: TLabel;
     Label4: TLabel;
     Label5: TLabel;
-    dsWorkerInformation: TDataSource;
     edtName: TDBEdit;
     edtCode: TDBEdit;
     edtNum: TDBEdit;
@@ -36,12 +35,17 @@ type
     btncancel: TButton;
     btnWorkerLoad: TButton;
     cbDept: TDBLookupComboBox;
+    DBGrid1: TDBGrid;
+    btnAutoDelete: TButton;
     procedure btnClearClick(Sender: TObject);
     procedure btnImageLoadClick(Sender: TObject);
     procedure btnWorkerLoadClick(Sender: TObject);
     procedure btncancelClick(Sender: TObject);
     procedure btnWorkerSaveClick(Sender: TObject);
     procedure btnDeptAddClick(Sender: TObject);
+    procedure btnStartWorkClick(Sender: TObject);
+    procedure btnFinishWorkClick(Sender: TObject);
+    procedure btnAutoDeleteClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -55,6 +59,17 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TfrmWorkerInformation.btnAutoDeleteClick(Sender: TObject);
+var
+  Msg: string;
+begin
+  Msg := Format('해당 항목을 삭제하시겠습니까?',[]);
+  if MessageDlg(Msg, mtInformation, [mbYes, mbNo], 0) = mrNo then
+    Exit;
+
+  dmDataAccess.qryAutoTimeInsert.Delete;
+end;
 
 procedure TfrmWorkerInformation.btncancelClick(Sender: TObject);
 begin
@@ -75,6 +90,15 @@ begin
   frmDeptAdd.Show;
 end;
 
+procedure TfrmWorkerInformation.btnFinishWorkClick(Sender: TObject);
+Var
+  WorkTime_Seq: Integer;
+  FiworkTime: TTime;
+begin
+  WorkTime_Seq := dmDataAccess.qryAutoTimeInsert.FieldByName('WTIT_SEQ').AsInteger;
+  dmDataAccess.ExecuteTime(WorkTime_Seq, now);
+end;
+
 procedure TfrmWorkerInformation.btnImageLoadClick(Sender: TObject);
 var
   field:Tfield;
@@ -89,8 +113,19 @@ begin
 
 end;
 
+procedure TfrmWorkerInformation.btnStartWorkClick(Sender: TObject);
 
-
+begin
+  dmdataaccess.qryAutoTimeInsert.append;
+  dmDataAccess.qryAutoTimeInsert.FieldByName('USERS_SEQ').Asinteger := 2;
+  dmDataAccess.qryAutoTimeInsert.FieldByName('WTIT_DATE').AsdateTime := date;
+  dmDataAccess.qryAutoTimeInsert.FieldByName('WTIT_STWORKTIME').AsdateTime := Now;
+  dmDataAccess.qryAutoTimeInsert.FieldByName('WTIT_FIWORKTIME').AsdateTime := 0;
+  dmDataAccess.qryAutoTimeInsert.FieldByName('WTIT_STEXCEPTTIME').AsdateTime := 0;
+  dmDataAccess.qryAutoTimeInsert.FieldByName('WTIT_FIEXCEPTTIME').AsdateTime := 0;
+  dmDataAccess.qryAutoTimeInsert.Post;
+  dmDataAccess.qryAutoTimeInsert.Refresh;
+end;
 
 procedure TfrmWorkerInformation.btnWorkerLoadClick(Sender: TObject);
 begin
@@ -132,6 +167,7 @@ begin
   dmDataAccess.qryInformationDept.Post;
   dmDataAccess.qryInformationDept.Refresh;
 end;
+
 
 end.
 

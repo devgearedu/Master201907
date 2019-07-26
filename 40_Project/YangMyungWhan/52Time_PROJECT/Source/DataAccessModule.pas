@@ -38,11 +38,27 @@ type
     qryTimeInsertWTIT_FIEXCEPTTIME: TTimeField;
     qryTimeInsertWTIT_DATE: TSQLTimeStampField;
     qryTimeInsertUSERS_NAME: TWideStringField;
+    qryUpdateTimeInsert: TFDQuery;
+    dsTimeInsertUpdate: TDataSource;
+    usTimeInsert: TFDUpdateSQL;
+    qryAutoTimeInsert: TFDQuery;
+    dsAutoTimeInsert: TDataSource;
+    qryAutoTimeInsertWTIT_SEQ: TIntegerField;
+    qryAutoTimeInsertUSERS_SEQ: TIntegerField;
+    qryAutoTimeInsertWTIT_STWORKTIME: TTimeField;
+    qryAutoTimeInsertWTIT_FIWORKTIME: TTimeField;
+    qryAutoTimeInsertWTIT_STEXCEPTTIME: TTimeField;
+    qryAutoTimeInsertWTIT_FIEXCEPTTIME: TTimeField;
+    qryAutoTimeInsertWTIT_DATE: TSQLTimeStampField;
+    qryAutoTimeInsertUSERS_NAME: TWideStringField;
+    qryWeekday: TFDQuery;
+    dsWeekday: TDataSource;
     procedure qryInformationDeptCalcFields(DataSet: TDataSet);
   private
     { Private declarations }
   public
     { Public declarations }
+    procedure ExecuteTime(AWorkTime_Seq: Integer; AFiWorkTime: TTime);
   end;
 
 var
@@ -53,6 +69,20 @@ implementation
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
 {$R *.dfm}
+uses
+  System.StrUtils;
+
+procedure TdmDataAccess.ExecuteTime(AWorkTime_Seq: Integer; AFiWorkTime: TTime);
+begin
+  // 기존 출근시간 입력 이후 퇴근시간 추가 업데이트
+
+  qryUpdateTimeInsert.ParamByName('FIWORKTIME').AsDateTime := Now;
+  qryUpdateTimeInsert.ParamByName('SEQ').AsInteger := AWorkTime_Seq;
+  qryUpdateTimeInsert.ExecSQL;
+
+  qryAutoTimeInsert.Refresh;
+
+end;
 
 procedure TdmDataAccess.qryInformationDeptCalcFields(DataSet: TDataSet);
 var

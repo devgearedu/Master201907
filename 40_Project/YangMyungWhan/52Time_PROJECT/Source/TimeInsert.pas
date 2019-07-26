@@ -26,11 +26,12 @@ type
     tpExceptStart: TTimePicker;
     tpExceptFinish: TTimePicker;
     btnExceptTimeInsert: TButton;
-    dsWorkTimeInsert: TDataSource;
     cpWorkDate: TCalendarPicker;
     cpExceptTimeDate: TCalendarPicker;
+    btnTimeDelete: TButton;
     procedure btnExceptTimeInsertClick(Sender: TObject);
     procedure btnWorkTimeInsertClick(Sender: TObject);
+    procedure btnTimeDeleteClick(Sender: TObject);
 
 
   private
@@ -61,6 +62,17 @@ begin
   dmDataAccess.qryTimeInsert.FieldByName('WTIT_FIWORKTIME').Asdatetime := 0;
   dmDataAccess.qryTimeInsert.Post;
   dmDataAccess.qryTimeInsert.Refresh;
+end;
+
+procedure TfrmTimeInsert.btnTimeDeleteClick(Sender: TObject);
+Var
+  Msg: string;
+begin
+  Msg := Format('해당 항목을 삭제하시겠습니까?',[]);
+  if MessageDlg(Msg, mtInformation, [mbYes, mbNo], 0) = mrNo then
+    Exit;
+
+  dmDataAccess.qryTimeInsert.Delete;
 end;
 
 procedure TfrmTimeInsert.btnWorkTimeInsertClick(Sender: TObject);

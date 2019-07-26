@@ -119,6 +119,18 @@
             <Form>frmTimeInsert</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="Statistics.pas">
+            <Form>frmStatisics</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="DBFrame.pas">
+            <Form>Form1</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="LogIn.pas">
+            <Form>frmLogin</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

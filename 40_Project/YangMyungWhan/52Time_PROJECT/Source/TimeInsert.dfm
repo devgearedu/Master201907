@@ -12,6 +12,9 @@ object frmTimeInsert: TfrmTimeInsert
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  DesignSize = (
+    870
+    601)
   PixelsPerInch = 96
   TextHeight = 13
   object pnlHeader: TPanel
@@ -37,10 +40,11 @@ object frmTimeInsert: TfrmTimeInsert
   end
   object pcTimeInsert: TPageControl
     Left = 0
-    Top = 37
+    Top = 40
     Width = 870
-    Height = 348
-    ActivePage = tbsWorkTime
+    Height = 351
+    ActivePage = tbsWorkExcept
+    Align = alClient
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
     Font.Height = -16
@@ -48,11 +52,15 @@ object frmTimeInsert: TfrmTimeInsert
     Font.Style = []
     ParentFont = False
     TabOrder = 1
+    ExplicitTop = 37
     object tbsWorkTime: TTabSheet
       Caption = #52636'/'#53748#44540#49884#44036' '#51077#47141
+      ExplicitLeft = 8
+      ExplicitTop = 29
+      ExplicitHeight = 313
       DesignSize = (
         862
-        313)
+        316)
       object Label2: TLabel
         Left = 432
         Top = 48
@@ -82,7 +90,7 @@ object frmTimeInsert: TfrmTimeInsert
         ParentFont = False
       end
       object tpWorkStart: TTimePicker
-        Left = 575
+        Left = 592
         Top = 40
         Anchors = [akTop, akRight]
         Font.Charset = HANGEUL_CHARSET
@@ -97,7 +105,7 @@ object frmTimeInsert: TfrmTimeInsert
         TimeFormat = 'h:mm'
       end
       object tpWorkFinish: TTimePicker
-        Left = 575
+        Left = 592
         Top = 129
         Anchors = [akTop, akRight]
         Font.Charset = HANGEUL_CHARSET
@@ -114,10 +122,10 @@ object frmTimeInsert: TfrmTimeInsert
       object btnWorkTimeInsert: TButton
         Left = 432
         Top = 218
-        Width = 293
+        Width = 193
         Height = 41
         Anchors = [akTop, akRight]
-        Caption = #46321'           '#47197
+        Caption = #46321'      '#47197
         Font.Charset = HANGEUL_CHARSET
         Font.Color = clWindowText
         Font.Height = -24
@@ -160,13 +168,10 @@ object frmTimeInsert: TfrmTimeInsert
     object tbsWorkExcept: TTabSheet
       Caption = #51228#50808#49884#44036' '#51077#47141
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
+      ExplicitHeight = 313
       DesignSize = (
         862
-        313)
+        316)
       object Label4: TLabel
         Left = 432
         Top = 48
@@ -196,7 +201,7 @@ object frmTimeInsert: TfrmTimeInsert
         ParentFont = False
       end
       object tpExceptStart: TTimePicker
-        Left = 575
+        Left = 592
         Top = 40
         Anchors = [akTop, akRight]
         Font.Charset = HANGEUL_CHARSET
@@ -211,7 +216,7 @@ object frmTimeInsert: TfrmTimeInsert
         TimeFormat = 'h:mm'
       end
       object tpExceptFinish: TTimePicker
-        Left = 575
+        Left = 592
         Top = 129
         Anchors = [akTop, akRight]
         Font.Charset = HANGEUL_CHARSET
@@ -228,10 +233,10 @@ object frmTimeInsert: TfrmTimeInsert
       object btnExceptTimeInsert: TButton
         Left = 432
         Top = 218
-        Width = 293
+        Width = 193
         Height = 41
         Anchors = [akTop, akRight]
-        Caption = #46321'           '#47197
+        Caption = #46321'      '#47197
         Font.Charset = HANGEUL_CHARSET
         Font.Color = clWindowText
         Font.Height = -24
@@ -278,7 +283,7 @@ object frmTimeInsert: TfrmTimeInsert
     Width = 870
     Height = 210
     Align = alBottom
-    DataSource = dsWorkTimeInsert
+    DataSource = dmDataAccess.dsTimeInsert
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
@@ -368,9 +373,20 @@ object frmTimeInsert: TfrmTimeInsert
         Visible = True
       end>
   end
-  object dsWorkTimeInsert: TDataSource
-    DataSet = dmDataAccess.qryTimeInsert
-    Left = 16
-    Top = 328
+  object btnTimeDelete: TButton
+    Left = 652
+    Top = 289
+    Width = 94
+    Height = 41
+    Anchors = [akTop, akRight]
+    Caption = #49325' '#51228
+    Font.Charset = HANGEUL_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -24
+    Font.Name = 'HY'#49688#54217#49440'M'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 3
+    OnClick = btnTimeDeleteClick
   end
 end

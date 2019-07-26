@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, System.ImageList, Vcl.ImgList,
   Vcl.ComCtrls, Vcl.ToolWin, Vcl.ActnMan, Vcl.ActnCtrls, Vcl.ExtCtrls, Vcl.Menus,
-  WorkerInformation, TimeInsert;
+  WorkerInformation, TimeInsert, Statistics;
 
 type
   TfrmMainForm = class(TForm)
@@ -24,6 +24,7 @@ type
     procedure btnCloseClick(Sender: TObject);
     procedure btnWorkerInformationClick(Sender: TObject);
     procedure btnTimeInsertClick(Sender: TObject);
+    procedure btnResultClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -40,6 +41,16 @@ implementation
 procedure TfrmMainForm.btnCloseClick(Sender: TObject);
 begin
   Close;
+end;
+
+procedure TfrmMainForm.btnResultClick(Sender: TObject);
+begin
+  if not Assigned(frmStatisics) then
+  frmStatisics := TfrmStatisics.Create(Self);
+  frmStatisics.Parent := pnlLayout;
+  frmStatisics.BorderStyle := bsNone;
+  frmStatisics.Align := alClient;
+  frmStatisics.Show;
 end;
 
 procedure TfrmMainForm.btnTimeInsertClick(Sender: TObject);

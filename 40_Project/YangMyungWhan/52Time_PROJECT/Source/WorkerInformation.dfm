@@ -2,7 +2,7 @@ object frmWorkerInformation: TfrmWorkerInformation
   Left = 0
   Top = 0
   Caption = 'frmWorkerInformation'
-  ClientHeight = 557
+  ClientHeight = 644
   ClientWidth = 876
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -11,6 +11,9 @@ object frmWorkerInformation: TfrmWorkerInformation
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  DesignSize = (
+    876
+    644)
   PixelsPerInch = 96
   TextHeight = 13
   object pnlHeader: TPanel
@@ -20,7 +23,6 @@ object frmWorkerInformation: TfrmWorkerInformation
     Height = 40
     Align = alTop
     TabOrder = 0
-    ExplicitWidth = 870
     DesignSize = (
       876
       40)
@@ -72,14 +74,13 @@ object frmWorkerInformation: TfrmWorkerInformation
     Left = 0
     Top = 40
     Width = 876
-    Height = 293
+    Height = 585
     Align = alClient
     TabOrder = 1
-    ExplicitWidth = 870
-    ExplicitHeight = 120
+    ExplicitHeight = 293
     DesignSize = (
       876
-      293)
+      585)
     object lbl: TLabel
       Left = 411
       Top = 40
@@ -162,7 +163,7 @@ object frmWorkerInformation: TfrmWorkerInformation
       Anchors = [akTop, akRight]
       BiDiMode = bdLeftToRight
       DataField = 'USERS_NAME'
-      DataSource = dsWorkerInformation
+      DataSource = dmDataAccess.dsInformationDept
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -21
@@ -180,7 +181,7 @@ object frmWorkerInformation: TfrmWorkerInformation
       Anchors = [akTop, akRight]
       BiDiMode = bdLeftToRight
       DataField = 'USERS_CODE'
-      DataSource = dsWorkerInformation
+      DataSource = dmDataAccess.dsInformationDept
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -21
@@ -198,7 +199,7 @@ object frmWorkerInformation: TfrmWorkerInformation
       Anchors = [akTop, akRight]
       BiDiMode = bdLeftToRight
       DataField = 'USERS_NUM'
-      DataSource = dsWorkerInformation
+      DataSource = dmDataAccess.dsInformationDept
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -21
@@ -210,7 +211,7 @@ object frmWorkerInformation: TfrmWorkerInformation
     end
     object btnClear: TButton
       Left = 128
-      Top = 256
+      Top = 269
       Width = 75
       Height = 25
       Caption = #52488#44592#54868
@@ -219,7 +220,7 @@ object frmWorkerInformation: TfrmWorkerInformation
     end
     object btnImageLoad: TButton
       Left = 222
-      Top = 256
+      Top = 269
       Width = 75
       Height = 25
       Caption = #48520#47084#50724#44592
@@ -240,10 +241,11 @@ object frmWorkerInformation: TfrmWorkerInformation
       Font.Style = []
       ParentFont = False
       TabOrder = 6
+      OnClick = btnStartWorkClick
     end
     object btnFinishWork: TButton
       Left = 740
-      Top = 162
+      Top = 156
       Width = 92
       Height = 86
       Anchors = [akTop, akRight]
@@ -255,6 +257,7 @@ object frmWorkerInformation: TfrmWorkerInformation
       Font.Style = []
       ParentFont = False
       TabOrder = 7
+      OnClick = btnFinishWorkClick
     end
     object cbDept: TDBLookupComboBox
       Left = 525
@@ -275,15 +278,30 @@ object frmWorkerInformation: TfrmWorkerInformation
       ParentFont = False
       TabOrder = 8
     end
+    object btnAutoDelete: TButton
+      Left = 740
+      Top = 267
+      Width = 91
+      Height = 27
+      Anchors = [akTop, akRight]
+      Caption = #49325'    '#51228
+      Font.Charset = HANGEUL_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'HY'#49688#54217#49440'M'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 9
+      OnClick = btnAutoDeleteClick
+    end
   end
   object grdInformation: TDBGrid
     Left = 0
-    Top = 352
-    Width = 876
-    Height = 205
-    Align = alBottom
-    Anchors = [akLeft, akTop, akRight, akBottom]
-    DataSource = dsWorkerInformation
+    Top = 384
+    Width = 453
+    Height = 241
+    Anchors = [akLeft, akRight, akBottom]
+    DataSource = dmDataAccess.dsInformationDept
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
@@ -365,17 +383,83 @@ object frmWorkerInformation: TfrmWorkerInformation
   end
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 333
+    Top = 625
     Width = 876
     Height = 19
     Panels = <>
-    ExplicitTop = 160
-    ExplicitWidth = 870
+    ExplicitTop = 333
   end
-  object dsWorkerInformation: TDataSource
-    DataSet = dmDataAccess.qryInformationDept
-    Left = 24
-    Top = 80
+  object DBGrid1: TDBGrid
+    Left = 453
+    Top = 384
+    Width = 422
+    Height = 241
+    Anchors = [akLeft, akRight, akBottom]
+    DataSource = dmDataAccess.dsAutoTimeInsert
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Arial Narrow'
+    Font.Style = []
+    Options = [dgEditing, dgAlwaysShowEditor, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+    ParentFont = False
+    TabOrder = 4
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'USERS_NAME'
+        Title.Alignment = taCenter
+        Title.Caption = #51060#47492
+        Title.Font.Charset = ANSI_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -13
+        Title.Font.Name = 'Arial Narrow'
+        Title.Font.Style = []
+        Width = 50
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'WTIT_DATE'
+        Title.Alignment = taCenter
+        Title.Caption = #45216#51676
+        Title.Font.Charset = ANSI_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -13
+        Title.Font.Name = 'Arial Narrow'
+        Title.Font.Style = []
+        Width = 80
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'WTIT_STWORKTIME'
+        Title.Alignment = taCenter
+        Title.Caption = #52636#44540#49884#44036
+        Title.Font.Charset = ANSI_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -13
+        Title.Font.Name = 'Arial Narrow'
+        Title.Font.Style = []
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'WTIT_FIWORKTIME'
+        Title.Alignment = taCenter
+        Title.Caption = #53748#44540#49884#44036
+        Title.Font.Charset = ANSI_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -13
+        Title.Font.Name = 'Arial Narrow'
+        Title.Font.Style = []
+        Visible = True
+      end>
   end
   object dlgLoadImage: TOpenDialog
     Left = 200

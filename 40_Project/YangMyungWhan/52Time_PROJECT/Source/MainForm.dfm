@@ -57,6 +57,7 @@ object frmMainForm: TfrmMainForm
       Caption = #53685#44228
       ImageIndex = 2
       Wrap = True
+      OnClick = btnResultClick
     end
     object btnClose: TToolButton
       Left = 0

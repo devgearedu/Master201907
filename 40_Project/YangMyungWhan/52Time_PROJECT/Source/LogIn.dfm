@@ -1,0 +1,40 @@
+object frmLogin: TfrmLogin
+  Left = 0
+  Top = 0
+  Caption = 'frmLogin'
+  ClientHeight = 409
+  ClientWidth = 635
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object pnlLogin: TPanel
+    Left = 0
+    Top = 0
+    Width = 635
+    Height = 41
+    Align = alTop
+    TabOrder = 0
+    ExplicitLeft = 232
+    ExplicitTop = 208
+    ExplicitWidth = 185
+    object Label1: TLabel
+      Left = 8
+      Top = 12
+      Width = 60
+      Height = 19
+      Caption = #47196#44536#51064
+      Font.Charset = HANGEUL_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'HY'#49688#54217#49440'M'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+  end
+end
