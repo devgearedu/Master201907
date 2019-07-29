@@ -20,16 +20,14 @@ object frmRegistration: TfrmRegistration
     Top = 0
     Width = 841
     Height = 525
-    ActivePage = tshtClient
+    ActivePage = tshtCourse
     Align = alClient
     TabOrder = 0
     TabWidth = 200
     object tshtClient: TTabSheet
       Caption = #54924#50896
       OnShow = tshtClientShow
-      ExplicitLeft = 172
-      ExplicitTop = 51
-      object lblName_: TLabel
+      object lblName_Client: TLabel
         Left = 60
         Top = 40
         Width = 75
@@ -50,9 +48,8 @@ object frmRegistration: TfrmRegistration
         ParentShowHint = False
         ShowHint = False
         Transparent = True
-        Layout = tlBottom
       end
-      object lblBirth_Date: TLabel
+      object lblBirth_DateClient: TLabel
         Left = 60
         Top = 100
         Width = 75
@@ -73,9 +70,8 @@ object frmRegistration: TfrmRegistration
         ParentShowHint = False
         ShowHint = False
         Transparent = True
-        Layout = tlBottom
       end
-      object lblMobile: TLabel
+      object lblMobileClient: TLabel
         Left = 60
         Top = 160
         Width = 75
@@ -96,9 +92,8 @@ object frmRegistration: TfrmRegistration
         ParentShowHint = False
         ShowHint = False
         Transparent = True
-        Layout = tlBottom
       end
-      object lblEmail: TLabel
+      object lblEmailClient: TLabel
         Left = 60
         Top = 220
         Width = 75
@@ -119,7 +114,382 @@ object frmRegistration: TfrmRegistration
         ParentShowHint = False
         ShowHint = False
         Transparent = True
-        Layout = tlBottom
+      end
+      object lblAddress_Client: TLabel
+        Left = 60
+        Top = 280
+        Width = 75
+        Height = 40
+        ParentCustomHint = False
+        AutoSize = False
+        BiDiMode = bdLeftToRight
+        Caption = #51452#49548
+        Color = clWindow
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -23
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentBiDiMode = False
+        ParentColor = False
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = False
+        Transparent = True
+      end
+      object lblVehicle_PlateClient: TLabel
+        Left = 60
+        Top = 340
+        Width = 100
+        Height = 40
+        ParentCustomHint = False
+        AutoSize = False
+        BiDiMode = bdLeftToRight
+        Caption = #52264#47049#48264#54840
+        Color = clWindow
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -23
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentBiDiMode = False
+        ParentColor = False
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = False
+        Transparent = True
+      end
+      object lblFavorite_BranchClient: TLabel
+        Left = 450
+        Top = 100
+        Width = 100
+        Height = 40
+        ParentCustomHint = False
+        AutoSize = False
+        BiDiMode = bdLeftToRight
+        Caption = #51452#51060#50857#49884#49444
+        Color = clWindow
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -23
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentBiDiMode = False
+        ParentColor = False
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = False
+        Transparent = True
+      end
+      object lblCodeClient: TLabel
+        Left = 450
+        Top = 160
+        Width = 100
+        Height = 40
+        ParentCustomHint = False
+        AutoSize = False
+        BiDiMode = bdLeftToRight
+        Caption = #54924#50896#48264#54840
+        Color = clWindow
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -23
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentBiDiMode = False
+        ParentColor = False
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = False
+        Transparent = True
+      end
+      object lblCodeAssignedClient: TLabel
+        Left = 550
+        Top = 160
+        Width = 200
+        Height = 40
+        ParentCustomHint = False
+        Alignment = taCenter
+        AutoSize = False
+        BiDiMode = bdLeftToRight
+        Color = clWindow
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -23
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentBiDiMode = False
+        ParentColor = False
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = False
+        Transparent = False
+      end
+      object edtName_Client: TEdit
+        Left = 150
+        Top = 40
+        Width = 180
+        Height = 40
+        Alignment = taCenter
+        AutoSize = False
+        BevelEdges = [beBottom]
+        BorderStyle = bsNone
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -27
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = False
+        TabOrder = 0
+        StyleElements = [seFont]
+      end
+      object edtEmailClient: TEdit
+        Left = 150
+        Top = 220
+        Width = 250
+        Height = 40
+        AutoSize = False
+        BevelEdges = [beBottom]
+        BorderStyle = bsNone
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -27
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = False
+        TabOrder = 3
+        StyleElements = [seFont]
+      end
+      object edtAddress_Client: TEdit
+        Left = 150
+        Top = 280
+        Width = 249
+        Height = 40
+        AutoSize = False
+        BevelEdges = [beBottom]
+        BorderStyle = bsNone
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -27
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = False
+        TabOrder = 4
+        StyleElements = [seFont]
+      end
+      object edtVehicle_PlateClient: TEdit
+        Left = 150
+        Top = 340
+        Width = 200
+        Height = 40
+        AutoSize = False
+        BevelEdges = [beBottom]
+        BorderStyle = bsNone
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -27
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = False
+        TabOrder = 5
+        StyleElements = [seFont]
+      end
+      object edtFavorite_BranchClient: TEdit
+        Left = 550
+        Top = 100
+        Width = 200
+        Height = 40
+        AutoSize = False
+        BevelEdges = [beBottom]
+        BorderStyle = bsNone
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -27
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = False
+        TabOrder = 6
+        StyleElements = [seFont]
+      end
+      object btnSaveClient: TButton
+        Left = 575
+        Top = 350
+        Width = 100
+        Height = 40
+        Caption = #51200#51109
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ImageAlignment = iaRight
+        ImageMargins.Right = 10
+        ParentFont = False
+        TabOrder = 8
+        OnClick = btnSaveClientClick
+      end
+      object dtpBirth_DateClient: TDateTimePicker
+        Left = 150
+        Top = 108
+        Width = 150
+        Height = 32
+        BevelEdges = [beBottom]
+        Date = 32874.000000000000000000
+        DoubleBuffered = False
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -20
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        MaxDate = 73050.999988425930000000
+        MinDate = 10959.000000000000000000
+        ParentDoubleBuffered = False
+        ParentFont = False
+        TabOrder = 1
+      end
+      object medtMobileClient: TMaskEdit
+        Left = 150
+        Top = 160
+        Width = 168
+        Height = 40
+        Alignment = taCenter
+        AutoSize = False
+        BevelEdges = [beBottom]
+        BorderStyle = bsNone
+        DoubleBuffered = False
+        EditMask = '!\01\0/0000/0000;1; '
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -23
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        MaxLength = 13
+        ParentDoubleBuffered = False
+        ParentFont = False
+        TabOrder = 2
+        Text = '010-    -    '
+        StyleElements = []
+      end
+      object btnNewClient: TButton
+        Left = 450
+        Top = 350
+        Width = 100
+        Height = 40
+        Caption = #52628#44032#46321#47197
+        TabOrder = 7
+        OnClick = btnNewClientClick
+      end
+      object btnCancelClient: TButton
+        Left = 700
+        Top = 350
+        Width = 100
+        Height = 40
+        Caption = #52712#49548
+        TabOrder = 9
+        OnClick = btnCancelClientClick
+      end
+    end
+    object tshtCoach: TTabSheet
+      Caption = #44053#49324
+      ImageIndex = 1
+      OnShow = tshtCoachShow
+      object lblName_Coach: TLabel
+        Left = 60
+        Top = 40
+        Width = 75
+        Height = 40
+        ParentCustomHint = False
+        AutoSize = False
+        BiDiMode = bdLeftToRight
+        Caption = #51060#47492
+        Color = clWindow
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -23
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentBiDiMode = False
+        ParentColor = False
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = False
+        Transparent = True
+      end
+      object lblBirth_DateCoach: TLabel
+        Left = 60
+        Top = 100
+        Width = 75
+        Height = 40
+        ParentCustomHint = False
+        AutoSize = False
+        BiDiMode = bdLeftToRight
+        Caption = #49373#45380#50900#51068
+        Color = clWindow
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -23
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentBiDiMode = False
+        ParentColor = False
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = False
+        Transparent = True
+      end
+      object lblMobileCoach: TLabel
+        Left = 60
+        Top = 160
+        Width = 75
+        Height = 40
+        ParentCustomHint = False
+        AutoSize = False
+        BiDiMode = bdLeftToRight
+        Caption = #51204#54868#48264#54840
+        Color = clWindow
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -23
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentBiDiMode = False
+        ParentColor = False
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = False
+        Transparent = True
+      end
+      object lblEmailCoach: TLabel
+        Left = 60
+        Top = 220
+        Width = 75
+        Height = 40
+        ParentCustomHint = False
+        AutoSize = False
+        BiDiMode = bdLeftToRight
+        Caption = #51060#47700#51068
+        Color = clWindow
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -23
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentBiDiMode = False
+        ParentColor = False
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = False
+        Transparent = True
       end
       object lblAddress_: TLabel
         Left = 60
@@ -142,7 +512,6 @@ object frmRegistration: TfrmRegistration
         ParentShowHint = False
         ShowHint = False
         Transparent = True
-        Layout = tlBottom
       end
       object lblVehicle_Plate: TLabel
         Left = 60
@@ -165,9 +534,8 @@ object frmRegistration: TfrmRegistration
         ParentShowHint = False
         ShowHint = False
         Transparent = True
-        Layout = tlCenter
       end
-      object lblFavoriteBranch: TLabel
+      object lblSports: TLabel
         Left = 450
         Top = 100
         Width = 100
@@ -175,7 +543,7 @@ object frmRegistration: TfrmRegistration
         ParentCustomHint = False
         AutoSize = False
         BiDiMode = bdLeftToRight
-        Caption = #51452#51060#50857#49884#49444
+        Caption = #51333#47785
         Color = clWindow
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -190,7 +558,53 @@ object frmRegistration: TfrmRegistration
         Transparent = True
         Layout = tlCenter
       end
-      object lblCode: TLabel
+      object lblCodeCoach: TLabel
+        Left = 450
+        Top = 40
+        Width = 100
+        Height = 40
+        ParentCustomHint = False
+        AutoSize = False
+        BiDiMode = bdLeftToRight
+        Caption = #44053#49324#48264#54840
+        Color = clWindow
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -23
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentBiDiMode = False
+        ParentColor = False
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = False
+        Transparent = True
+        Layout = tlCenter
+      end
+      object lblCodeAssignedCoach: TLabel
+        Left = 550
+        Top = 40
+        Width = 200
+        Height = 40
+        ParentCustomHint = False
+        Alignment = taCenter
+        AutoSize = False
+        BiDiMode = bdLeftToRight
+        Color = clWindow
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -23
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentBiDiMode = False
+        ParentColor = False
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = False
+        Transparent = True
+        Layout = tlCenter
+      end
+      object lblPhotoCoach: TLabel
         Left = 450
         Top = 160
         Width = 100
@@ -198,7 +612,7 @@ object frmRegistration: TfrmRegistration
         ParentCustomHint = False
         AutoSize = False
         BiDiMode = bdLeftToRight
-        Caption = #54924#50896#48264#54840
+        Caption = #49324#51652
         Color = clWindow
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -213,9 +627,391 @@ object frmRegistration: TfrmRegistration
         Transparent = True
         Layout = tlCenter
       end
-      object lblCodeAssigned: TLabel
+      object Image1: TImage
         Left = 550
         Top = 160
+        Width = 120
+        Height = 160
+      end
+      object edtName_Coach: TEdit
+        Left = 150
+        Top = 40
+        Width = 180
+        Height = 40
+        Alignment = taCenter
+        AutoSize = False
+        BevelEdges = [beBottom]
+        BorderStyle = bsNone
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -27
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = False
+        TabOrder = 0
+        StyleElements = [seFont]
+      end
+      object edtEmailCoach: TEdit
+        Left = 150
+        Top = 220
+        Width = 250
+        Height = 40
+        AutoSize = False
+        BevelEdges = [beBottom]
+        BorderStyle = bsNone
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -27
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = False
+        TabOrder = 3
+        StyleElements = [seFont]
+      end
+      object edtAddress_Coach: TEdit
+        Left = 150
+        Top = 280
+        Width = 249
+        Height = 40
+        AutoSize = False
+        BevelEdges = [beBottom]
+        BorderStyle = bsNone
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -27
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = False
+        TabOrder = 4
+        StyleElements = [seFont]
+      end
+      object edtVehicle_PlateCoach: TEdit
+        Left = 150
+        Top = 340
+        Width = 200
+        Height = 40
+        AutoSize = False
+        BevelEdges = [beBottom]
+        BorderStyle = bsNone
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -27
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = False
+        TabOrder = 5
+        StyleElements = [seFont]
+      end
+      object edtSportsCoach: TEdit
+        Left = 550
+        Top = 100
+        Width = 200
+        Height = 40
+        AutoSize = False
+        BevelEdges = [beBottom]
+        BorderStyle = bsNone
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -27
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = False
+        TabOrder = 6
+        StyleElements = [seFont]
+      end
+      object btnSaveCoach: TButton
+        Left = 575
+        Top = 380
+        Width = 100
+        Height = 40
+        Caption = #51200#51109
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ImageAlignment = iaRight
+        ImageMargins.Right = 10
+        ParentFont = False
+        TabOrder = 8
+        OnClick = btnSaveCoachClick
+      end
+      object dtpBirth_DateCoach: TDateTimePicker
+        Left = 150
+        Top = 100
+        Width = 150
+        Height = 32
+        BevelEdges = [beBottom]
+        Date = 32874.000000000000000000
+        DoubleBuffered = False
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -20
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        MaxDate = 73050.999988425930000000
+        MinDate = 10959.000000000000000000
+        ParentDoubleBuffered = False
+        ParentFont = False
+        TabOrder = 1
+      end
+      object medtMobileCoach: TMaskEdit
+        Left = 150
+        Top = 160
+        Width = 168
+        Height = 40
+        Alignment = taCenter
+        AutoSize = False
+        BevelEdges = [beBottom]
+        BorderStyle = bsNone
+        DoubleBuffered = False
+        EditMask = '!\01\0/0000/0000;1; '
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -23
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        MaxLength = 13
+        ParentDoubleBuffered = False
+        ParentFont = False
+        TabOrder = 2
+        Text = '010-    -    '
+        StyleElements = []
+      end
+      object btnNewCoach: TButton
+        Left = 450
+        Top = 380
+        Width = 100
+        Height = 40
+        Caption = #52628#44032#46321#47197
+        TabOrder = 7
+        OnClick = btnNewCoachClick
+      end
+      object btnCancelCoach: TButton
+        Left = 700
+        Top = 380
+        Width = 100
+        Height = 40
+        Caption = #52712#49548
+        TabOrder = 9
+        OnClick = btnCancelCoachClick
+      end
+    end
+    object tshtCourse: TTabSheet
+      Caption = #44053#51340
+      ImageIndex = 2
+      OnShow = tshtCourseShow
+      object lblName_Course: TLabel
+        Left = 60
+        Top = 40
+        Width = 75
+        Height = 40
+        ParentCustomHint = False
+        AutoSize = False
+        BiDiMode = bdLeftToRight
+        Caption = #44053#51340#47749
+        Color = clWindow
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -23
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentBiDiMode = False
+        ParentColor = False
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = False
+        Transparent = True
+      end
+      object lblWeekdaysCourse: TLabel
+        Left = 60
+        Top = 100
+        Width = 75
+        Height = 40
+        ParentCustomHint = False
+        AutoSize = False
+        BiDiMode = bdLeftToRight
+        Caption = #50836#51068
+        Color = clWindow
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -23
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentBiDiMode = False
+        ParentColor = False
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = False
+        Transparent = True
+      end
+      object lblBegin_TimeCourse: TLabel
+        Left = 60
+        Top = 160
+        Width = 75
+        Height = 40
+        ParentCustomHint = False
+        AutoSize = False
+        BiDiMode = bdLeftToRight
+        Caption = #49884#51089#49884#44036
+        Color = clWindow
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -23
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentBiDiMode = False
+        ParentColor = False
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = False
+        Transparent = True
+      end
+      object lblEnd_TimeCourse: TLabel
+        Left = 60
+        Top = 220
+        Width = 75
+        Height = 40
+        ParentCustomHint = False
+        AutoSize = False
+        BiDiMode = bdLeftToRight
+        Caption = #51333#47308#49884#44036
+        Color = clWindow
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -23
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentBiDiMode = False
+        ParentColor = False
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = False
+        Transparent = True
+      end
+      object lblPrice: TLabel
+        Left = 60
+        Top = 280
+        Width = 75
+        Height = 40
+        ParentCustomHint = False
+        AutoSize = False
+        BiDiMode = bdLeftToRight
+        Caption = #44032#44201
+        Color = clWindow
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -23
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentBiDiMode = False
+        ParentColor = False
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = False
+        Transparent = True
+      end
+      object lblLocation_Course: TLabel
+        Left = 430
+        Top = 40
+        Width = 100
+        Height = 40
+        ParentCustomHint = False
+        AutoSize = False
+        BiDiMode = bdLeftToRight
+        Caption = #50948#52824
+        Color = clWindow
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -23
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentBiDiMode = False
+        ParentColor = False
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = False
+        Transparent = True
+      end
+      object lblCoach_CodeCourse: TLabel
+        Left = 430
+        Top = 100
+        Width = 100
+        Height = 40
+        ParentCustomHint = False
+        AutoSize = False
+        BiDiMode = bdLeftToRight
+        Caption = #45812#45817#44053#49324
+        Color = clWindow
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -23
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentBiDiMode = False
+        ParentColor = False
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = False
+        Transparent = True
+      end
+      object lblMinimum_Enroll: TLabel
+        Left = 430
+        Top = 220
+        Width = 100
+        Height = 40
+        ParentCustomHint = False
+        AutoSize = False
+        BiDiMode = bdLeftToRight
+        Caption = #54224#44053#51064#50896
+        Color = clWindow
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -23
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentBiDiMode = False
+        ParentColor = False
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = False
+        Transparent = True
+      end
+      object lblMaximum_EnrollCourse: TLabel
+        Left = 430
+        Top = 160
+        Width = 100
+        Height = 40
+        ParentCustomHint = False
+        AutoSize = False
+        BiDiMode = bdLeftToRight
+        Caption = #51221#50896
+        Color = clWindow
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -23
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentBiDiMode = False
+        ParentColor = False
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = False
+        Transparent = True
+      end
+      object lblMinimum_EnrollAssignedCourse: TLabel
+        Left = 530
+        Top = 220
         Width = 200
         Height = 40
         ParentCustomHint = False
@@ -234,17 +1030,74 @@ object frmRegistration: TfrmRegistration
         ParentShowHint = False
         ShowHint = False
         Transparent = False
-        Layout = tlCenter
       end
-      object edtName_: TEdit
+      object lblCodeCourse: TLabel
+        Left = 430
+        Top = 280
+        Width = 100
+        Height = 40
+        ParentCustomHint = False
+        AutoSize = False
+        BiDiMode = bdLeftToRight
+        Caption = #44053#51340#53076#46300
+        Color = clWindow
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -23
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentBiDiMode = False
+        ParentColor = False
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = False
+        Transparent = True
+      end
+      object dbtxtCoach_Code: TDBText
+        Left = 550
+        Top = 100
+        Width = 150
+        Height = 40
+        Alignment = taCenter
+        DataField = 'CODE'
+        DataSource = frmMain.dsQryCoaches
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -23
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+      object lblCodeAssignedCourse: TLabel
+        Left = 530
+        Top = 280
+        Width = 200
+        Height = 40
+        ParentCustomHint = False
+        Alignment = taCenter
+        AutoSize = False
+        BiDiMode = bdLeftToRight
+        Color = clWindow
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -23
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentBiDiMode = False
+        ParentColor = False
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = False
+        Transparent = False
+      end
+      object edtName_Course: TEdit
         Left = 150
         Top = 40
-        Width = 180
+        Width = 150
         Height = 40
         Alignment = taCenter
         AutoSize = False
         BevelEdges = [beBottom]
-        BevelKind = bkSoft
         BorderStyle = bsNone
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -254,57 +1107,17 @@ object frmRegistration: TfrmRegistration
         ParentFont = False
         ParentShowHint = False
         ShowHint = False
-        TabOrder = 1
+        TabOrder = 0
         StyleElements = [seFont]
       end
-      object edtEmail: TEdit
-        Left = 150
-        Top = 220
-        Width = 250
-        Height = 40
-        AutoSize = False
-        BevelEdges = [beBottom]
-        BevelKind = bkSoft
-        BorderStyle = bsNone
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -27
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-        ParentShowHint = False
-        ShowHint = False
-        TabOrder = 2
-        StyleElements = [seFont]
-      end
-      object edtAddress: TEdit
+      object edtPrice: TEdit
         Left = 150
         Top = 280
-        Width = 249
+        Width = 150
         Height = 40
+        Alignment = taCenter
         AutoSize = False
         BevelEdges = [beBottom]
-        BevelKind = bkSoft
-        BorderStyle = bsNone
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -27
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-        ParentShowHint = False
-        ShowHint = False
-        TabOrder = 3
-        StyleElements = [seFont]
-      end
-      object edtVehicle_Plate: TEdit
-        Left = 150
-        Top = 340
-        Width = 200
-        Height = 40
-        AutoSize = False
-        BevelEdges = [beBottom]
-        BevelKind = bkSoft
         BorderStyle = bsNone
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -317,14 +1130,14 @@ object frmRegistration: TfrmRegistration
         TabOrder = 4
         StyleElements = [seFont]
       end
-      object edtFavorite_Branch: TEdit
-        Left = 550
-        Top = 100
+      object edtLocation_Course: TEdit
+        Left = 530
+        Top = 40
         Width = 200
         Height = 40
+        Alignment = taCenter
         AutoSize = False
         BevelEdges = [beBottom]
-        BevelKind = bkSoft
         BorderStyle = bsNone
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -337,9 +1150,9 @@ object frmRegistration: TfrmRegistration
         TabOrder = 5
         StyleElements = [seFont]
       end
-      object btnSave: TButton
-        Left = 572
-        Top = 345
+      object btnSaveCourse: TButton
+        Left = 555
+        Top = 370
         Width = 100
         Height = 40
         Caption = #51200#51109
@@ -351,93 +1164,112 @@ object frmRegistration: TfrmRegistration
         ImageAlignment = iaRight
         ImageMargins.Right = 10
         ParentFont = False
-        TabOrder = 0
-        OnClick = btnSaveClick
+        TabOrder = 9
+        OnClick = btnSaveCourseClick
       end
-      object dtpBirth_Date: TDateTimePicker
-        Left = 150
-        Top = 108
-        Width = 150
-        Height = 32
-        BevelEdges = [beBottom]
-        BevelKind = bkSoft
-        Date = 32874.000000000000000000
-        DoubleBuffered = False
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -20
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        MaxDate = 73050.999988425930000000
-        MinDate = 10959.000000000000000000
-        ParentDoubleBuffered = False
-        ParentFont = False
-        TabOrder = 6
-      end
-      object medtMobile: TMaskEdit
-        Left = 150
-        Top = 160
-        Width = 168
-        Height = 40
-        Alignment = taCenter
-        AutoSize = False
-        BevelEdges = [beBottom]
-        BevelKind = bkSoft
-        BorderStyle = bsNone
-        DoubleBuffered = False
-        EditMask = '!\01\0/0000/0000;1; '
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -23
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        MaxLength = 13
-        ParentDoubleBuffered = False
-        ParentFont = False
-        TabOrder = 7
-        Text = '010-    -    '
-        StyleElements = []
-      end
-      object btnNew: TButton
-        Left = 450
-        Top = 346
+      object btnNewCourse: TButton
+        Left = 430
+        Top = 370
         Width = 100
         Height = 40
         Caption = #52628#44032#46321#47197
         TabOrder = 8
-        OnClick = btnNewClick
+        OnClick = btnNewCourseClick
       end
-      object btnCancel: TButton
-        Left = 692
-        Top = 345
+      object btnCancelCourse: TButton
+        Left = 680
+        Top = 370
         Width = 100
         Height = 40
         Caption = #52712#49548
-        TabOrder = 9
-        OnClick = btnCancelClick
+        TabOrder = 10
+        OnClick = btnCancelCourseClick
       end
-    end
-    object tshtCoach: TTabSheet
-      Caption = #44053#49324
-      ImageIndex = 1
-      object DBGrid1: TDBGrid
-        Left = 32
-        Top = 202
-        Width = 609
-        Height = 120
-        Options = [dgEditing, dgAlwaysShowEditor, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
-        ReadOnly = True
-        TabOrder = 0
-        TitleFont.Charset = DEFAULT_CHARSET
-        TitleFont.Color = clWindowText
-        TitleFont.Height = -13
-        TitleFont.Name = 'Tahoma'
-        TitleFont.Style = []
+      object edtWeekdaysCourse: TEdit
+        Left = 150
+        Top = 100
+        Width = 150
+        Height = 40
+        Alignment = taCenter
+        AutoSize = False
+        BevelEdges = [beBottom]
+        BorderStyle = bsNone
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -27
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = False
+        TabOrder = 1
+        StyleElements = [seFont]
       end
-    end
-    object tshtCourse: TTabSheet
-      Caption = #44053#51340
-      ImageIndex = 2
+      object edtMaximum_EnrollCourse: TEdit
+        Left = 530
+        Top = 160
+        Width = 200
+        Height = 40
+        Alignment = taCenter
+        AutoSize = False
+        BevelEdges = [beBottom]
+        BorderStyle = bsNone
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -27
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        ParentShowHint = False
+        ShowHint = False
+        TabOrder = 7
+        StyleElements = [seFont]
+      end
+      object tpBegin_Time: TTimePicker
+        Left = 150
+        Top = 160
+        Width = 175
+        Height = 40
+        DropDownCount = 5
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -20
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        TabOrder = 2
+        Time = 0.250000000000000000
+        TimeFormat = 'AMPM hh:mm'
+      end
+      object tpEnd_Time: TTimePicker
+        Left = 150
+        Top = 220
+        Width = 175
+        Height = 40
+        DropDownCount = 5
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -20
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        TabOrder = 3
+        Time = 0.250000000000000000
+        TimeFormat = 'AMPM hh:mm'
+      end
+      object btnCoach_Code: TButton
+        Left = 720
+        Top = 100
+        Width = 60
+        Height = 40
+        Caption = #49440#53469
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -18
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 6
+        OnClick = btnCoach_CodeClick
+      end
     end
   end
 end

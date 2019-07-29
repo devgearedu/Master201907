@@ -6,7 +6,12 @@ uses
   ServerMethodsUnit12_ClientClass in 'ServerMethodsUnit12_ClientClass.pas',
   Vcl.Themes,
   Vcl.Styles,
-  RegistrationForm in 'RegistrationForm.pas' {frmRegistration};
+  RegistrationForm in 'RegistrationForm.pas' {frmRegistration},
+  ModificationForm in 'ModificationForm.pas' {frmModification},
+  NamesakeForm in 'NamesakeForm.pas' {frmNamesake},
+  LookupForm in 'LookupForm.pas' {frmLookup},
+  EnrollmentForm in 'EnrollmentForm.pas' {frmEnrollment},
+  AttendanceForm in 'AttendanceForm.pas' {frmAttendance};
 
 {$R *.res}
 
@@ -15,5 +20,6 @@ begin
   Application.MainFormOnTaskbar := True;
   TStyleManager.TrySetStyle('Amethyst Kamri');
   Application.CreateForm(TfrmMain, frmMain);
+  Application.CreateForm(TfrmAttendance, frmAttendance);
   Application.Run;
 end.

@@ -111,6 +111,26 @@
             <Form>frmRegistration</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="ModificationForm.pas">
+            <Form>frmModification</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="NamesakeForm.pas">
+            <Form>frmNamesake</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="LookupForm.pas">
+            <Form>frmLookup</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="EnrollmentForm.pas">
+            <Form>frmEnrollment</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="AttendanceForm.pas">
+            <Form>frmAttendance</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

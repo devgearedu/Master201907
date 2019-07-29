@@ -23,25 +23,9 @@ type
     pnlTop: TPanel;
     ButtonGroup1: TButtonGroup;
     imgSplitViewButton: TImage;
-    SQLcnClients: TSQLConnection;
-    cdsClients: TClientDataSet;
-    dspClients: TDataSetProvider;
-    DSpcnClients: TDSProviderConnection;
-    dsClients: TDataSource;
-    dspQryClients: TDataSetProvider;
+    SQLcnGym: TSQLConnection;
+    DSpcnGym: TDSProviderConnection;
     cdsQryClients: TClientDataSet;
-    dsQryClients: TDataSource;
-    cdsClientsCODE: TIntegerField;
-    cdsClientsNAME_: TWideStringField;
-    cdsClientsBIRTH_DATE: TDateField;
-    cdsClientsMOBILE: TStringField;
-    cdsClientsDATE_OF_SIGN_UP: TDateField;
-    cdsClientsEMAIL: TStringField;
-    cdsClientsADDRESS_: TWideStringField;
-    cdsClientsFAVORITE_BRANCH: TWideStringField;
-    cdsClientsVEHICLE_PLATE: TWideStringField;
-    cdsClientsPASSWORD_: TStringField;
-    cdsClientsDATE_OF_WITHDRAWAL: TDateField;
     cdsQryClientsCODE: TIntegerField;
     cdsQryClientsNAME_: TWideStringField;
     cdsQryClientsBIRTH_DATE: TDateField;
@@ -53,8 +37,35 @@ type
     cdsQryClientsVEHICLE_PLATE: TWideStringField;
     cdsQryClientsPASSWORD_: TStringField;
     cdsQryClientsDATE_OF_WITHDRAWAL: TDateField;
+    dspQryClients: TDataSetProvider;
+    dsQryClients: TDataSource;
+    cdsQryCoaches: TClientDataSet;
+    dspQryCoaches: TDataSetProvider;
+    dsQryCoaches: TDataSource;
+    cdsQryCoachesCODE: TIntegerField;
+    cdsQryCoachesNAME_: TWideStringField;
+    cdsQryCoachesBIRTH_DATE: TDateField;
+    cdsQryCoachesMOBILE: TStringField;
+    cdsQryCoachesSPORTS: TWideStringField;
+    cdsQryCoachesDATE_OF_ENTER: TDateField;
+    cdsQryCoachesEMAIL: TStringField;
+    cdsQryCoachesADDRESS_: TWideStringField;
+    cdsQryCoachesVEHICLE_PLATE: TWideStringField;
+    cdsQryCoachesPASSWORD_: TStringField;
+    cdsQryCoachesPICTURE: TBlobField;
+    cdsQryCoachesDATE_OF_RESIGN: TDateField;
+    dsQryCourses: TDataSource;
+    cdsQryCourses: TClientDataSet;
+    dspQryCourses: TDataSetProvider;
+    cdsQryEnrollments: TClientDataSet;
+    dspQryEnrollments: TDataSetProvider;
+    dsQryEnrollments: TDataSource;
     procedure imgSplitViewButtonClick(Sender: TObject);
     procedure ButtonGroup1Items0Click(Sender: TObject);
+    procedure ButtonGroup1Items2Click(Sender: TObject);
+    procedure ButtonGroup1Items3Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure ButtonGroup1Items1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -63,10 +74,11 @@ type
 
 var
   frmMain: TfrmMain;
+  serverclient : TServerMethods12Client;
 
 implementation
 uses
-  RegistrationForm;
+  RegistrationForm, ModificationForm, LookupForm, EnrollmentForm;
 
 
 {$R *.dfm}
@@ -83,6 +95,53 @@ begin
   end
   else
     FreeAndNil(frmRegistration);
+end;
+
+procedure TfrmMain.ButtonGroup1Items1Click(Sender: TObject);
+begin
+  if not Assigned(frmEnrollment) then
+  begin
+    frmEnrollment := TfrmEnrollment.Create(Application);
+    frmEnrollment.Parent := pnlScreen;
+    frmEnrollment.Align := alClient;
+    frmEnrollment.Show;
+  end
+  else
+    FreeAndNil(frmEnrollment);
+
+end;
+
+procedure TfrmMain.ButtonGroup1Items2Click(Sender: TObject);
+begin
+  if not Assigned(frmModification) then
+  begin
+    frmModification := TfrmModification.Create(Application);
+    frmModification.Parent := pnlScreen;
+    frmModification.Align := alClient;
+    frmModification.Show;
+  end
+  else
+    FreeAndNil(frmModification);
+
+end;
+
+procedure TfrmMain.ButtonGroup1Items3Click(Sender: TObject);
+begin
+  if not Assigned(frmLookup) then
+  begin
+    frmLookup := TfrmLookup.Create(Application);
+    frmLookup.Parent := pnlScreen;
+    frmLookup.Align := alClient;
+    frmLookup.Show;
+  end
+  else
+    FreeAndNil(frmLookup);
+
+end;
+
+procedure TfrmMain.FormCreate(Sender: TObject);
+begin
+  serverclient := TServerMethods12Client.Create(frmMain.SQLcnGym.DBXConnection);
 end;
 
 procedure TfrmMain.imgSplitViewButtonClick(Sender: TObject);

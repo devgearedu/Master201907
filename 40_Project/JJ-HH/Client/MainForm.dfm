@@ -16,6 +16,7 @@ object frmMain: TfrmMain
   ParentBiDiMode = False
   Scaled = False
   Visible = True
+  OnCreate = FormCreate
   PixelsPerInch = 120
   TextHeight = 16
   object svMenu: TSplitView
@@ -46,12 +47,15 @@ object frmMain: TfrmMain
         end
         item
           Caption = #49688#44053#49888#52397
+          OnClick = ButtonGroup1Items1Click
         end
         item
           Caption = #51221#48372#49688#51221
+          OnClick = ButtonGroup1Items2Click
         end
         item
           Caption = #47785#47197#51312#54924
+          OnClick = ButtonGroup1Items3Click
         end
         item
           Caption = #52636#44208#44288#47532
@@ -69,7 +73,6 @@ object frmMain: TfrmMain
     Height = 716
     Align = alClient
     TabOrder = 1
-    ExplicitWidth = 934
   end
   object pnlTop: TPanel
     Left = 0
@@ -78,7 +81,6 @@ object frmMain: TfrmMain
     Height = 40
     Align = alTop
     TabOrder = 2
-    ExplicitWidth = 1134
     object imgSplitViewButton: TImage
       Left = 1
       Top = 1
@@ -1159,7 +1161,7 @@ object frmMain: TfrmMain
       OnClick = imgSplitViewButtonClick
     end
   end
-  object SQLcnClients: TSQLConnection
+  object SQLcnGym: TSQLConnection
     DriverName = 'DataSnap'
     LoginPrompt = False
     Params.Strings = (
@@ -1172,155 +1174,233 @@ object frmMain: TfrmMain
     Top = 16
     UniqueId = '{33644719-3A0E-4177-880B-75C9B32B1F81}'
   end
-  object cdsClients: TClientDataSet
-    Active = True
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dspClients'
-    RemoteServer = DSpcnClients
-    Left = 888
-    Top = 536
-    object cdsClientsCODE: TIntegerField
-      FieldName = 'CODE'
-      Origin = 'CODE'
-    end
-    object cdsClientsNAME_: TWideStringField
-      FieldName = 'NAME_'
-      Origin = 'NAME_'
-      Size = 128
-    end
-    object cdsClientsBIRTH_DATE: TDateField
-      FieldName = 'BIRTH_DATE'
-      Origin = 'BIRTH_DATE'
-    end
-    object cdsClientsMOBILE: TStringField
-      FieldName = 'MOBILE'
-      Origin = 'MOBILE'
-      Size = 11
-    end
-    object cdsClientsDATE_OF_SIGN_UP: TDateField
-      FieldName = 'DATE_OF_SIGN_UP'
-      Origin = 'DATE_OF_SIGN_UP'
-    end
-    object cdsClientsEMAIL: TStringField
-      FieldName = 'EMAIL'
-      Origin = 'EMAIL'
-      Size = 64
-    end
-    object cdsClientsADDRESS_: TWideStringField
-      FieldName = 'ADDRESS_'
-      Origin = 'ADDRESS_'
-      Size = 1020
-    end
-    object cdsClientsFAVORITE_BRANCH: TWideStringField
-      FieldName = 'FAVORITE_BRANCH'
-      Origin = 'FAVORITE_BRANCH'
-      Size = 128
-    end
-    object cdsClientsVEHICLE_PLATE: TWideStringField
-      FieldName = 'VEHICLE_PLATE'
-      Origin = 'VEHICLE_PLATE'
-      FixedChar = True
-      Size = 28
-    end
-    object cdsClientsPASSWORD_: TStringField
-      FieldName = 'PASSWORD_'
-      Origin = 'PASSWORD_'
-      Size = 32
-    end
-    object cdsClientsDATE_OF_WITHDRAWAL: TDateField
-      FieldName = 'DATE_OF_WITHDRAWAL'
-      Origin = 'DATE_OF_WITHDRAWAL'
-    end
-  end
-  object dspClients: TDataSetProvider
-    DataSet = cdsClients
-    Left = 968
-    Top = 536
-  end
-  object DSpcnClients: TDSProviderConnection
+  object DSpcnGym: TDSProviderConnection
     ServerClassName = 'TServerMethods12'
     Connected = True
-    SQLConnection = SQLcnClients
+    SQLConnection = SQLcnGym
     Left = 920
     Top = 8
-  end
-  object dsClients: TDataSource
-    DataSet = cdsClients
-    Left = 1048
-    Top = 544
-  end
-  object dspQryClients: TDataSetProvider
-    DataSet = cdsQryClients
-    Left = 960
-    Top = 600
   end
   object cdsQryClients: TClientDataSet
     Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'dspQryClients'
-    RemoteServer = DSpcnClients
-    Left = 880
-    Top = 608
+    RemoteServer = DSpcnGym
+    Left = 887
+    Top = 450
     object cdsQryClientsCODE: TIntegerField
+      DisplayLabel = #54924#50896#48264#54840
       FieldName = 'CODE'
       Origin = 'CODE'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
     object cdsQryClientsNAME_: TWideStringField
+      DisplayLabel = #51060#47492
+      DisplayWidth = 10
       FieldName = 'NAME_'
       Origin = 'NAME_'
       Size = 128
     end
     object cdsQryClientsBIRTH_DATE: TDateField
+      DisplayLabel = #49373#45380#50900#51068
       FieldName = 'BIRTH_DATE'
       Origin = 'BIRTH_DATE'
     end
     object cdsQryClientsMOBILE: TStringField
+      DisplayLabel = #51204#54868#48264#54840
       FieldName = 'MOBILE'
       Origin = 'MOBILE'
       Size = 11
     end
     object cdsQryClientsDATE_OF_SIGN_UP: TDateField
+      DisplayLabel = #44032#51077#51068#51088
       FieldName = 'DATE_OF_SIGN_UP'
       Origin = 'DATE_OF_SIGN_UP'
     end
     object cdsQryClientsEMAIL: TStringField
+      DisplayLabel = #51060#47700#51068
+      DisplayWidth = 20
       FieldName = 'EMAIL'
       Origin = 'EMAIL'
       Size = 64
     end
     object cdsQryClientsADDRESS_: TWideStringField
+      DisplayLabel = #51452#49548
+      DisplayWidth = 15
       FieldName = 'ADDRESS_'
       Origin = 'ADDRESS_'
-      Size = 1020
+      Size = 200
     end
     object cdsQryClientsFAVORITE_BRANCH: TWideStringField
+      DisplayLabel = #51452#51060#50857#49884#49444
+      DisplayWidth = 10
       FieldName = 'FAVORITE_BRANCH'
       Origin = 'FAVORITE_BRANCH'
       Size = 128
     end
     object cdsQryClientsVEHICLE_PLATE: TWideStringField
+      DisplayLabel = #52264#47049#48264#54840
+      DisplayWidth = 10
       FieldName = 'VEHICLE_PLATE'
       Origin = 'VEHICLE_PLATE'
       FixedChar = True
       Size = 28
     end
     object cdsQryClientsPASSWORD_: TStringField
+      DisplayLabel = #48708#48128#48264#54840
+      DisplayWidth = 15
       FieldName = 'PASSWORD_'
       Origin = 'PASSWORD_'
       Size = 32
     end
     object cdsQryClientsDATE_OF_WITHDRAWAL: TDateField
+      DisplayLabel = #53448#53748#51068#51088
       FieldName = 'DATE_OF_WITHDRAWAL'
       Origin = 'DATE_OF_WITHDRAWAL'
     end
   end
+  object dspQryClients: TDataSetProvider
+    DataSet = cdsQryClients
+    Left = 971
+    Top = 458
+  end
   object dsQryClients: TDataSource
     DataSet = cdsQryClients
-    Left = 1048
-    Top = 592
+    Left = 1052
+    Top = 456
+  end
+  object cdsQryCoaches: TClientDataSet
+    Active = True
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'dspQryCoaches'
+    RemoteServer = DSpcnGym
+    Left = 488
+    Top = 560
+    object cdsQryCoachesCODE: TIntegerField
+      DisplayLabel = #44053#49324#53076#46300
+      FieldName = 'CODE'
+      Origin = 'CODE'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object cdsQryCoachesNAME_: TWideStringField
+      DisplayLabel = #44053#49324#51060#47492
+      DisplayWidth = 10
+      FieldName = 'NAME_'
+      Origin = 'NAME_'
+      Size = 128
+    end
+    object cdsQryCoachesSPORTS: TWideStringField
+      DisplayLabel = #51333#47785
+      DisplayWidth = 15
+      FieldName = 'SPORTS'
+      Origin = 'SPORTS'
+      Size = 24
+    end
+    object cdsQryCoachesBIRTH_DATE: TDateField
+      DisplayLabel = #49373#45380#50900#51068
+      DisplayWidth = 10
+      FieldName = 'BIRTH_DATE'
+      Origin = 'BIRTH_DATE'
+    end
+    object cdsQryCoachesMOBILE: TStringField
+      DisplayLabel = #51204#54868#48264#54840
+      FieldName = 'MOBILE'
+      Origin = 'MOBILE'
+      Size = 11
+    end
+    object cdsQryCoachesDATE_OF_ENTER: TDateField
+      DisplayLabel = #51077#49324#51068#51088
+      FieldName = 'DATE_OF_ENTER'
+      Origin = 'DATE_OF_ENTER'
+    end
+    object cdsQryCoachesEMAIL: TStringField
+      DisplayLabel = #51060#47700#51068
+      DisplayWidth = 20
+      FieldName = 'EMAIL'
+      Origin = 'EMAIL'
+      Size = 64
+    end
+    object cdsQryCoachesADDRESS_: TWideStringField
+      DisplayLabel = #51452#49548
+      FieldName = 'ADDRESS_'
+      Origin = 'ADDRESS_'
+      Size = 200
+    end
+    object cdsQryCoachesVEHICLE_PLATE: TWideStringField
+      DisplayLabel = #52264#47049#48264#54840
+      DisplayWidth = 20
+      FieldName = 'VEHICLE_PLATE'
+      Origin = 'VEHICLE_PLATE'
+      FixedChar = True
+      Size = 28
+    end
+    object cdsQryCoachesPASSWORD_: TStringField
+      DisplayLabel = #48708#48128#48264#54840
+      DisplayWidth = 20
+      FieldName = 'PASSWORD_'
+      Origin = 'PASSWORD_'
+      Size = 32
+    end
+    object cdsQryCoachesPICTURE: TBlobField
+      DisplayLabel = #49324#51652
+      FieldName = 'PICTURE'
+      Origin = 'PICTURE'
+    end
+    object cdsQryCoachesDATE_OF_RESIGN: TDateField
+      DisplayLabel = #53748#49324#51068#51088
+      FieldName = 'DATE_OF_RESIGN'
+      Origin = 'DATE_OF_RESIGN'
+    end
+  end
+  object dspQryCoaches: TDataSetProvider
+    DataSet = cdsQryCoaches
+    Left = 600
+    Top = 560
+  end
+  object dsQryCoaches: TDataSource
+    DataSet = cdsQryCoaches
+    Left = 696
+    Top = 560
+  end
+  object dsQryCourses: TDataSource
+    DataSet = cdsQryCourses
+    Left = 736
+    Top = 360
+  end
+  object cdsQryCourses: TClientDataSet
+    Active = True
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'dspQryCourses'
+    RemoteServer = DSpcnGym
+    Left = 544
+    Top = 368
+  end
+  object dspQryCourses: TDataSetProvider
+    DataSet = cdsQryCourses
+    Left = 648
+    Top = 360
+  end
+  object cdsQryEnrollments: TClientDataSet
+    Active = True
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'dspQryEnrollments'
+    RemoteServer = DSpcnGym
+    Left = 728
+    Top = 240
+  end
+  object dspQryEnrollments: TDataSetProvider
+    DataSet = cdsQryEnrollments
+    Left = 824
+    Top = 256
+  end
+  object dsQryEnrollments: TDataSource
+    DataSet = cdsQryEnrollments
+    Left = 928
+    Top = 264
   end
 end
