@@ -20,6 +20,5 @@ begin
   Application.MainFormOnTaskbar := True;
   TStyleManager.TrySetStyle('Amethyst Kamri');
   Application.CreateForm(TfrmMain, frmMain);
-  Application.CreateForm(TfrmAttendance, frmAttendance);
   Application.Run;
 end.

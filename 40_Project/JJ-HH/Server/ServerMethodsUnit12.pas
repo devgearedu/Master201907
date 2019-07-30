@@ -106,6 +106,7 @@ type
     fdtblAttendancesCOACH_CODE: TIntegerField;
     fdtblAttendancesDATE_OF_COURSE: TDateField;
     fdtblAttendancesIS_PRESENT: TStringField;
+    procedure DSServerModuleCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -123,13 +124,17 @@ type
     function Enroll(AClient_Code, ACourse_Code : string) : Boolean;
     function DropEnroll(AClient_Code, ACourse_Code : string) : Boolean;
     function ReEnroll(AClient_Code, ACourse_Code : string) : Boolean;
-    function Attend(AClient_Code, ACourse_Code : string) : Boolean;
+    function AttendByClient(AClient_Code, ACourse_Code, ADate_of_course : string) : Boolean;
+    function InsertNotPresent(AClient_Code, ACourse_Code, ADate_of_course : string) : Boolean;
 
     procedure SelectByFieldAndValueClient(AFieldName, AValue : string);
     procedure SelectByFieldAndValueCoach(AFieldName, AValue : string);
     procedure SelectByFieldAndValueCourse(AFieldName, AValue : string);
     procedure SelectByFieldAndValueEnrollment(AFieldName, AValue : string);
     procedure SelectFromEnrollmentsAndCourses(AClient_code : string);
+    procedure SelectCourseToAttend(AYearAndMonth, ASports, AWeekdays: string);
+    procedure SelectAttendanceByCourseAndDate(ADate_of_course, ACourse_code: string);
+    procedure SelectAttendanceByClientAndCourse(AClient_Code, ACourse_Code, AYearAndMonth: string);
   end;
 
 implementation
@@ -138,29 +143,43 @@ implementation
 {$R *.dfm}
 
 
-uses System.StrUtils, Vcl.Dialogs;
+uses
+  System.StrUtils, Vcl.Dialogs, System.Generics.Collections;
+
+var
+  DaysDict : TDictionary<Integer, string>;
 
 
-function TServerMethods12.Attend(AClient_Code,
-  ACourse_Code: string): Boolean;
+// Param에 Flag 추가
+function TServerMethods12.AttendByClient(AClient_Code,
+  ACourse_Code, ADate_of_course : string): Boolean;
 begin
+  fdtblAttendances.Filtered := False;
+  fdtblAttendances.Filter := 'client_code = ' + AClient_Code +
+                             ' AND course_code = ' + ACourse_Code;
 
+  fdtblAttendances.Filtered := True;
 
-  fdtblAttendances.Insert;
+  while not fdtblAttendances.Eof do
+  begin
+    if DateToStr(fdtblAttendancesDATE_OF_COURSE.Value)=ADate_of_course then
+    begin
+      fdtblAttendances.Edit;
 
-  fdtblAttendancesCLIENT_CODE.Value := AClient_Code;
-  fdtblAttendancesCOURSE_CODE.Value := ACourse_Code;
-  fdtblCourses.Locate('code', ACourse_Code,[]);
-  fdtblAttendancesCOACH_CODE.Value := fdtblCoursesCOACH_CODE.Value;
-  fdtblAttendancesDATE_OF_COURSE := Today;
-  fdtblAttendancesIS_PRESENT := 'Y';
+      fdtblAttendancesIS_PRESENT.Value := 'Y';
 
-  fdtblAttendances.Post;
-  fdtblAttendances.ApplyUpdates(-1);
-  fdtblAttendances.CommitUpdates;
-  fdcnGYM.Commit;
+      fdtblAttendances.Post;
+      fdtblAttendances.ApplyUpdates(-1);
+      fdtblAttendances.CommitUpdates;
+      fdcnGYM.Commit;
+    end;
+    fdtblAttendances.Next;
+  end;
 
   fdtblAttendances.Refresh;
+  fdtblAttendances.Filtered := False;
+
+  Result := True;
 end;
 
 function TServerMethods12.DropEnroll(AClient_Code,
@@ -178,6 +197,18 @@ begin
   Result := True;
 end;
 
+procedure TServerMethods12.DSServerModuleCreate(Sender: TObject);
+begin
+  DaysDict := TDictionary<Integer, string>.Create(0);
+  DaysDict.AddOrSetValue(DaySunday, '일');
+  DaysDict.AddOrSetValue(DayMonday, '월');
+  DaysDict.AddOrSetValue(DayTuesday, '화');
+  DaysDict.AddOrSetValue(DayWednesday, '수');
+  DaysDict.AddOrSetValue(DayThursday, '목');
+  DaysDict.AddOrSetValue(DayFriday, '금');
+  DaysDict.AddOrSetValue(DaySaturday, '토');
+end;
+
 function TServerMethods12.EchoString(Value: string): string;
 begin
   Result := Value;
@@ -190,15 +221,24 @@ begin
 
   fdtblEnrollments.FieldByName('client_code').AsInteger := StrToInt(AClient_Code);
   fdtblEnrollments.FieldByName('course_code').AsInteger := StrToInt(ACourse_Code);
+
   fdtblCourses.Locate('code', ACourse_Code,[]);
   fdtblEnrollments.FieldByName('coach_code').AsInteger := fdtblCoursesCOACH_CODE.Value;
-  fdtblEnrollments.FieldByName('time_Of_enrollment').AsDateTime := Now;
 
+  fdtblEnrollments.FieldByName('time_Of_enrollment').AsDateTime := Now;
   fdtblEnrollments.Post;
   fdtblEnrollments.ApplyUpdates(-1);
   fdtblEnrollments.CommitUpdates;
   fdcnGYM.Commit;
   fdtblEnrollments.Refresh;
+
+  fdtblCourses.Edit;
+  fdtblCoursesCURRENT_ENROLL.Value := fdtblCoursesCURRENT_ENROLL.Value + 1;
+  fdtblCourses.Post;
+  fdtblCourses.ApplyUpdates(-1);
+  fdtblCourses.CommitUpdates;
+  fdcnGYM.Commit;
+  fdtblCourses.Refresh;
 
   Result := True;
 end;
@@ -301,6 +341,29 @@ begin
   Result := fdtblCoursesCODE.Value;
 end;
 
+function TServerMethods12.InsertNotPresent(AClient_Code, ACourse_Code, ADate_of_course : string) : Boolean;
+begin
+
+ fdtblAttendances.Insert;
+
+ fdtblAttendancesCLIENT_CODE.Value := StrToInt(AClient_Code);
+ fdtblAttendancesCOURSE_CODE.Value := StrToInt(ACourse_Code);
+
+ fdtblCourses.Locate('code', StrToInt(ACourse_Code),[]);
+ fdtblAttendancesCOACH_CODE.Value := fdtblCoursesCOACH_CODE.Value;
+
+ fdtblAttendancesDATE_OF_COURSE.Value := StrToDateTime(ADate_of_course);
+ fdtblAttendancesIS_PRESENT.Value := 'N';
+
+ fdtblAttendances.Post;
+ fdtblAttendances.ApplyUpdates(-1);
+ fdtblAttendances.CommitUpdates;
+ fdcnGYM.Commit;
+ fdtblAttendances.Refresh;
+
+ Result := True;
+end;
+
 function TServerMethods12.ReEnroll(AClient_Code,
   ACourse_Code: string): Boolean;
 var
@@ -328,7 +391,6 @@ begin
     fdqryEnrollments.Next;
   end;
 
-  ShowMessage(IntToStr(fdqryEnrollments.Fields[0].Value));
   if fdtblClientsCODE.Value = 0 then
     exit(False);
 
@@ -340,6 +402,36 @@ end;
 function TServerMethods12.ReverseString(Value: string): string;
 begin
   Result := System.StrUtils.ReverseString(Value);
+end;
+
+procedure TServerMethods12.SelectAttendanceByClientAndCourse(AClient_Code, ACourse_Code,
+  AYearAndMonth: string);
+var
+  OutStr : string;
+begin
+  fdqryAttendances.Close;
+  fdqryAttendances.Open('SELECT Attendances.Date_of_course, '+
+                          'Courses.Name_, Courses.begin_time, Courses.weekdays, '+
+                          'Courses.code, Attendances.is_present ' +
+                        'FROM Attendances, courses ' +
+                        'WHERE Attendances.client_code = ' + QuotedStr(AClient_Code) +
+                        ' AND Attendances.course_code = ' + QuotedStr(ACourse_Code) +
+                        ' AND courses.year_and_month = ' + QuotedStr(AYearAndMonth) +
+                        ' AND Attendances.course_code = courses.code'
+                        );
+end;
+
+procedure TServerMethods12.SelectAttendanceByCourseAndDate(ADate_of_course,
+  ACourse_code: string);
+begin
+  fdqryAttendances.Close;
+  fdqryAttendances.Open( 'SELECT Attendances.client_code, Clients.name_, ' +
+                          'courses.Name_, courses.year_and_month, courses.weekdays, courses.begin_time ' +
+                        'FROM Attendances, courses, clients ' +
+                        'WHERE Attendances.Date_of_course = ' + QuotedStr(ADate_of_course) +
+                        ' AND courses.code = ' + QuotedStr(ACourse_code) +
+                        ' AND Attendances.client_code = clients.code' +
+                        ' AND Attendances.course_code = courses.code');
 end;
 
 procedure TServerMethods12.SelectByFieldAndValueClient(AFieldName, AValue: string);
@@ -371,6 +463,25 @@ begin
   fdqryEnrollments.Close;
   fdqryEnrollments.Open('SELECT * FROM enrollments WHERE ' +
                     AFieldName + ' = ' + '''' + AValue + '''');
+end;
+
+procedure TServerMethods12.SelectCourseToAttend(AYearAndMonth, ASports, AWeekdays: string);
+begin
+//  fdqryEnrollments.Close;
+//  fdqryEnrollments.Open( 'SELECT enrollments.client_code, enrollments.course_code, ' +
+//                            'courses.Name_, courses.weekdays, courses.year_and_month, courses.begin_time ' +
+//                        'FROM enrollments, courses ' +
+//                        'WHERE courses.year_and_month = ' + QuotedStr(AYearAndMonth) +
+//                        ' AND courses.name_ = ' + QuotedStr(ASports) +
+//                        ' AND courses.weekdays = ' + QuotedStr(Aweekdays) +
+//                        ' AND enrollments.course_code = courses.code');
+
+  fdqryCourses.Close;
+  fdqryCourses.Open( 'SELECT * FROM courses ' +
+                    'WHERE year_and_month = ' + QuotedStr(AYearAndMonth) +
+                    ' AND name_ = ' + QuotedStr(ASports) +
+                    ' AND weekdays = ' + QuotedStr(Aweekdays));
+
 end;
 
 procedure TServerMethods12.SelectFromEnrollmentsAndCourses(AClient_code : string);

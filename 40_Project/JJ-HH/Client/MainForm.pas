@@ -60,12 +60,16 @@ type
     cdsQryEnrollments: TClientDataSet;
     dspQryEnrollments: TDataSetProvider;
     dsQryEnrollments: TDataSource;
+    cdsQryAttendances: TClientDataSet;
+    dspQryAttendances: TDataSetProvider;
+    dsQryAttendances: TDataSource;
     procedure imgSplitViewButtonClick(Sender: TObject);
     procedure ButtonGroup1Items0Click(Sender: TObject);
     procedure ButtonGroup1Items2Click(Sender: TObject);
     procedure ButtonGroup1Items3Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure ButtonGroup1Items1Click(Sender: TObject);
+    procedure ButtonGroup1Items4Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -78,7 +82,8 @@ var
 
 implementation
 uses
-  RegistrationForm, ModificationForm, LookupForm, EnrollmentForm;
+  RegistrationForm, ModificationForm, LookupForm, EnrollmentForm,
+  AttendanceForm;
 
 
 {$R *.dfm}
@@ -137,6 +142,19 @@ begin
   else
     FreeAndNil(frmLookup);
 
+end;
+
+procedure TfrmMain.ButtonGroup1Items4Click(Sender: TObject);
+begin
+  if not Assigned(frmAttendance) then
+  begin
+    frmAttendance := TfrmAttendance.Create(Application);
+    frmAttendance.Parent := pnlScreen;
+    frmAttendance.Align := alClient;
+    frmAttendance.Show;
+  end
+  else
+    FreeAndNil(frmAttendance);
 end;
 
 procedure TfrmMain.FormCreate(Sender: TObject);

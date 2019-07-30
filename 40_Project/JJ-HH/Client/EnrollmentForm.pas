@@ -148,8 +148,6 @@ begin
   end;
 
   cmbbxYAndMNew.Text := '선택해주세요';
-  edtYAndMCurrent.Text := FormatDateTime('yyyymm',Today);
-
 end;
 
 procedure TfrmEnrollment.sbClientInvokeSearch(Sender: TObject);
@@ -187,9 +185,9 @@ begin
 //  btnModifycoach.Enabled := True;
   edtClientName_.Text := frmMain.cdsQryClientsName_.Value;
   edtClientCode.Text := '(' + IntToStr(frmMain.cdsQryClientsCODE.Value) + ')';
+  edtYAndMCurrent.Text := FormatDateTime('yyyymm',Today);
 
   frmMain.cdsQryEnrollments.Active := False;
-//  serverclient.SelectByFieldAndValueEnrollment('client_code', IntToStr(frmMain.cdsQryClientsCODE.Value));
 
   serverclient.SelectFromEnrollmentsAndCourses(IntToStr(frmMain.cdsQryClientsCODE.Value));
   frmMain.cdsQryEnrollments.Active := True;
@@ -199,7 +197,7 @@ begin
   frmMain.cdsQryEnrollments.Fields[2].DisplayLabel := '강좌명';
   frmMain.cdsQryEnrollments.Fields[3].DisplayLabel := '요일';
   frmMain.cdsQryEnrollments.Fields[4].DisplayLabel := '기간연월';
-  frmMain.cdsQryEnrollments.Fields[4].DisplayLabel := '시작시간';
+  frmMain.cdsQryEnrollments.Fields[5].DisplayLabel := '시작시간';
 
   if frmMain.cdsQryEnrollments.RecordCount > 0 then
     dbgrdCurrentEnroll.DataSource := frmMain.dsQryEnrollments;

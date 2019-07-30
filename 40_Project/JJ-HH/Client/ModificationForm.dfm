@@ -14,7 +14,7 @@ object frmModification: TfrmModification
   OldCreateOrder = False
   PixelsPerInch = 120
   TextHeight = 16
-  object pcForRegister: TPageControl
+  object pcForModify: TPageControl
     Left = 0
     Top = 0
     Width = 850
@@ -522,6 +522,10 @@ object frmModification: TfrmModification
       ImageIndex = 1
       OnHide = tshtCoachHide
       OnShow = tshtCoachShow
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object lblMobileCoach: TLabel
         Left = 60
         Top = 330
@@ -1042,6 +1046,8 @@ object frmModification: TfrmModification
     object tshtCourse: TTabSheet
       Caption = #44053#51340
       ImageIndex = 2
+      ExplicitWidth = 312
+      ExplicitHeight = 209
       object DBComboBox1: TDBComboBox
         Left = 48
         Top = 72

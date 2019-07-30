@@ -21,8 +21,6 @@ object frmEnrollment: TfrmEnrollment
     Height = 289
     Align = alTop
     TabOrder = 0
-    ExplicitLeft = 56
-    ExplicitWidth = 914
     object lblText1: TLabel
       Left = 300
       Top = 65
@@ -186,9 +184,6 @@ object frmEnrollment: TfrmEnrollment
     Height = 332
     Align = alClient
     TabOrder = 1
-    ExplicitTop = 294
-    ExplicitWidth = 914
-    ExplicitHeight = 327
     object lblNewEnroll: TLabel
       Left = 15
       Top = 6

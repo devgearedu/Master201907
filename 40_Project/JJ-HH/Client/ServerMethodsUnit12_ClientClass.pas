@@ -1,6 +1,6 @@
 //
 // Created by the DataSnap proxy generator.
-// 2019-07-29 오후 2:14:20
+// 2019-07-30 오후 4:23:06
 //
 
 unit ServerMethodsUnit12_ClientClass;
@@ -12,6 +12,7 @@ uses System.JSON, Data.DBXCommon, Data.DBXClient, Data.DBXDataSnap, Data.DBXJSON
 type
   TServerMethods12Client = class(TDSAdminClient)
   private
+    FDSServerModuleCreateCommand: TDBXCommand;
     FEchoStringCommand: TDBXCommand;
     FReverseStringCommand: TDBXCommand;
     FGetCodeCommand: TDBXCommand;
@@ -21,15 +22,21 @@ type
     FEnrollCommand: TDBXCommand;
     FDropEnrollCommand: TDBXCommand;
     FReEnrollCommand: TDBXCommand;
+    FAttendByClientCommand: TDBXCommand;
+    FInsertNotPresentCommand: TDBXCommand;
     FSelectByFieldAndValueClientCommand: TDBXCommand;
     FSelectByFieldAndValueCoachCommand: TDBXCommand;
     FSelectByFieldAndValueCourseCommand: TDBXCommand;
     FSelectByFieldAndValueEnrollmentCommand: TDBXCommand;
     FSelectFromEnrollmentsAndCoursesCommand: TDBXCommand;
+    FSelectCourseToAttendCommand: TDBXCommand;
+    FSelectAttendanceByCourseAndDateCommand: TDBXCommand;
+    FSelectAttendanceByClientAndCourseCommand: TDBXCommand;
   public
     constructor Create(ADBXConnection: TDBXConnection); overload;
     constructor Create(ADBXConnection: TDBXConnection; AInstanceOwner: Boolean); overload;
     destructor Destroy; override;
+    procedure DSServerModuleCreate(Sender: TObject);
     function EchoString(Value: string): string;
     function ReverseString(Value: string): string;
     function GetCode(AName: string; ADate_Of_Birth: string): Integer;
@@ -39,14 +46,44 @@ type
     function Enroll(AClient_Code: string; ACourse_Code: string): Boolean;
     function DropEnroll(AClient_Code: string; ACourse_Code: string): Boolean;
     function ReEnroll(AClient_Code: string; ACourse_Code: string): Boolean;
+    function AttendByClient(AClient_Code: string; ACourse_Code: string; ADate_of_course: string): Boolean;
+    function InsertNotPresent(AClient_Code: string; ACourse_Code: string; ADate_of_course: string): Boolean;
     procedure SelectByFieldAndValueClient(AFieldName: string; AValue: string);
     procedure SelectByFieldAndValueCoach(AFieldName: string; AValue: string);
     procedure SelectByFieldAndValueCourse(AFieldName: string; AValue: string);
     procedure SelectByFieldAndValueEnrollment(AFieldName: string; AValue: string);
     procedure SelectFromEnrollmentsAndCourses(AClient_code: string);
+    procedure SelectCourseToAttend(AYearAndMonth: string; ASports: string; AWeekdays: string);
+    procedure SelectAttendanceByCourseAndDate(ADate_of_course: string; ACourse_code: string);
+    procedure SelectAttendanceByClientAndCourse(AClient_Code: string; ACourse_Code: string; AYearAndMonth: string);
   end;
 
 implementation
+
+procedure TServerMethods12Client.DSServerModuleCreate(Sender: TObject);
+begin
+  if FDSServerModuleCreateCommand = nil then
+  begin
+    FDSServerModuleCreateCommand := FDBXConnection.CreateCommand;
+    FDSServerModuleCreateCommand.CommandType := TDBXCommandTypes.DSServerMethod;
+    FDSServerModuleCreateCommand.Text := 'TServerMethods12.DSServerModuleCreate';
+    FDSServerModuleCreateCommand.Prepare;
+  end;
+  if not Assigned(Sender) then
+    FDSServerModuleCreateCommand.Parameters[0].Value.SetNull
+  else
+  begin
+    FMarshal := TDBXClientCommand(FDSServerModuleCreateCommand.Parameters[0].ConnectionHandler).GetJSONMarshaler;
+    try
+      FDSServerModuleCreateCommand.Parameters[0].Value.SetJSONValue(FMarshal.Marshal(Sender), True);
+      if FInstanceOwner then
+        Sender.Free
+    finally
+      FreeAndNil(FMarshal)
+    end
+  end;
+  FDSServerModuleCreateCommand.ExecuteUpdate;
+end;
 
 function TServerMethods12Client.EchoString(Value: string): string;
 begin
@@ -197,6 +234,38 @@ begin
   Result := FReEnrollCommand.Parameters[2].Value.GetBoolean;
 end;
 
+function TServerMethods12Client.AttendByClient(AClient_Code: string; ACourse_Code: string; ADate_of_course: string): Boolean;
+begin
+  if FAttendByClientCommand = nil then
+  begin
+    FAttendByClientCommand := FDBXConnection.CreateCommand;
+    FAttendByClientCommand.CommandType := TDBXCommandTypes.DSServerMethod;
+    FAttendByClientCommand.Text := 'TServerMethods12.AttendByClient';
+    FAttendByClientCommand.Prepare;
+  end;
+  FAttendByClientCommand.Parameters[0].Value.SetWideString(AClient_Code);
+  FAttendByClientCommand.Parameters[1].Value.SetWideString(ACourse_Code);
+  FAttendByClientCommand.Parameters[2].Value.SetWideString(ADate_of_course);
+  FAttendByClientCommand.ExecuteUpdate;
+  Result := FAttendByClientCommand.Parameters[3].Value.GetBoolean;
+end;
+
+function TServerMethods12Client.InsertNotPresent(AClient_Code: string; ACourse_Code: string; ADate_of_course: string): Boolean;
+begin
+  if FInsertNotPresentCommand = nil then
+  begin
+    FInsertNotPresentCommand := FDBXConnection.CreateCommand;
+    FInsertNotPresentCommand.CommandType := TDBXCommandTypes.DSServerMethod;
+    FInsertNotPresentCommand.Text := 'TServerMethods12.InsertNotPresent';
+    FInsertNotPresentCommand.Prepare;
+  end;
+  FInsertNotPresentCommand.Parameters[0].Value.SetWideString(AClient_Code);
+  FInsertNotPresentCommand.Parameters[1].Value.SetWideString(ACourse_Code);
+  FInsertNotPresentCommand.Parameters[2].Value.SetWideString(ADate_of_course);
+  FInsertNotPresentCommand.ExecuteUpdate;
+  Result := FInsertNotPresentCommand.Parameters[3].Value.GetBoolean;
+end;
+
 procedure TServerMethods12Client.SelectByFieldAndValueClient(AFieldName: string; AValue: string);
 begin
   if FSelectByFieldAndValueClientCommand = nil then
@@ -266,6 +335,50 @@ begin
   FSelectFromEnrollmentsAndCoursesCommand.ExecuteUpdate;
 end;
 
+procedure TServerMethods12Client.SelectCourseToAttend(AYearAndMonth: string; ASports: string; AWeekdays: string);
+begin
+  if FSelectCourseToAttendCommand = nil then
+  begin
+    FSelectCourseToAttendCommand := FDBXConnection.CreateCommand;
+    FSelectCourseToAttendCommand.CommandType := TDBXCommandTypes.DSServerMethod;
+    FSelectCourseToAttendCommand.Text := 'TServerMethods12.SelectCourseToAttend';
+    FSelectCourseToAttendCommand.Prepare;
+  end;
+  FSelectCourseToAttendCommand.Parameters[0].Value.SetWideString(AYearAndMonth);
+  FSelectCourseToAttendCommand.Parameters[1].Value.SetWideString(ASports);
+  FSelectCourseToAttendCommand.Parameters[2].Value.SetWideString(AWeekdays);
+  FSelectCourseToAttendCommand.ExecuteUpdate;
+end;
+
+procedure TServerMethods12Client.SelectAttendanceByCourseAndDate(ADate_of_course: string; ACourse_code: string);
+begin
+  if FSelectAttendanceByCourseAndDateCommand = nil then
+  begin
+    FSelectAttendanceByCourseAndDateCommand := FDBXConnection.CreateCommand;
+    FSelectAttendanceByCourseAndDateCommand.CommandType := TDBXCommandTypes.DSServerMethod;
+    FSelectAttendanceByCourseAndDateCommand.Text := 'TServerMethods12.SelectAttendanceByCourseAndDate';
+    FSelectAttendanceByCourseAndDateCommand.Prepare;
+  end;
+  FSelectAttendanceByCourseAndDateCommand.Parameters[0].Value.SetWideString(ADate_of_course);
+  FSelectAttendanceByCourseAndDateCommand.Parameters[1].Value.SetWideString(ACourse_code);
+  FSelectAttendanceByCourseAndDateCommand.ExecuteUpdate;
+end;
+
+procedure TServerMethods12Client.SelectAttendanceByClientAndCourse(AClient_Code: string; ACourse_Code: string; AYearAndMonth: string);
+begin
+  if FSelectAttendanceByClientAndCourseCommand = nil then
+  begin
+    FSelectAttendanceByClientAndCourseCommand := FDBXConnection.CreateCommand;
+    FSelectAttendanceByClientAndCourseCommand.CommandType := TDBXCommandTypes.DSServerMethod;
+    FSelectAttendanceByClientAndCourseCommand.Text := 'TServerMethods12.SelectAttendanceByClientAndCourse';
+    FSelectAttendanceByClientAndCourseCommand.Prepare;
+  end;
+  FSelectAttendanceByClientAndCourseCommand.Parameters[0].Value.SetWideString(AClient_Code);
+  FSelectAttendanceByClientAndCourseCommand.Parameters[1].Value.SetWideString(ACourse_Code);
+  FSelectAttendanceByClientAndCourseCommand.Parameters[2].Value.SetWideString(AYearAndMonth);
+  FSelectAttendanceByClientAndCourseCommand.ExecuteUpdate;
+end;
+
 constructor TServerMethods12Client.Create(ADBXConnection: TDBXConnection);
 begin
   inherited Create(ADBXConnection);
@@ -278,6 +391,7 @@ end;
 
 destructor TServerMethods12Client.Destroy;
 begin
+  FDSServerModuleCreateCommand.DisposeOf;
   FEchoStringCommand.DisposeOf;
   FReverseStringCommand.DisposeOf;
   FGetCodeCommand.DisposeOf;
@@ -287,11 +401,16 @@ begin
   FEnrollCommand.DisposeOf;
   FDropEnrollCommand.DisposeOf;
   FReEnrollCommand.DisposeOf;
+  FAttendByClientCommand.DisposeOf;
+  FInsertNotPresentCommand.DisposeOf;
   FSelectByFieldAndValueClientCommand.DisposeOf;
   FSelectByFieldAndValueCoachCommand.DisposeOf;
   FSelectByFieldAndValueCourseCommand.DisposeOf;
   FSelectByFieldAndValueEnrollmentCommand.DisposeOf;
   FSelectFromEnrollmentsAndCoursesCommand.DisposeOf;
+  FSelectCourseToAttendCommand.DisposeOf;
+  FSelectAttendanceByCourseAndDateCommand.DisposeOf;
+  FSelectAttendanceByClientAndCourseCommand.DisposeOf;
   inherited;
 end;
 

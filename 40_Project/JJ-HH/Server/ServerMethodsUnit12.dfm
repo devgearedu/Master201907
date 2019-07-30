@@ -1,5 +1,6 @@
 object ServerMethods12: TServerMethods12
   OldCreateOrder = False
+  OnCreate = DSServerModuleCreate
   Height = 534
   Width = 847
   object fdcnGYM: TFDConnection

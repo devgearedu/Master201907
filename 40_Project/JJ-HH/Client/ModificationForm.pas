@@ -11,7 +11,7 @@ uses
 
 type
   TfrmModification = class(TForm)
-    pcForRegister: TPageControl;
+    pcForModify: TPageControl;
     tshtClient: TTabSheet;
     lblName_Client: TLabel;
     lblBirth_DateClient: TLabel;

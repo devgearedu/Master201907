@@ -59,6 +59,7 @@ object frmMain: TfrmMain
         end
         item
           Caption = #52636#44208#44288#47532
+          OnClick = ButtonGroup1Items4Click
         end
         item
           Caption = #46972#52964#47352#44288#47532
@@ -1368,7 +1369,7 @@ object frmMain: TfrmMain
   object dsQryCourses: TDataSource
     DataSet = cdsQryCourses
     Left = 736
-    Top = 360
+    Top = 392
   end
   object cdsQryCourses: TClientDataSet
     Active = True
@@ -1376,13 +1377,13 @@ object frmMain: TfrmMain
     Params = <>
     ProviderName = 'dspQryCourses'
     RemoteServer = DSpcnGym
-    Left = 544
-    Top = 368
+    Left = 520
+    Top = 392
   end
   object dspQryCourses: TDataSetProvider
     DataSet = cdsQryCourses
-    Left = 648
-    Top = 360
+    Left = 632
+    Top = 384
   end
   object cdsQryEnrollments: TClientDataSet
     Active = True
@@ -1402,5 +1403,24 @@ object frmMain: TfrmMain
     DataSet = cdsQryEnrollments
     Left = 928
     Top = 264
+  end
+  object cdsQryAttendances: TClientDataSet
+    Active = True
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'dspQryAttendances'
+    RemoteServer = DSpcnGym
+    Left = 296
+    Top = 232
+  end
+  object dspQryAttendances: TDataSetProvider
+    DataSet = cdsQryAttendances
+    Left = 384
+    Top = 248
+  end
+  object dsQryAttendances: TDataSource
+    DataSet = cdsQryAttendances
+    Left = 464
+    Top = 224
   end
 end
