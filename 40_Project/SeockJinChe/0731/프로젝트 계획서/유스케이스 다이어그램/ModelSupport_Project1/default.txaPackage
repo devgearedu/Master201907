@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <node uin="ysb6ez2vm6t_n">
+    <property name="$metaclass" value="Actor20" />
+    <property name="$name" value="직원" />
+    <property name="mod__extends" value="서류 등록" />
+    <property name="mod__extends" value="예약 관리" />
+    <property name="mod__extends" value="대기자(예약) 삭제" />
+    <property name="mod__extends" value="대기자(예약) 추가" />
+    <property name="mod__extends" value="환자이름 검색" />
+    <property name="mod__extends" value="환자 추가" />
+    <property name="mod__extends" value="환자 삭제" />
+    <property name="mod__extends" value="문자 내용 변경" />
+    <property name="mod__extends" value="문자 고객 선택" />
+    <property name="mod__extends" value="문자 발송" />
+    <property name="mod__extends" value="서류 편집" />
+    <property name="mod__extends" value="서류 삭제" />
+    <property name="mod__extends" value="대기자(예약) 순서변경" />
+    <property name="mod__extends" value="진료내역 검색" />
+    <link uin="7xkaiqsw0f8e5n5rk_l">
+      <property name="$metaclass" value="Generalization20" />
+      <property name="$name" value="Generalization1" />
+      <property name="mod__cachedBaseName" value="서류 등록" />
+      <participant referencedUin="design:node:::ysb6ez2vm6t_n" role="Client" />
+      <participant referencedUin="design:node:::1jwi716nf06a5upfo_n" role="Supplier" />
+    </link>
+    <link uin="wyo562whukf_l">
+      <property name="$metaclass" value="Generalization20" />
+      <property name="$name" value="Generalization4" />
+      <property name="mod__cachedBaseName" value="대기자(예약) 삭제" />
+      <participant referencedUin="design:node:::ysb6ez2vm6t_n" role="Client" />
+      <participant referencedUin="design:node:::0c8eryjj8tg_n" role="Supplier" />
+    </link>
+    <link uin="0l685ip65cj_l">
+      <property name="$metaclass" value="Generalization20" />
+      <property name="$name" value="Generalization5" />
+      <property name="mod__cachedBaseName" value="대기자(예약) 추가" />
+      <participant referencedUin="design:node:::ysb6ez2vm6t_n" role="Client" />
+      <participant referencedUin="design:node:::olxx7wpv2gt_n" role="Supplier" />
+    </link>
+    <link uin="agcm4mhwdtg_l">
+      <property name="$metaclass" value="Generalization20" />
+      <property name="$name" value="Generalization3" />
+      <property name="mod__cachedBaseName" value="환자이름 검색" />
+      <participant referencedUin="design:node:::ysb6ez2vm6t_n" role="Client" />
+      <participant referencedUin="design:node:::vfks2kljfcl_n" role="Supplier" />
+    </link>
+    <link uin="5utz7th52mo_l">
+      <property name="$metaclass" value="Generalization20" />
+      <property name="$name" value="Generalization6" />
+      <property name="mod__cachedBaseName" value="환자 추가" />
+      <participant referencedUin="design:node:::ysb6ez2vm6t_n" role="Client" />
+      <participant referencedUin="design:node:::a1y39fpfsok_n" role="Supplier" />
+    </link>
+    <link uin="vlugyhoa31s_l">
+      <property name="$metaclass" value="Generalization20" />
+      <property name="$name" value="Generalization7" />
+      <property name="mod__cachedBaseName" value="환자 삭제" />
+      <participant referencedUin="design:node:::ysb6ez2vm6t_n" role="Client" />
+      <participant referencedUin="design:node:::j8e3beduant_n" role="Supplier" />
+    </link>
+    <link uin="080fpu03dgl_l">
+      <property name="$metaclass" value="Generalization20" />
+      <property name="$name" value="Generalization2" />
+      <property name="mod__cachedBaseName" value="문자 내용 변경" />
+      <participant referencedUin="design:node:::ysb6ez2vm6t_n" role="Client" />
+      <participant referencedUin="design:node:::rjmqvp1zlxaefqpci_n" role="Supplier" />
+    </link>
+    <link uin="lo040bpivlq_l">
+      <property name="$metaclass" value="Generalization20" />
+      <property name="$name" value="Generalization8" />
+      <property name="mod__cachedBaseName" value="문자 고객 선택" />
+      <participant referencedUin="design:node:::ysb6ez2vm6t_n" role="Client" />
+      <participant referencedUin="design:node:::b8n7hw3pri1kiczzn_n" role="Supplier" />
+    </link>
+    <link uin="t387omhbvrm_l">
+      <property name="$metaclass" value="Generalization20" />
+      <property name="$name" value="Generalization9" />
+      <property name="mod__cachedBaseName" value="문자 발송" />
+      <participant referencedUin="design:node:::ysb6ez2vm6t_n" role="Client" />
+      <participant referencedUin="design:node:::ppwk5lrwh1iy37i2i_n" role="Supplier" />
+    </link>
+    <link uin="0sg01p99erq_l">
+      <property name="$metaclass" value="Generalization20" />
+      <property name="$name" value="Generalization10" />
+      <property name="mod__cachedBaseName" value="서류 편집" />
+      <participant referencedUin="design:node:::ysb6ez2vm6t_n" role="Client" />
+      <participant referencedUin="design:node:::yqv0vtmtcmssknufr_n" role="Supplier" />
+    </link>
+    <link uin="4l0srv9cbij_l">
+      <property name="$metaclass" value="Generalization20" />
+      <property name="$name" value="Generalization11" />
+      <property name="mod__cachedBaseName" value="서류 삭제" />
+      <participant referencedUin="design:node:::ysb6ez2vm6t_n" role="Client" />
+      <participant referencedUin="design:node:::nmng51t6lmqcp095i_n" role="Supplier" />
+    </link>
+    <link uin="wtc1o8o7077800lts_l">
+      <property name="$metaclass" value="Generalization20" />
+      <property name="$name" value="Generalization12" />
+      <property name="mod__cachedBaseName" value="대기자(예약) 순서변경" />
+      <participant referencedUin="design:node:::ysb6ez2vm6t_n" role="Client" />
+      <participant referencedUin="design:node:::mm9hs31btb3f4e6on_n" role="Supplier" />
+    </link>
+    <link uin="hnplbmv0dvh_l">
+      <property name="$metaclass" value="Generalization20" />
+      <property name="$name" value="Generalization13" />
+      <property name="mod__cachedBaseName" value="진료내역 검색" />
+      <participant referencedUin="design:node:::ysb6ez2vm6t_n" role="Client" />
+      <participant referencedUin="design:node:::eo1ijywfwne_n" role="Supplier" />
+    </link>
+  </node>
+  <node uin="7viy532z03s_n">
+    <property name="$metaclass" value="UseCase20" />
+    <property name="$name" value="환자 목록 관리 기능" />
+    <node uin="r8nv4dgco3p_n">
+      <property name="$metaclass" value="Behavior" />
+      <property name="$name" value="Behavior1" />
+    </node>
+    <link uin="ps0pl25rs9g_l">
+      <property name="$metaclass" value="classifierBehavior" />
+      <property name="$name" value="Behaviored classifier link1" />
+      <participant referencedUin="design:node:::7viy532z03s_n" role="Client" />
+      <participant referencedUin="design:node:::r8nv4dgco3p_n:7viy532z03s_n" role="Supplier" />
+    </link>
+  </node>
+  <node uin="b8n7hw3pri1kiczzn_n">
+    <property name="$metaclass" value="UseCase20" />
+    <property name="$name" value="문자 고객 선택" />
+    <node uin="d4nt1w3pri16jjmbo_n">
+      <property name="$metaclass" value="Behavior" />
+      <property name="$name" value="Behavior1" />
+    </node>
+    <link uin="rvwtw3pri1ljddon_l">
+      <property name="$metaclass" value="classifierBehavior" />
+      <property name="$name" value="Behaviored classifier link1" />
+      <participant referencedUin="design:node:::b8n7hw3pri1kiczzn_n" role="Client" />
+      <participant referencedUin="design:node:::d4nt1w3pri16jjmbo_n:b8n7hw3pri1kiczzn_n" role="Supplier" />
+    </link>
+    <link uin="fgf3lkpkuyh_l">
+      <property name="$metaclass" value="Include20" />
+      <property name="$name" value="Includes1" />
+      <participant referencedUin="design:node:::b8n7hw3pri1kiczzn_n" role="Client" />
+      <participant referencedUin="design:node:::bic2m0gl6o_n" role="Supplier" />
+    </link>
+  </node>
+  <node uin="1jwi716nf06a5upfo_n">
+    <property name="$metaclass" value="UseCase20" />
+    <property name="$name" value="서류 등록" />
+    <node uin="3k4v6hhuf06nbz0yh_n">
+      <property name="$metaclass" value="Behavior" />
+      <property name="$name" value="Behavior1" />
+    </node>
+    <link uin="4gcjfhhuf061x8jrf_l">
+      <property name="$metaclass" value="classifierBehavior" />
+      <property name="$name" value="Behaviored classifier link1" />
+      <participant referencedUin="design:node:::1jwi716nf06a5upfo_n" role="Client" />
+      <participant referencedUin="design:node:::3k4v6hhuf06nbz0yh_n:1jwi716nf06a5upfo_n" role="Supplier" />
+    </link>
+    <link uin="xbxw0u9mirof7c82n_l">
+      <property name="$metaclass" value="Include20" />
+      <property name="$name" value="Includes1" />
+      <participant referencedUin="design:node:::1jwi716nf06a5upfo_n" role="Client" />
+      <participant referencedUin="design:node:::y74k9pk7lgf_n" role="Supplier" />
+    </link>
+  </node>
+  <node uin="iiqapa5deug12e00k_n">
+    <property name="$metaclass" value="UseCase20" />
+    <property name="$name" value="예약 검색" />
+    <node uin="esu450okeuggwbt3h_n">
+      <property name="$metaclass" value="Behavior" />
+      <property name="$name" value="Behavior1" />
+    </node>
+    <link uin="le1p70okeugj1jfdl_l">
+      <property name="$metaclass" value="classifierBehavior" />
+      <property name="$name" value="Behaviored classifier link1" />
+      <participant referencedUin="design:node:::iiqapa5deug12e00k_n" role="Client" />
+      <participant referencedUin="design:node:::esu450okeuggwbt3h_n:iiqapa5deug12e00k_n" role="Supplier" />
+    </link>
+  </node>
+  <node uin="mf0mn7yggnib4cjqs_n">
+    <property name="$metaclass" value="UseCase20" />
+    <property name="$name" value="대기자 (예약) 관리 기능" />
+    <property name="mod__extends" value="대기자 목록" />
+    <node uin="qvmgs7yggnibpxaxo_n">
+      <property name="$metaclass" value="Behavior" />
+      <property name="$name" value="Behavior1" />
+    </node>
+    <link uin="p1o427yggni84g4yj_l">
+      <property name="$metaclass" value="classifierBehavior" />
+      <property name="$name" value="Behaviored classifier link1" />
+      <participant referencedUin="design:node:::mf0mn7yggnib4cjqs_n" role="Client" />
+      <participant referencedUin="design:node:::qvmgs7yggnibpxaxo_n:mf0mn7yggnib4cjqs_n" role="Supplier" />
+    </link>
+    <link uin="ub46ud9ua30oj9mhe_l">
+      <property name="$metaclass" value="Generalization20" />
+      <property name="$name" value="Generalization1" />
+      <property name="mod__cachedBaseName" value="대기자 목록" />
+      <participant referencedUin="design:node:::mf0mn7yggnib4cjqs_n" role="Client" />
+      <participant referencedUin="design:node:::nm2s5zuk5e7qnsyfh_n" role="Supplier" />
+    </link>
+  </node>
+  <node uin="esgocr1na9k_n">
+    <property name="$metaclass" value="UseCase20" />
+    <property name="$name" value="예약 및 취소" />
+    <node uin="26gd6xvlrjp_n">
+      <property name="$metaclass" value="Behavior" />
+      <property name="$name" value="Behavior1" />
+    </node>
+    <link uin="07mav909pj_l">
+      <property name="$metaclass" value="classifierBehavior" />
+      <property name="$name" value="Behaviored classifier link1" />
+      <participant referencedUin="design:node:::esgocr1na9k_n" role="Client" />
+      <participant referencedUin="design:node:::26gd6xvlrjp_n:esgocr1na9k_n" role="Supplier" />
+    </link>
+  </node>
+  <node uin="bic2m0gl6o_n">
+    <property name="$metaclass" value="UseCase20" />
+    <property name="$name" value="문자 전송 기능" />
+    <property name="mod__extends" value="SMS 발송" />
+    <node uin="66jec1k14lr_n">
+      <property name="$metaclass" value="Behavior" />
+      <property name="$name" value="Behavior1" />
+    </node>
+    <link uin="79rvxu7hnzl_l">
+      <property name="$metaclass" value="classifierBehavior" />
+      <property name="$name" value="Behaviored classifier link1" />
+      <participant referencedUin="design:node:::bic2m0gl6o_n" role="Client" />
+      <participant referencedUin="design:node:::66jec1k14lr_n:bic2m0gl6o_n" role="Supplier" />
+    </link>
+    <link uin="xp5yim4igth_l">
+      <property name="$metaclass" value="Generalization20" />
+      <property name="$name" value="Generalization1" />
+      <property name="mod__cachedBaseName" value="SMS 발송" />
+      <participant referencedUin="design:node:::bic2m0gl6o_n" role="Client" />
+      <participant referencedUin="design:node:::ie76qaob3bf_n" role="Supplier" />
+    </link>
+  </node>
+  <node uin="scvh3v1fxdq3wdz5l_n">
+    <property name="$metaclass" value="Actor20" />
+    <property name="$name" value="프린트" />
+  </node>
+  <node uin="0c8eryjj8tg_n">
+    <property name="$metaclass" value="UseCase20" />
+    <property name="$name" value="대기자(예약) 삭제" />
+    <property name="mod__extends" value="대기자 조회" />
+    <node uin="p5yatruxdns_n">
+      <property name="$metaclass" value="Behavior" />
+      <property name="$name" value="Behavior1" />
+    </node>
+    <link uin="79h13ktp0kq_l">
+      <property name="$metaclass" value="classifierBehavior" />
+      <property name="$name" value="Behaviored classifier link1" />
+      <participant referencedUin="design:node:::0c8eryjj8tg_n" role="Client" />
+      <participant referencedUin="design:node:::p5yatruxdns_n:0c8eryjj8tg_n" role="Supplier" />
+    </link>
+    <link uin="ca3t732kn8l_l">
+      <property name="$metaclass" value="Include20" />
+      <property name="$name" value="Includes1" />
+      <participant referencedUin="design:node:::0c8eryjj8tg_n" role="Client" />
+      <participant referencedUin="design:node:::mf0mn7yggnib4cjqs_n" role="Supplier" />
+    </link>
+  </node>
+  <node uin="olxx7wpv2gt_n">
+    <property name="$metaclass" value="UseCase20" />
+    <property name="$name" value="대기자(예약) 추가" />
+    <property name="mod__extends" value="대기자 조회" />
+    <node uin="89h4l7vncmf_n">
+      <property name="$metaclass" value="Behavior" />
+      <property name="$name" value="Behavior1" />
+    </node>
+    <link uin="t51aa4nsblf_l">
+      <property name="$metaclass" value="classifierBehavior" />
+      <property name="$name" value="Behaviored classifier link1" />
+      <participant referencedUin="design:node:::olxx7wpv2gt_n" role="Client" />
+      <participant referencedUin="design:node:::89h4l7vncmf_n:olxx7wpv2gt_n" role="Supplier" />
+    </link>
+    <link uin="bowuqj4dewm_l">
+      <property name="$metaclass" value="Include20" />
+      <property name="$name" value="Includes1" />
+      <participant referencedUin="design:node:::olxx7wpv2gt_n" role="Client" />
+      <participant referencedUin="design:node:::mf0mn7yggnib4cjqs_n" role="Supplier" />
+    </link>
+  </node>
+  <node uin="a1y39fpfsok_n">
+    <property name="$metaclass" value="UseCase20" />
+    <property name="$name" value="환자 추가" />
+    <property name="mod__extends" value="고객 관리" />
+    <node uin="5624lnk97io_n">
+      <property name="$metaclass" value="Behavior" />
+      <property name="$name" value="Behavior1" />
+    </node>
+    <link uin="d1ut50t0acq_l">
+      <property name="$metaclass" value="classifierBehavior" />
+      <property name="$name" value="Behaviored classifier link1" />
+      <participant referencedUin="design:node:::a1y39fpfsok_n" role="Client" />
+      <participant referencedUin="design:node:::5624lnk97io_n:a1y39fpfsok_n" role="Supplier" />
+    </link>
+    <link uin="0umw2mfujdn5o2nhr_l">
+      <property name="$metaclass" value="Include20" />
+      <property name="$name" value="Includes1" />
+      <participant referencedUin="design:node:::a1y39fpfsok_n" role="Client" />
+      <participant referencedUin="design:node:::7viy532z03s_n" role="Supplier" />
+    </link>
+  </node>
+  <node uin="vfks2kljfcl_n">
+    <property name="$metaclass" value="UseCase20" />
+    <property name="$name" value="환자이름 검색" />
+    <property name="mod__extends" value="고객 관리" />
+    <node uin="8iytwa8o23n_n">
+      <property name="$metaclass" value="Behavior" />
+      <property name="$name" value="Behavior1" />
+    </node>
+    <link uin="qczrvm13laj_l">
+      <property name="$metaclass" value="classifierBehavior" />
+      <property name="$name" value="Behaviored classifier link1" />
+      <participant referencedUin="design:node:::vfks2kljfcl_n" role="Client" />
+      <participant referencedUin="design:node:::8iytwa8o23n_n:vfks2kljfcl_n" role="Supplier" />
+    </link>
+    <link uin="harhvyb8v3n6hw4yh_l">
+      <property name="$metaclass" value="Include20" />
+      <property name="$name" value="Includes1" />
+      <participant referencedUin="design:node:::vfks2kljfcl_n" role="Client" />
+      <participant referencedUin="design:node:::7viy532z03s_n" role="Supplier" />
+    </link>
+  </node>
+  <node uin="j8e3beduant_n">
+    <property name="$metaclass" value="UseCase20" />
+    <property name="$name" value="환자 삭제" />
+    <property name="mod__extends" value="고객 관리" />
+    <node uin="fw0jmaegybl_n">
+      <property name="$metaclass" value="Behavior" />
+      <property name="$name" value="Behavior1" />
+    </node>
+    <link uin="s7wefioi69p_l">
+      <property name="$metaclass" value="classifierBehavior" />
+      <property name="$name" value="Behaviored classifier link1" />
+      <participant referencedUin="design:node:::j8e3beduant_n" role="Client" />
+      <participant referencedUin="design:node:::fw0jmaegybl_n:j8e3beduant_n" role="Supplier" />
+    </link>
+    <link uin="23fq0qd5gnnq50lai_l">
+      <property name="$metaclass" value="Include20" />
+      <property name="$name" value="Includes1" />
+      <participant referencedUin="design:node:::j8e3beduant_n" role="Client" />
+      <participant referencedUin="design:node:::7viy532z03s_n" role="Supplier" />
+    </link>
+  </node>
+  <node uin="rjmqvp1zlxaefqpci_n">
+    <property name="$metaclass" value="UseCase20" />
+    <property name="$name" value="문자 내용 변경" />
+    <node uin="xee68y5rmxauaxv0g_n">
+      <property name="$metaclass" value="Behavior" />
+      <property name="$name" value="Behavior1" />
+    </node>
+    <link uin="2g97lzi2nxajnuw4q_l">
+      <property name="$metaclass" value="classifierBehavior" />
+      <property name="$name" value="Behaviored classifier link1" />
+      <participant referencedUin="design:node:::rjmqvp1zlxaefqpci_n" role="Client" />
+      <participant referencedUin="design:node:::xee68y5rmxauaxv0g_n:rjmqvp1zlxaefqpci_n" role="Supplier" />
+    </link>
+    <link uin="l3frlkfbyulgn6uqp_l">
+      <property name="$metaclass" value="Include20" />
+      <property name="$name" value="1" />
+      <participant referencedUin="design:node:::rjmqvp1zlxaefqpci_n" role="Client" />
+      <participant referencedUin="design:node:::bic2m0gl6o_n" role="Supplier" />
+    </link>
+  </node>
+  <node uin="ppwk5lrwh1iy37i2i_n">
+    <property name="$metaclass" value="UseCase20" />
+    <property name="$name" value="문자 발송" />
+    <node uin="qlcmmlrwh1idn78ar_n">
+      <property name="$metaclass" value="Behavior" />
+      <property name="$name" value="Behavior1" />
+    </node>
+    <link uin="rdzklrwh1ibrpens_l">
+      <property name="$metaclass" value="classifierBehavior" />
+      <property name="$name" value="Behaviored classifier link1" />
+      <participant referencedUin="design:node:::ppwk5lrwh1iy37i2i_n" role="Client" />
+      <participant referencedUin="design:node:::qlcmmlrwh1idn78ar_n:ppwk5lrwh1iy37i2i_n" role="Supplier" />
+    </link>
+    <link uin="2i003qh6g0mvhkkmf_l">
+      <property name="$metaclass" value="Include20" />
+      <property name="$name" value="Includes1" />
+      <participant referencedUin="design:node:::ppwk5lrwh1iy37i2i_n" role="Client" />
+      <participant referencedUin="design:node:::bic2m0gl6o_n" role="Supplier" />
+    </link>
+  </node>
+  <node uin="nmng51t6lmqcp095i_n">
+    <property name="$metaclass" value="UseCase20" />
+    <property name="$name" value="서류 삭제" />
+    <node uin="1e6rl86dlmqq0vkws_n">
+      <property name="$metaclass" value="Behavior" />
+      <property name="$name" value="Behavior1" />
+    </node>
+    <link uin="vlmuj86dlmqvm688i_l">
+      <property name="$metaclass" value="classifierBehavior" />
+      <property name="$name" value="Behaviored classifier link1" />
+      <participant referencedUin="design:node:::nmng51t6lmqcp095i_n" role="Client" />
+      <participant referencedUin="design:node:::1e6rl86dlmqq0vkws_n:nmng51t6lmqcp095i_n" role="Supplier" />
+    </link>
+    <link uin="owy3g215q0p50x56o_l">
+      <property name="$metaclass" value="Include20" />
+      <property name="$name" value="Includes1" />
+      <participant referencedUin="design:node:::nmng51t6lmqcp095i_n" role="Client" />
+      <participant referencedUin="design:node:::y74k9pk7lgf_n" role="Supplier" />
+    </link>
+  </node>
+  <node uin="yqv0vtmtcmssknufr_n">
+    <property name="$metaclass" value="UseCase20" />
+    <property name="$name" value="서류 편집" />
+    <node uin="2ueq9iz0dmsrnhwzg_n">
+      <property name="$metaclass" value="Behavior" />
+      <property name="$name" value="Behavior1" />
+    </node>
+    <link uin="80r8viz0dms2z7iwf_l">
+      <property name="$metaclass" value="classifierBehavior" />
+      <property name="$name" value="Behaviored classifier link1" />
+      <participant referencedUin="design:node:::yqv0vtmtcmssknufr_n" role="Client" />
+      <participant referencedUin="design:node:::2ueq9iz0dmsrnhwzg_n:yqv0vtmtcmssknufr_n" role="Supplier" />
+    </link>
+    <link uin="wo0rt6vn41pykf88p_l">
+      <property name="$metaclass" value="Include20" />
+      <property name="$name" value="Includes1" />
+      <participant referencedUin="design:node:::yqv0vtmtcmssknufr_n" role="Client" />
+      <participant referencedUin="design:node:::y74k9pk7lgf_n" role="Supplier" />
+    </link>
+  </node>
+  <node uin="y74k9pk7lgf_n">
+    <property name="$metaclass" value="UseCase20" />
+    <property name="$name" value="서류 관리 기능" />
+    <property name="mod__extends" value="프린트" />
+    <node uin="emilliswuvm_n">
+      <property name="$metaclass" value="Behavior" />
+      <property name="$name" value="Behavior1" />
+    </node>
+    <link uin="muiwlajyd9i_l">
+      <property name="$metaclass" value="classifierBehavior" />
+      <property name="$name" value="Behaviored classifier link1" />
+      <participant referencedUin="design:node:::y74k9pk7lgf_n" role="Client" />
+      <participant referencedUin="design:node:::emilliswuvm_n:y74k9pk7lgf_n" role="Supplier" />
+    </link>
+    <link uin="wzk80w3mx2n_l">
+      <property name="$metaclass" value="Generalization20" />
+      <property name="$name" value="Generalization1" />
+      <property name="mod__cachedBaseName" value="프린트" />
+      <participant referencedUin="design:node:::y74k9pk7lgf_n" role="Client" />
+      <participant referencedUin="design:node:::scvh3v1fxdq3wdz5l_n" role="Supplier" />
+    </link>
+  </node>
+  <node uin="ie76qaob3bf_n">
+    <property name="$metaclass" value="Actor20" />
+    <property name="$name" value="SMS 발송" />
+  </node>
+  <node uin="mm9hs31btb3f4e6on_n">
+    <property name="$metaclass" value="UseCase20" />
+    <property name="$name" value="대기자(예약) 순서변경" />
+    <node uin="o2uq331btb3v4f0hs_n">
+      <property name="$metaclass" value="Behavior" />
+      <property name="$name" value="Behavior1" />
+    </node>
+    <link uin="800zi31btb3orjiym_l">
+      <property name="$metaclass" value="classifierBehavior" />
+      <property name="$name" value="Behaviored classifier link1" />
+      <participant referencedUin="design:node:::mm9hs31btb3f4e6on_n" role="Client" />
+      <participant referencedUin="design:node:::o2uq331btb3v4f0hs_n:mm9hs31btb3f4e6on_n" role="Supplier" />
+    </link>
+    <link uin="frnkq945dof_l">
+      <property name="$metaclass" value="Include20" />
+      <property name="$name" value="Includes1" />
+      <participant referencedUin="design:node:::mm9hs31btb3f4e6on_n" role="Client" />
+      <participant referencedUin="design:node:::mf0mn7yggnib4cjqs_n" role="Supplier" />
+    </link>
+  </node>
+  <node uin="eo1ijywfwne_n">
+    <property name="$metaclass" value="UseCase20" />
+    <property name="$name" value="진료내역 검색" />
+    <node uin="7q4zvvfqa5g_n">
+      <property name="$metaclass" value="Behavior" />
+      <property name="$name" value="Behavior1" />
+    </node>
+    <link uin="6nfy9r0gfnh_l">
+      <property name="$metaclass" value="classifierBehavior" />
+      <property name="$name" value="Behaviored classifier link1" />
+      <participant referencedUin="design:node:::eo1ijywfwne_n" role="Client" />
+      <participant referencedUin="design:node:::7q4zvvfqa5g_n:eo1ijywfwne_n" role="Supplier" />
+    </link>
+  </node>
+  <node uin="nm2s5zuk5e7qnsyfh_n">
+    <property name="$metaclass" value="UseCase20" />
+    <property name="$name" value="대기자 목록" />
+    <node uin="bx774zuk5e7xi6mnf_n">
+      <property name="$metaclass" value="Behavior" />
+      <property name="$name" value="Behavior1" />
+    </node>
+    <link uin="vaa6mzuk5e7wanh5m_l">
+      <property name="$metaclass" value="classifierBehavior" />
+      <property name="$name" value="Behaviored classifier link1" />
+      <participant referencedUin="design:node:::nm2s5zuk5e7qnsyfh_n" role="Client" />
+      <participant referencedUin="design:node:::bx774zuk5e7xi6mnf_n:nm2s5zuk5e7qnsyfh_n" role="Supplier" />
+    </link>
+  </node>
+</nodeSet>
