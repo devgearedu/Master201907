@@ -14,7 +14,7 @@ uses
   FireDAC.Stan.Option, FireDAC.Stan.Error, FireDAC.UI.Intf,
   FireDAC.Phys.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool,
   FireDAC.Stan.Async, FireDAC.Phys, FireDAC.VCLUI.Wait,
-  ServerMethodsUnit12_ClientClass;
+  ServerMethodsUnitGym_ClientClass;
 
 type
   TfrmMain = class(TForm)
@@ -78,7 +78,7 @@ type
 
 var
   frmMain: TfrmMain;
-  serverclient : TServerMethods12Client;
+  serverclient : TServerMethodsGymClient;
 
 implementation
 uses
@@ -159,7 +159,7 @@ end;
 
 procedure TfrmMain.FormCreate(Sender: TObject);
 begin
-  serverclient := TServerMethods12Client.Create(frmMain.SQLcnGym.DBXConnection);
+  serverclient := TServerMethodsGymClient.Create(frmMain.SQLcnGym.DBXConnection);
 end;
 
 procedure TfrmMain.imgSplitViewButtonClick(Sender: TObject);

@@ -6,7 +6,10 @@
         <Projects Include="Client\Gym_WinClient.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="Server\Project_Server12.dproj">
+        <Projects Include="Server\Project_ServerGym.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Mobile\MobileGym.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -26,23 +29,32 @@
     <Target Name="Gym_WinClient:Make">
         <MSBuild Projects="Client\Gym_WinClient.dproj" Targets="Make"/>
     </Target>
-    <Target Name="Project_Server12">
-        <MSBuild Projects="Server\Project_Server12.dproj"/>
+    <Target Name="Project_ServerGym">
+        <MSBuild Projects="Server\Project_ServerGym.dproj"/>
     </Target>
-    <Target Name="Project_Server12:Clean">
-        <MSBuild Projects="Server\Project_Server12.dproj" Targets="Clean"/>
+    <Target Name="Project_ServerGym:Clean">
+        <MSBuild Projects="Server\Project_ServerGym.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="Project_Server12:Make">
-        <MSBuild Projects="Server\Project_Server12.dproj" Targets="Make"/>
+    <Target Name="Project_ServerGym:Make">
+        <MSBuild Projects="Server\Project_ServerGym.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="MobileGym">
+        <MSBuild Projects="Mobile\MobileGym.dproj"/>
+    </Target>
+    <Target Name="MobileGym:Clean">
+        <MSBuild Projects="Mobile\MobileGym.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MobileGym:Make">
+        <MSBuild Projects="Mobile\MobileGym.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="Gym_WinClient;Project_Server12"/>
+        <CallTarget Targets="Gym_WinClient;Project_ServerGym;MobileGym"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="Gym_WinClient:Clean;Project_Server12:Clean"/>
+        <CallTarget Targets="Gym_WinClient:Clean;Project_ServerGym:Clean;MobileGym:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="Gym_WinClient:Make;Project_Server12:Make"/>
+        <CallTarget Targets="Gym_WinClient:Make;Project_ServerGym:Make;MobileGym:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

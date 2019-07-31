@@ -27,6 +27,10 @@ object frmRegistration: TfrmRegistration
     object tshtClient: TTabSheet
       Caption = #54924#50896
       OnShow = tshtClientShow
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object lblName_Client: TLabel
         Left = 60
         Top = 40
@@ -403,6 +407,10 @@ object frmRegistration: TfrmRegistration
       Caption = #44053#49324
       ImageIndex = 1
       OnShow = tshtCoachShow
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object lblName_Coach: TLabel
         Left = 60
         Top = 40
@@ -811,6 +819,10 @@ object frmRegistration: TfrmRegistration
       Caption = #44053#51340
       ImageIndex = 2
       OnShow = tshtCourseShow
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object lblName_Course: TLabel
         Left = 60
         Top = 40

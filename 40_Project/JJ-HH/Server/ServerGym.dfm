@@ -1,7 +1,7 @@
-object frmServer12: TfrmServer12
+object frmServerGym: TfrmServerGym
   Left = 0
   Top = 0
-  Caption = 'frmServer12'
+  Caption = #52404#50977#49468#53552#49436#48260
   ClientHeight = 231
   ClientWidth = 363
   Color = clBtnFace

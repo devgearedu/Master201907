@@ -1,16 +1,16 @@
-//
+// 
 // Created by the DataSnap proxy generator.
-// 2019-07-30 오후 4:23:06
-//
+// 2019-07-31 오후 2:18:17
+// 
 
-unit ServerMethodsUnit12_ClientClass;
+unit ServerMethodsUnitGym_MobileClientClass;
 
 interface
 
 uses System.JSON, Data.DBXCommon, Data.DBXClient, Data.DBXDataSnap, Data.DBXJSON, Datasnap.DSProxy, System.Classes, System.SysUtils, Data.DB, Data.SqlExpr, Data.DBXDBReaders, Data.DBXCDSReaders, Data.DBXJSONReflect;
 
 type
-  TServerMethods12Client = class(TDSAdminClient)
+  TServerMethodsGymClient = class(TDSAdminClient)
   private
     FDSServerModuleCreateCommand: TDBXCommand;
     FEchoStringCommand: TDBXCommand;
@@ -60,13 +60,13 @@ type
 
 implementation
 
-procedure TServerMethods12Client.DSServerModuleCreate(Sender: TObject);
+procedure TServerMethodsGymClient.DSServerModuleCreate(Sender: TObject);
 begin
   if FDSServerModuleCreateCommand = nil then
   begin
     FDSServerModuleCreateCommand := FDBXConnection.CreateCommand;
     FDSServerModuleCreateCommand.CommandType := TDBXCommandTypes.DSServerMethod;
-    FDSServerModuleCreateCommand.Text := 'TServerMethods12.DSServerModuleCreate';
+    FDSServerModuleCreateCommand.Text := 'TServerMethodsGym.DSServerModuleCreate';
     FDSServerModuleCreateCommand.Prepare;
   end;
   if not Assigned(Sender) then
@@ -85,13 +85,13 @@ begin
   FDSServerModuleCreateCommand.ExecuteUpdate;
 end;
 
-function TServerMethods12Client.EchoString(Value: string): string;
+function TServerMethodsGymClient.EchoString(Value: string): string;
 begin
   if FEchoStringCommand = nil then
   begin
     FEchoStringCommand := FDBXConnection.CreateCommand;
     FEchoStringCommand.CommandType := TDBXCommandTypes.DSServerMethod;
-    FEchoStringCommand.Text := 'TServerMethods12.EchoString';
+    FEchoStringCommand.Text := 'TServerMethodsGym.EchoString';
     FEchoStringCommand.Prepare;
   end;
   FEchoStringCommand.Parameters[0].Value.SetWideString(Value);
@@ -99,13 +99,13 @@ begin
   Result := FEchoStringCommand.Parameters[1].Value.GetWideString;
 end;
 
-function TServerMethods12Client.ReverseString(Value: string): string;
+function TServerMethodsGymClient.ReverseString(Value: string): string;
 begin
   if FReverseStringCommand = nil then
   begin
     FReverseStringCommand := FDBXConnection.CreateCommand;
     FReverseStringCommand.CommandType := TDBXCommandTypes.DSServerMethod;
-    FReverseStringCommand.Text := 'TServerMethods12.ReverseString';
+    FReverseStringCommand.Text := 'TServerMethodsGym.ReverseString';
     FReverseStringCommand.Prepare;
   end;
   FReverseStringCommand.Parameters[0].Value.SetWideString(Value);
@@ -113,13 +113,13 @@ begin
   Result := FReverseStringCommand.Parameters[1].Value.GetWideString;
 end;
 
-function TServerMethods12Client.GetCode(AName: string; ADate_Of_Birth: string): Integer;
+function TServerMethodsGymClient.GetCode(AName: string; ADate_Of_Birth: string): Integer;
 begin
   if FGetCodeCommand = nil then
   begin
     FGetCodeCommand := FDBXConnection.CreateCommand;
     FGetCodeCommand.CommandType := TDBXCommandTypes.DSServerMethod;
-    FGetCodeCommand.Text := 'TServerMethods12.GetCode';
+    FGetCodeCommand.Text := 'TServerMethodsGym.GetCode';
     FGetCodeCommand.Prepare;
   end;
   FGetCodeCommand.Parameters[0].Value.SetWideString(AName);
@@ -128,13 +128,13 @@ begin
   Result := FGetCodeCommand.Parameters[2].Value.GetInt32;
 end;
 
-function TServerMethods12Client.InsertClient(AName_: string; AMobile: string; ABirth_Date: string; AAddress_: string; AFavorite_Branch: string; AEmail: string; AVehicle_Plate: string): Integer;
+function TServerMethodsGymClient.InsertClient(AName_: string; AMobile: string; ABirth_Date: string; AAddress_: string; AFavorite_Branch: string; AEmail: string; AVehicle_Plate: string): Integer;
 begin
   if FInsertClientCommand = nil then
   begin
     FInsertClientCommand := FDBXConnection.CreateCommand;
     FInsertClientCommand.CommandType := TDBXCommandTypes.DSServerMethod;
-    FInsertClientCommand.Text := 'TServerMethods12.InsertClient';
+    FInsertClientCommand.Text := 'TServerMethodsGym.InsertClient';
     FInsertClientCommand.Prepare;
   end;
   FInsertClientCommand.Parameters[0].Value.SetWideString(AName_);
@@ -148,13 +148,13 @@ begin
   Result := FInsertClientCommand.Parameters[7].Value.GetInt32;
 end;
 
-function TServerMethods12Client.InsertCoach(AName_: string; AMobile: string; ABirth_Date: string; AAddress_: string; ASports: string; AEmail: string; AVehicle_Plate: string): Integer;
+function TServerMethodsGymClient.InsertCoach(AName_: string; AMobile: string; ABirth_Date: string; AAddress_: string; ASports: string; AEmail: string; AVehicle_Plate: string): Integer;
 begin
   if FInsertCoachCommand = nil then
   begin
     FInsertCoachCommand := FDBXConnection.CreateCommand;
     FInsertCoachCommand.CommandType := TDBXCommandTypes.DSServerMethod;
-    FInsertCoachCommand.Text := 'TServerMethods12.InsertCoach';
+    FInsertCoachCommand.Text := 'TServerMethodsGym.InsertCoach';
     FInsertCoachCommand.Prepare;
   end;
   FInsertCoachCommand.Parameters[0].Value.SetWideString(AName_);
@@ -168,13 +168,13 @@ begin
   Result := FInsertCoachCommand.Parameters[7].Value.GetInt32;
 end;
 
-function TServerMethods12Client.InsertCourse(ACoach_Code: string; AName_: string; AWeekdays: string; ABegin_Time: string; ALocation_: string; AMax_Enroll: string; APrice: string; AEnd_Time: string): Integer;
+function TServerMethodsGymClient.InsertCourse(ACoach_Code: string; AName_: string; AWeekdays: string; ABegin_Time: string; ALocation_: string; AMax_Enroll: string; APrice: string; AEnd_Time: string): Integer;
 begin
   if FInsertCourseCommand = nil then
   begin
     FInsertCourseCommand := FDBXConnection.CreateCommand;
     FInsertCourseCommand.CommandType := TDBXCommandTypes.DSServerMethod;
-    FInsertCourseCommand.Text := 'TServerMethods12.InsertCourse';
+    FInsertCourseCommand.Text := 'TServerMethodsGym.InsertCourse';
     FInsertCourseCommand.Prepare;
   end;
   FInsertCourseCommand.Parameters[0].Value.SetWideString(ACoach_Code);
@@ -189,13 +189,13 @@ begin
   Result := FInsertCourseCommand.Parameters[8].Value.GetInt32;
 end;
 
-function TServerMethods12Client.Enroll(AClient_Code: string; ACourse_Code: string): Boolean;
+function TServerMethodsGymClient.Enroll(AClient_Code: string; ACourse_Code: string): Boolean;
 begin
   if FEnrollCommand = nil then
   begin
     FEnrollCommand := FDBXConnection.CreateCommand;
     FEnrollCommand.CommandType := TDBXCommandTypes.DSServerMethod;
-    FEnrollCommand.Text := 'TServerMethods12.Enroll';
+    FEnrollCommand.Text := 'TServerMethodsGym.Enroll';
     FEnrollCommand.Prepare;
   end;
   FEnrollCommand.Parameters[0].Value.SetWideString(AClient_Code);
@@ -204,13 +204,13 @@ begin
   Result := FEnrollCommand.Parameters[2].Value.GetBoolean;
 end;
 
-function TServerMethods12Client.DropEnroll(AClient_Code: string; ACourse_Code: string): Boolean;
+function TServerMethodsGymClient.DropEnroll(AClient_Code: string; ACourse_Code: string): Boolean;
 begin
   if FDropEnrollCommand = nil then
   begin
     FDropEnrollCommand := FDBXConnection.CreateCommand;
     FDropEnrollCommand.CommandType := TDBXCommandTypes.DSServerMethod;
-    FDropEnrollCommand.Text := 'TServerMethods12.DropEnroll';
+    FDropEnrollCommand.Text := 'TServerMethodsGym.DropEnroll';
     FDropEnrollCommand.Prepare;
   end;
   FDropEnrollCommand.Parameters[0].Value.SetWideString(AClient_Code);
@@ -219,13 +219,13 @@ begin
   Result := FDropEnrollCommand.Parameters[2].Value.GetBoolean;
 end;
 
-function TServerMethods12Client.ReEnroll(AClient_Code: string; ACourse_Code: string): Boolean;
+function TServerMethodsGymClient.ReEnroll(AClient_Code: string; ACourse_Code: string): Boolean;
 begin
   if FReEnrollCommand = nil then
   begin
     FReEnrollCommand := FDBXConnection.CreateCommand;
     FReEnrollCommand.CommandType := TDBXCommandTypes.DSServerMethod;
-    FReEnrollCommand.Text := 'TServerMethods12.ReEnroll';
+    FReEnrollCommand.Text := 'TServerMethodsGym.ReEnroll';
     FReEnrollCommand.Prepare;
   end;
   FReEnrollCommand.Parameters[0].Value.SetWideString(AClient_Code);
@@ -234,13 +234,13 @@ begin
   Result := FReEnrollCommand.Parameters[2].Value.GetBoolean;
 end;
 
-function TServerMethods12Client.AttendByClient(AClient_Code: string; ACourse_Code: string; ADate_of_course: string): Boolean;
+function TServerMethodsGymClient.AttendByClient(AClient_Code: string; ACourse_Code: string; ADate_of_course: string): Boolean;
 begin
   if FAttendByClientCommand = nil then
   begin
     FAttendByClientCommand := FDBXConnection.CreateCommand;
     FAttendByClientCommand.CommandType := TDBXCommandTypes.DSServerMethod;
-    FAttendByClientCommand.Text := 'TServerMethods12.AttendByClient';
+    FAttendByClientCommand.Text := 'TServerMethodsGym.AttendByClient';
     FAttendByClientCommand.Prepare;
   end;
   FAttendByClientCommand.Parameters[0].Value.SetWideString(AClient_Code);
@@ -250,13 +250,13 @@ begin
   Result := FAttendByClientCommand.Parameters[3].Value.GetBoolean;
 end;
 
-function TServerMethods12Client.InsertNotPresent(AClient_Code: string; ACourse_Code: string; ADate_of_course: string): Boolean;
+function TServerMethodsGymClient.InsertNotPresent(AClient_Code: string; ACourse_Code: string; ADate_of_course: string): Boolean;
 begin
   if FInsertNotPresentCommand = nil then
   begin
     FInsertNotPresentCommand := FDBXConnection.CreateCommand;
     FInsertNotPresentCommand.CommandType := TDBXCommandTypes.DSServerMethod;
-    FInsertNotPresentCommand.Text := 'TServerMethods12.InsertNotPresent';
+    FInsertNotPresentCommand.Text := 'TServerMethodsGym.InsertNotPresent';
     FInsertNotPresentCommand.Prepare;
   end;
   FInsertNotPresentCommand.Parameters[0].Value.SetWideString(AClient_Code);
@@ -266,13 +266,13 @@ begin
   Result := FInsertNotPresentCommand.Parameters[3].Value.GetBoolean;
 end;
 
-procedure TServerMethods12Client.SelectByFieldAndValueClient(AFieldName: string; AValue: string);
+procedure TServerMethodsGymClient.SelectByFieldAndValueClient(AFieldName: string; AValue: string);
 begin
   if FSelectByFieldAndValueClientCommand = nil then
   begin
     FSelectByFieldAndValueClientCommand := FDBXConnection.CreateCommand;
     FSelectByFieldAndValueClientCommand.CommandType := TDBXCommandTypes.DSServerMethod;
-    FSelectByFieldAndValueClientCommand.Text := 'TServerMethods12.SelectByFieldAndValueClient';
+    FSelectByFieldAndValueClientCommand.Text := 'TServerMethodsGym.SelectByFieldAndValueClient';
     FSelectByFieldAndValueClientCommand.Prepare;
   end;
   FSelectByFieldAndValueClientCommand.Parameters[0].Value.SetWideString(AFieldName);
@@ -280,13 +280,13 @@ begin
   FSelectByFieldAndValueClientCommand.ExecuteUpdate;
 end;
 
-procedure TServerMethods12Client.SelectByFieldAndValueCoach(AFieldName: string; AValue: string);
+procedure TServerMethodsGymClient.SelectByFieldAndValueCoach(AFieldName: string; AValue: string);
 begin
   if FSelectByFieldAndValueCoachCommand = nil then
   begin
     FSelectByFieldAndValueCoachCommand := FDBXConnection.CreateCommand;
     FSelectByFieldAndValueCoachCommand.CommandType := TDBXCommandTypes.DSServerMethod;
-    FSelectByFieldAndValueCoachCommand.Text := 'TServerMethods12.SelectByFieldAndValueCoach';
+    FSelectByFieldAndValueCoachCommand.Text := 'TServerMethodsGym.SelectByFieldAndValueCoach';
     FSelectByFieldAndValueCoachCommand.Prepare;
   end;
   FSelectByFieldAndValueCoachCommand.Parameters[0].Value.SetWideString(AFieldName);
@@ -294,13 +294,13 @@ begin
   FSelectByFieldAndValueCoachCommand.ExecuteUpdate;
 end;
 
-procedure TServerMethods12Client.SelectByFieldAndValueCourse(AFieldName: string; AValue: string);
+procedure TServerMethodsGymClient.SelectByFieldAndValueCourse(AFieldName: string; AValue: string);
 begin
   if FSelectByFieldAndValueCourseCommand = nil then
   begin
     FSelectByFieldAndValueCourseCommand := FDBXConnection.CreateCommand;
     FSelectByFieldAndValueCourseCommand.CommandType := TDBXCommandTypes.DSServerMethod;
-    FSelectByFieldAndValueCourseCommand.Text := 'TServerMethods12.SelectByFieldAndValueCourse';
+    FSelectByFieldAndValueCourseCommand.Text := 'TServerMethodsGym.SelectByFieldAndValueCourse';
     FSelectByFieldAndValueCourseCommand.Prepare;
   end;
   FSelectByFieldAndValueCourseCommand.Parameters[0].Value.SetWideString(AFieldName);
@@ -308,13 +308,13 @@ begin
   FSelectByFieldAndValueCourseCommand.ExecuteUpdate;
 end;
 
-procedure TServerMethods12Client.SelectByFieldAndValueEnrollment(AFieldName: string; AValue: string);
+procedure TServerMethodsGymClient.SelectByFieldAndValueEnrollment(AFieldName: string; AValue: string);
 begin
   if FSelectByFieldAndValueEnrollmentCommand = nil then
   begin
     FSelectByFieldAndValueEnrollmentCommand := FDBXConnection.CreateCommand;
     FSelectByFieldAndValueEnrollmentCommand.CommandType := TDBXCommandTypes.DSServerMethod;
-    FSelectByFieldAndValueEnrollmentCommand.Text := 'TServerMethods12.SelectByFieldAndValueEnrollment';
+    FSelectByFieldAndValueEnrollmentCommand.Text := 'TServerMethodsGym.SelectByFieldAndValueEnrollment';
     FSelectByFieldAndValueEnrollmentCommand.Prepare;
   end;
   FSelectByFieldAndValueEnrollmentCommand.Parameters[0].Value.SetWideString(AFieldName);
@@ -322,26 +322,26 @@ begin
   FSelectByFieldAndValueEnrollmentCommand.ExecuteUpdate;
 end;
 
-procedure TServerMethods12Client.SelectFromEnrollmentsAndCourses(AClient_code: string);
+procedure TServerMethodsGymClient.SelectFromEnrollmentsAndCourses(AClient_code: string);
 begin
   if FSelectFromEnrollmentsAndCoursesCommand = nil then
   begin
     FSelectFromEnrollmentsAndCoursesCommand := FDBXConnection.CreateCommand;
     FSelectFromEnrollmentsAndCoursesCommand.CommandType := TDBXCommandTypes.DSServerMethod;
-    FSelectFromEnrollmentsAndCoursesCommand.Text := 'TServerMethods12.SelectFromEnrollmentsAndCourses';
+    FSelectFromEnrollmentsAndCoursesCommand.Text := 'TServerMethodsGym.SelectFromEnrollmentsAndCourses';
     FSelectFromEnrollmentsAndCoursesCommand.Prepare;
   end;
   FSelectFromEnrollmentsAndCoursesCommand.Parameters[0].Value.SetWideString(AClient_code);
   FSelectFromEnrollmentsAndCoursesCommand.ExecuteUpdate;
 end;
 
-procedure TServerMethods12Client.SelectCourseToAttend(AYearAndMonth: string; ASports: string; AWeekdays: string);
+procedure TServerMethodsGymClient.SelectCourseToAttend(AYearAndMonth: string; ASports: string; AWeekdays: string);
 begin
   if FSelectCourseToAttendCommand = nil then
   begin
     FSelectCourseToAttendCommand := FDBXConnection.CreateCommand;
     FSelectCourseToAttendCommand.CommandType := TDBXCommandTypes.DSServerMethod;
-    FSelectCourseToAttendCommand.Text := 'TServerMethods12.SelectCourseToAttend';
+    FSelectCourseToAttendCommand.Text := 'TServerMethodsGym.SelectCourseToAttend';
     FSelectCourseToAttendCommand.Prepare;
   end;
   FSelectCourseToAttendCommand.Parameters[0].Value.SetWideString(AYearAndMonth);
@@ -350,13 +350,13 @@ begin
   FSelectCourseToAttendCommand.ExecuteUpdate;
 end;
 
-procedure TServerMethods12Client.SelectAttendanceByCourseAndDate(ADate_of_course: string; ACourse_code: string);
+procedure TServerMethodsGymClient.SelectAttendanceByCourseAndDate(ADate_of_course: string; ACourse_code: string);
 begin
   if FSelectAttendanceByCourseAndDateCommand = nil then
   begin
     FSelectAttendanceByCourseAndDateCommand := FDBXConnection.CreateCommand;
     FSelectAttendanceByCourseAndDateCommand.CommandType := TDBXCommandTypes.DSServerMethod;
-    FSelectAttendanceByCourseAndDateCommand.Text := 'TServerMethods12.SelectAttendanceByCourseAndDate';
+    FSelectAttendanceByCourseAndDateCommand.Text := 'TServerMethodsGym.SelectAttendanceByCourseAndDate';
     FSelectAttendanceByCourseAndDateCommand.Prepare;
   end;
   FSelectAttendanceByCourseAndDateCommand.Parameters[0].Value.SetWideString(ADate_of_course);
@@ -364,13 +364,13 @@ begin
   FSelectAttendanceByCourseAndDateCommand.ExecuteUpdate;
 end;
 
-procedure TServerMethods12Client.SelectAttendanceByClientAndCourse(AClient_Code: string; ACourse_Code: string; AYearAndMonth: string);
+procedure TServerMethodsGymClient.SelectAttendanceByClientAndCourse(AClient_Code: string; ACourse_Code: string; AYearAndMonth: string);
 begin
   if FSelectAttendanceByClientAndCourseCommand = nil then
   begin
     FSelectAttendanceByClientAndCourseCommand := FDBXConnection.CreateCommand;
     FSelectAttendanceByClientAndCourseCommand.CommandType := TDBXCommandTypes.DSServerMethod;
-    FSelectAttendanceByClientAndCourseCommand.Text := 'TServerMethods12.SelectAttendanceByClientAndCourse';
+    FSelectAttendanceByClientAndCourseCommand.Text := 'TServerMethodsGym.SelectAttendanceByClientAndCourse';
     FSelectAttendanceByClientAndCourseCommand.Prepare;
   end;
   FSelectAttendanceByClientAndCourseCommand.Parameters[0].Value.SetWideString(AClient_Code);
@@ -379,17 +379,17 @@ begin
   FSelectAttendanceByClientAndCourseCommand.ExecuteUpdate;
 end;
 
-constructor TServerMethods12Client.Create(ADBXConnection: TDBXConnection);
+constructor TServerMethodsGymClient.Create(ADBXConnection: TDBXConnection);
 begin
   inherited Create(ADBXConnection);
 end;
 
-constructor TServerMethods12Client.Create(ADBXConnection: TDBXConnection; AInstanceOwner: Boolean);
+constructor TServerMethodsGymClient.Create(ADBXConnection: TDBXConnection; AInstanceOwner: Boolean);
 begin
   inherited Create(ADBXConnection, AInstanceOwner);
 end;
 
-destructor TServerMethods12Client.Destroy;
+destructor TServerMethodsGymClient.Destroy;
 begin
   FDSServerModuleCreateCommand.DisposeOf;
   FEchoStringCommand.DisposeOf;
@@ -415,4 +415,3 @@ begin
 end;
 
 end.
-

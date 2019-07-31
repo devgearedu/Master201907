@@ -1,4 +1,4 @@
-unit ServerContainerUnit12;
+unit ServerContainerUnitGym;
 
 interface
 
@@ -34,12 +34,12 @@ implementation
 {$R *.dfm}
 
 uses
-  ServerMethodsUnit12;
+  ServerMethodsUnitGym;
 
 procedure TServerContainer12.DSServerClass1GetClass(
   DSServerClass: TDSServerClass; var PersistentClass: TPersistentClass);
 begin
-  PersistentClass := ServerMethodsUnit12.TServerMethods12;
+  PersistentClass := ServerMethodsUnitGym.TServerMethodsGym;
 end;
 
 procedure TServerContainer12.DSAuthenticationManager1UserAuthenticate(

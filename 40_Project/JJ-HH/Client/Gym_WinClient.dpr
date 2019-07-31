@@ -3,7 +3,7 @@ program Gym_WinClient;
 uses
   Vcl.Forms,
   MainForm in 'MainForm.pas' {frmMain},
-  ServerMethodsUnit12_ClientClass in 'ServerMethodsUnit12_ClientClass.pas',
+  ServerMethodsUnitGym_ClientClass in 'ServerMethodsUnitGym_ClientClass.pas',
   Vcl.Themes,
   Vcl.Styles,
   RegistrationForm in 'RegistrationForm.pas' {frmRegistration},

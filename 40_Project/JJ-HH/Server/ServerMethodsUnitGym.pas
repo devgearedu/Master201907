@@ -1,4 +1,4 @@
-unit ServerMethodsUnit12;
+unit ServerMethodsUnitGym;
 
 interface
 
@@ -14,7 +14,7 @@ uses System.SysUtils, System.Classes, System.Json,
   System.DateUtils;
 
 type
-  TServerMethods12 = class(TDSServerModule)
+  TServerMethodsGym = class(TDSServerModule)
     fdcnGYM: TFDConnection;
     FDPhysIBDriverLink1: TFDPhysIBDriverLink;
     FDGUIxWaitCursor1: TFDGUIxWaitCursor;
@@ -151,7 +151,7 @@ var
 
 
 // Param에 Flag 추가
-function TServerMethods12.AttendByClient(AClient_Code,
+function TServerMethodsGym.AttendByClient(AClient_Code,
   ACourse_Code, ADate_of_course : string): Boolean;
 begin
   fdtblAttendances.Filtered := False;
@@ -182,7 +182,7 @@ begin
   Result := True;
 end;
 
-function TServerMethods12.DropEnroll(AClient_Code,
+function TServerMethodsGym.DropEnroll(AClient_Code,
   ACourse_Code: string): Boolean;
 begin
   fdtblEnrollments.Filtered := False;
@@ -197,7 +197,7 @@ begin
   Result := True;
 end;
 
-procedure TServerMethods12.DSServerModuleCreate(Sender: TObject);
+procedure TServerMethodsGym.DSServerModuleCreate(Sender: TObject);
 begin
   DaysDict := TDictionary<Integer, string>.Create(0);
   DaysDict.AddOrSetValue(DaySunday, '일');
@@ -209,12 +209,12 @@ begin
   DaysDict.AddOrSetValue(DaySaturday, '토');
 end;
 
-function TServerMethods12.EchoString(Value: string): string;
+function TServerMethodsGym.EchoString(Value: string): string;
 begin
   Result := Value;
 end;
 
-function TServerMethods12.Enroll(AClient_Code,
+function TServerMethodsGym.Enroll(AClient_Code,
   ACourse_Code: string): Boolean;
 begin
   fdtblEnrollments.Insert;
@@ -243,7 +243,7 @@ begin
   Result := True;
 end;
 
-function TServerMethods12.GetCode(AName, ADate_Of_Birth: string): Integer;
+function TServerMethodsGym.GetCode(AName, ADate_Of_Birth: string): Integer;
 var
   ReturnCode : Integer;
 begin
@@ -257,7 +257,7 @@ begin
   Result := ReturnCode;
 end;
 
-function TServerMethods12.InsertClient(AName_, AMobile, ABirth_Date, AAddress_,
+function TServerMethodsGym.InsertClient(AName_, AMobile, ABirth_Date, AAddress_,
   AFavorite_Branch, AEmail, AVehicle_Plate: string): Integer;
 begin
   fdtblClients.Insert;
@@ -285,7 +285,7 @@ begin
   Result := fdtblClientsCODE.Value;
 end;
 
-function TServerMethods12.InsertCoach(AName_, AMobile, ABirth_Date,
+function TServerMethodsGym.InsertCoach(AName_, AMobile, ABirth_Date,
   AAddress_, ASports, AEmail, AVehicle_Plate: string): Integer;
 begin
   fdtblCoaches.Insert;
@@ -312,7 +312,7 @@ begin
   Result := fdtblCoachesCODE.Value;
 end;
 
-function TServerMethods12.InsertCourse(ACoach_Code, AName_, AWeekdays,
+function TServerMethodsGym.InsertCourse(ACoach_Code, AName_, AWeekdays,
   ABegin_Time, ALocation_, AMax_Enroll, APrice,
   AEnd_Time: string): Integer;
 begin
@@ -341,7 +341,7 @@ begin
   Result := fdtblCoursesCODE.Value;
 end;
 
-function TServerMethods12.InsertNotPresent(AClient_Code, ACourse_Code, ADate_of_course : string) : Boolean;
+function TServerMethodsGym.InsertNotPresent(AClient_Code, ACourse_Code, ADate_of_course : string) : Boolean;
 begin
 
  fdtblAttendances.Insert;
@@ -364,7 +364,7 @@ begin
  Result := True;
 end;
 
-function TServerMethods12.ReEnroll(AClient_Code,
+function TServerMethodsGym.ReEnroll(AClient_Code,
   ACourse_Code: string): Boolean;
 var
   VarBegin_Time, VarName_, VarWeekdays : string;
@@ -399,12 +399,12 @@ begin
   Result := True;
 end;
 
-function TServerMethods12.ReverseString(Value: string): string;
+function TServerMethodsGym.ReverseString(Value: string): string;
 begin
   Result := System.StrUtils.ReverseString(Value);
 end;
 
-procedure TServerMethods12.SelectAttendanceByClientAndCourse(AClient_Code, ACourse_Code,
+procedure TServerMethodsGym.SelectAttendanceByClientAndCourse(AClient_Code, ACourse_Code,
   AYearAndMonth: string);
 var
   OutStr : string;
@@ -421,7 +421,7 @@ begin
                         );
 end;
 
-procedure TServerMethods12.SelectAttendanceByCourseAndDate(ADate_of_course,
+procedure TServerMethodsGym.SelectAttendanceByCourseAndDate(ADate_of_course,
   ACourse_code: string);
 begin
   fdqryAttendances.Close;
@@ -434,14 +434,14 @@ begin
                         ' AND Attendances.course_code = courses.code');
 end;
 
-procedure TServerMethods12.SelectByFieldAndValueClient(AFieldName, AValue: string);
+procedure TServerMethodsGym.SelectByFieldAndValueClient(AFieldName, AValue: string);
 begin
   fdqryClients.Close;
   fdqryClients.Open('SELECT * FROM clients WHERE ' +
                     AFieldName + ' = ' + '''' + AValue + '''');
 end;
 
-procedure TServerMethods12.SelectByFieldAndValueCoach(AFieldName,
+procedure TServerMethodsGym.SelectByFieldAndValueCoach(AFieldName,
   AValue: string);
 begin
   fdqryCoaches.Close;
@@ -449,7 +449,7 @@ begin
                     AFieldName + ' = ' + '''' + AValue + '''');
 end;
 
-procedure TServerMethods12.SelectByFieldAndValueCourse(AFieldName,
+procedure TServerMethodsGym.SelectByFieldAndValueCourse(AFieldName,
   AValue: string);
 begin
   fdqryCourses.Close;
@@ -457,7 +457,7 @@ begin
                     AFieldName + ' = ' + '''' + AValue + '''');
 end;
 
-procedure TServerMethods12.SelectByFieldAndValueEnrollment(AFieldName,
+procedure TServerMethodsGym.SelectByFieldAndValueEnrollment(AFieldName,
   AValue: string);
 begin
   fdqryEnrollments.Close;
@@ -465,7 +465,7 @@ begin
                     AFieldName + ' = ' + '''' + AValue + '''');
 end;
 
-procedure TServerMethods12.SelectCourseToAttend(AYearAndMonth, ASports, AWeekdays: string);
+procedure TServerMethodsGym.SelectCourseToAttend(AYearAndMonth, ASports, AWeekdays: string);
 begin
 //  fdqryEnrollments.Close;
 //  fdqryEnrollments.Open( 'SELECT enrollments.client_code, enrollments.course_code, ' +
@@ -484,7 +484,7 @@ begin
 
 end;
 
-procedure TServerMethods12.SelectFromEnrollmentsAndCourses(AClient_code : string);
+procedure TServerMethodsGym.SelectFromEnrollmentsAndCourses(AClient_code : string);
 begin
   fdqryEnrollments.Close;
   fdqryEnrollments.Open( 'SELECT enrollments.client_code, enrollments.course_code, ' +

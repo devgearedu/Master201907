@@ -56,7 +56,7 @@ implementation
 {$R *.dfm}
 
 uses
-  EnrollmentForm, ServerMethodsUnit12_ClientClass, NamesakeForm,
+  EnrollmentForm, ServerMethodsUnitGym_ClientClass, NamesakeForm,
   MainForm, System.DateUtils, System.Generics.Collections;
 
 var
@@ -64,7 +64,6 @@ var
 
 procedure TfrmAttendance.btnAttendClick(Sender: TObject);
 begin
-//
   frmMain.cdsQryAttendances.Active := False;
   serverclient.SelectAttendanceByClientAndCourse(IntToStr(frmMain.cdsQryEnrollments.FieldByName('client_code').AsInteger),
     IntToStr(frmMain.cdsQryEnrollments.FieldByName('course_code').AsInteger), edtYAndMCurrent.Text);

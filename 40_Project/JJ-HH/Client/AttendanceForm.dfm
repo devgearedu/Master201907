@@ -246,11 +246,19 @@ object frmAttendance: TfrmAttendance
       object tshtAttendCoach: TTabSheet
         Caption = #44053#49324
         ImageIndex = 1
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
       end
       object tshtAttendCourse: TTabSheet
         Caption = #44053#51340
         ImageIndex = 2
         OnShow = tshtAttendCourseShow
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object dbgrdAttendByClass: TDBGrid
           Left = 0
           Top = 72

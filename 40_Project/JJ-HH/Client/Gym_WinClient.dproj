@@ -106,7 +106,7 @@
             <Form>frmMain</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="ServerMethodsUnit12_ClientClass.pas"/>
+        <DCCReference Include="ServerMethodsUnitGym_ClientClass.pas"/>
         <DCCReference Include="RegistrationForm.pas">
             <Form>frmRegistration</Form>
             <FormType>dfm</FormType>
@@ -638,7 +638,7 @@
                 <Platform value="Win64">False</Platform>
             </Platforms>
             <DataSnapProxyLookup>
-                <ServerMethodsUnit12_ClientClass>{33644719-3A0E-4177-880B-75C9B32B1F81}</ServerMethodsUnit12_ClientClass>
+                <ServerMethodsUnitGym_ClientClass>{33644719-3A0E-4177-880B-75C9B32B1F81}</ServerMethodsUnitGym_ClientClass>
             </DataSnapProxyLookup>
         </BorlandProject>
         <ProjectFileVersion>12</ProjectFileVersion>

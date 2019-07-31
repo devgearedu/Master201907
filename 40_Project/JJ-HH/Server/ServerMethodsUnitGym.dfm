@@ -1,4 +1,4 @@
-object ServerMethods12: TServerMethods12
+object ServerMethodsGym: TServerMethodsGym
   OldCreateOrder = False
   OnCreate = DSServerModuleCreate
   Height = 534

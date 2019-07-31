@@ -1176,7 +1176,7 @@ object frmMain: TfrmMain
     UniqueId = '{33644719-3A0E-4177-880B-75C9B32B1F81}'
   end
   object DSpcnGym: TDSProviderConnection
-    ServerClassName = 'TServerMethods12'
+    ServerClassName = 'TServerMethodsGym'
     Connected = True
     SQLConnection = SQLcnGym
     Left = 920

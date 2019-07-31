@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.Grids, Vcl.DBGrids,
   Vcl.Mask, Vcl.ComCtrls, Vcl.StdCtrls, System.DateUtils,
-  ServerMethodsUnit12_ClientClass, Vcl.DBCtrls, Vcl.WinXCtrls, Vcl.ExtCtrls,
+  ServerMethodsUnitGym_ClientClass, Vcl.DBCtrls, Vcl.WinXCtrls, Vcl.ExtCtrls,
   RegistrationForm, NamesakeForm;
 
 type

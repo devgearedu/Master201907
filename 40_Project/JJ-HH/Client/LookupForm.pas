@@ -47,7 +47,7 @@ implementation
 
 {$R *.dfm}
 
-uses MainForm, ServerMethodsUnit12_ClientClass;
+uses MainForm, ServerMethodsUnitGym_ClientClass;
 
 procedure TfrmLookup.rdbtnClientsClick(Sender: TObject);
 var

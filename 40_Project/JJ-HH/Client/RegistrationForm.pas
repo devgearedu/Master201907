@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.Grids, Vcl.DBGrids,
   Vcl.Mask, Vcl.ComCtrls, Vcl.StdCtrls, System.DateUtils,
-  ServerMethodsUnit12_ClientClass, Vcl.ExtCtrls, Vcl.WinXCtrls,
+  ServerMethodsUnitGym_ClientClass, Vcl.ExtCtrls, Vcl.WinXCtrls,
   Vcl.WinXPickers, Vcl.DBCtrls;
 
 type
@@ -107,7 +107,7 @@ uses
   MainForm, NamesakeForm;
 
 var
-  serverclient : TServerMethods12Client;
+  serverclient : TServerMethodsGymClient;
 
 {$R *.dfm}
 
@@ -326,7 +326,7 @@ end;
 
 procedure TfrmRegistration.FormCreate(Sender: TObject);
 begin
-  serverclient := TServerMethods12Client.Create(frmMain.SQLcnGym.DBXConnection);
+  serverclient := TServerMethodsGymClient.Create(frmMain.SQLcnGym.DBXConnection);
 end;
 
 procedure TfrmRegistration.tshtClientShow(Sender: TObject);

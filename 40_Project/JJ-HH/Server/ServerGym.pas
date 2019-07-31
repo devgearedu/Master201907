@@ -1,4 +1,4 @@
-unit Server12;
+unit ServerGym;
 
 interface
 
@@ -6,7 +6,7 @@ uses Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs;
 
 type
-  TfrmServer12 = class(TForm)
+  TfrmServerGym = class(TForm)
   private
     { Private declarations }
   public
@@ -14,7 +14,7 @@ type
   end;
 
 var
-  frmServer12: TfrmServer12;
+  frmServerGym: TfrmServerGym;
 
 implementation
 

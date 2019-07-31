@@ -69,7 +69,7 @@ implementation
 
 {$R *.dfm}
 
-uses MainForm, System.DateUtils, ServerMethodsUnit12_ClientClass,
+uses MainForm, System.DateUtils, ServerMethodsUnitGym_ClientClass,
   NamesakeForm;
 
 procedure TfrmEnrollment.btnEnrollAgainClick(Sender: TObject);
