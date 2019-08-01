@@ -15,7 +15,7 @@ uses
 type
   TfrmHomeScreen = class(TForm)
     tlbrHomeScreen: TToolBar;
-    Beacon1: TBeacon;
+    BcnGym: TBeacon;
     Switch1: TSwitch;
     btnShowMenu: TButton;
     pnlScreen: TPanel;
@@ -37,11 +37,13 @@ type
     btnNotification: TButton;
     mvNotification: TMultiView;
     MemoLog: TMemo;
-    procedure Beacon1BeaconEnter(const Sender: TObject;
+    procedure BcnGymBeaconEnter(const Sender: TObject;
       const ABeacon: IBeacon; const CurrentBeaconList: TBeaconList);
     procedure Switch1Switch(Sender: TObject);
     procedure btnAttendClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure BcnGymBeaconExit(const Sender: TObject;
+      const ABeacon: IBeacon; const CurrentBeaconList: TBeaconList);
   private
     { Private declarations }
     FBeacon : IBeacon;
@@ -65,40 +67,59 @@ uses
   FMX.DialogService;
 {$R *.fmx}
 
-procedure TfrmHomeScreen.Beacon1BeaconEnter(const Sender: TObject;
+procedure TfrmHomeScreen.BcnGymBeaconEnter(const Sender: TObject;
+  const ABeacon: IBeacon; const CurrentBeaconList: TBeaconList);
+var
+  btnTagAsString, FWeekdays : string;
+begin
+  ShowMessage('체육관 입장');
+  FBeacon := ABeacon;
+end;
+
+procedure TfrmHomeScreen.BcnGymBeaconExit(const Sender: TObject;
   const ABeacon: IBeacon; const CurrentBeaconList: TBeaconList);
 begin
-  ShowMessage('');
-  FBeacon := ABeacon;
+  FBeacon := nil;
+  ShowMessage('쳬육관 퇴장');
 end;
 
 procedure TfrmHomeScreen.btnAttendClick(Sender: TObject);
 var
   btnTagAsString, FWeekdays : string;
+  DateStr: string;
 begin
-  btnTagAsString := IntToStr(btnAttend.Tag);
 
-  cdsQryMAttend.Close;
-  serverClient.SelectFromEnrollmentsAndCourses(btnTagAsString);
-  cdsQryMAttend.Open;
-
-  if (DayOfTheWeek(Today) = 2) or (DayOfTheWeek(Today) = 4) then
-    FWeekdays := '화목'
-  else
-    FWeekdays := '월수금';
-
-  cdsQryMAttend.Filtered := False;
-  cdsQryMAttend.Filter := 'weekdays = ' + QuotedStr(FWeekdays);
-  cdsQryMAttend.Filtered := True;
-
-  cdsQryMAttend.IndexFieldNames := 'begin_time';
-  cdsQryMAttend.FindNearest([Now]);
-
-  ShowMessage(IntToStr(cdsQryMAttend.Fields[1].Value));
-  if serverClient.AttendByClient(btnTagAsString, IntToStr(cdsQryMAttend.Fields[1].Value), DateToStr(Today)) then
+  if Assigned(FBeacon) then
   begin
-    ShowMessage('출석 완료');
-  end;
+    DateStr := FormatDateTime('YYYY-MM-DD', Today);
+    btnTagAsString := IntToStr(btnAttend.Tag);
+
+    cdsQryMAttend.Close;
+    serverClient.SelectFromEnrollmentsAndCourses(btnTagAsString);
+    cdsQryMAttend.Open;
+
+    if (DayOfTheWeek(Today) = 2) or (DayOfTheWeek(Today) = 4) then
+      FWeekdays := '화목'
+    else
+      FWeekdays := '월수금';
+
+    cdsQryMAttend.Filtered := False;
+    cdsQryMAttend.Filter := 'weekdays = ' + QuotedStr(FWeekdays);
+    cdsQryMAttend.Filtered := True;
+
+    cdsQryMAttend.IndexFieldNames := 'begin_time';
+    cdsQryMAttend.FindNearest([Now]);
+
+    if serverClient.AttendByClient(btnTagAsString, IntToStr(cdsQryMAttend.Fields[1].Value), DateStr) then
+    begin
+      ShowMessage('출석 완료');
+    end;
+
+    cdsQryMAttend.Filtered := False;
+
+  end
+  else
+    ShowMessage('입장 후 다시 시도해주세요');
 end;
 
 procedure TfrmHomeScreen.FormCreate(Sender: TObject);
@@ -122,7 +143,7 @@ begin
           and (AGrantResults[1] = TPermissionStatus.Granted) then
 
 { activate or deactivate the location sensor }
-            Beacon1.Enabled := True
+            BcnGym.Enabled := True
           else
           begin
             Switch1.IsChecked := False;
@@ -131,10 +152,11 @@ begin
         end);
   end
   else
-    Beacon1.Enabled := False;
+    BcnGym.Enabled := False;
 {$ELSE}
-  Beacon1.Enabled := Switch1.IsChecked;
+  BcnGym.Enabled := Switch1.IsChecked;
 {$ENDIF}
+
 end;
 
 end.

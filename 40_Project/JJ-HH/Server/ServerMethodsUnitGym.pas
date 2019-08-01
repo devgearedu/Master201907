@@ -171,7 +171,6 @@ begin
       fdtblAttendances.Post;
       fdtblAttendances.ApplyUpdates(-1);
       fdtblAttendances.CommitUpdates;
-      fdcnGYM.Commit;
     end;
     fdtblAttendances.Next;
   end;
@@ -192,7 +191,7 @@ begin
   fdtblEnrollments.Delete;
   fdtblEnrollments.ApplyUpdates(-1);
   fdtblEnrollments.CommitUpdates;
-  fdcnGYM.Commit;
+//  fdcnGYM.Commit;
 
   Result := True;
 end;
@@ -229,7 +228,7 @@ begin
   fdtblEnrollments.Post;
   fdtblEnrollments.ApplyUpdates(-1);
   fdtblEnrollments.CommitUpdates;
-  fdcnGYM.Commit;
+//  fdcnGYM.Commit;
   fdtblEnrollments.Refresh;
 
   fdtblCourses.Edit;
@@ -237,7 +236,7 @@ begin
   fdtblCourses.Post;
   fdtblCourses.ApplyUpdates(-1);
   fdtblCourses.CommitUpdates;
-  fdcnGYM.Commit;
+//  fdcnGYM.Commit;
   fdtblCourses.Refresh;
 
   Result := True;
@@ -278,7 +277,7 @@ begin
   fdtblClients.Post;
   fdtblClients.ApplyUpdates(-1);
   fdtblClients.CommitUpdates;
-  fdcnGYM.Commit;
+//  fdcnGYM.Commit;
   fdtblClients.Refresh;
 
   fdtblClients.Locate('Mobile',AMobile,[]);
@@ -305,7 +304,7 @@ begin
   fdtblCoaches.Post;
   fdtblCoaches.ApplyUpdates(-1);
   fdtblCoaches.CommitUpdates;
-  fdcnGYM.Commit;
+//  fdcnGYM.Commit;
   fdtblCoaches.Refresh;
 
   fdtblCoaches.Locate('Mobile',AMobile,[]);
@@ -333,7 +332,7 @@ begin
   fdtblCourses.Post;
   fdtblCourses.ApplyUpdates(-1);
   fdtblCourses.CommitUpdates;
-  fdcnGYM.Commit;
+//  fdcnGYM.Commit;
   fdtblCourses.Refresh;
 
   fdtblCourses.Last;
@@ -358,7 +357,7 @@ begin
  fdtblAttendances.Post;
  fdtblAttendances.ApplyUpdates(-1);
  fdtblAttendances.CommitUpdates;
- fdcnGYM.Commit;
+// fdcnGYM.Commit;
  fdtblAttendances.Refresh;
 
  Result := True;

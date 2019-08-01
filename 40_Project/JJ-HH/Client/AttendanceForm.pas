@@ -147,6 +147,17 @@ begin
     end;
   end;
 
+  frmMain.cdsQryAttendances.fields[0].DisplayLabel := '수업일자';
+  frmMain.cdsQryAttendances.fields[1].DisplayLabel := '종목';
+  frmMain.cdsQryAttendances.fields[1].DisplayWidth := 10;
+  frmMain.cdsQryAttendances.fields[2].DisplayLabel := '시작시간';
+  frmMain.cdsQryAttendances.fields[2].DisplayWidth := 12;
+  frmMain.cdsQryAttendances.fields[3].DisplayLabel := '요일';
+  frmMain.cdsQryAttendances.fields[3].DisplayWidth := 10;
+  frmMain.cdsQryAttendances.fields[4].DisplayLabel := '강좌코드';
+  frmMain.cdsQryAttendances.fields[4].DisplayWidth := 10;
+  frmMain.cdsQryAttendances.fields[5].DisplayLabel := '출석여부';
+
   dbgrdAttendByClient.DataSource := frmMain.dsQryAttendances;
 end;
 

@@ -12511,7 +12511,7 @@ object frmHomeScreen: TfrmHomeScreen
       TabOrder = 1
     end
   end
-  object Beacon1: TBeacon
+  object BcnGym: TBeacon
     ModeExtended = [iBeacons, AltBeacons, Eddystones]
     MonitorizedRegions = <
       item
@@ -12523,7 +12523,8 @@ object frmHomeScreen: TfrmHomeScreen
         IDManufacturer = '-1'
       end>
     SPC = 0.500000000000000000
-    OnBeaconEnter = Beacon1BeaconEnter
+    OnBeaconEnter = BcnGymBeaconEnter
+    OnBeaconExit = BcnGymBeaconExit
     Left = 48
     Top = 8
   end
@@ -12532,7 +12533,7 @@ object frmHomeScreen: TfrmHomeScreen
     LoginPrompt = False
     Params.Strings = (
       'DriverUnit=Data.DBXDataSnap'
-      'HostName=192.168.0.6'
+      'HostName=192.168.1.6'
       'Port=211'
       'CommunicationProtocol=tcp/ip'
       'DatasnapContext=datasnap/'
@@ -12540,7 +12541,8 @@ object frmHomeScreen: TfrmHomeScreen
         'DriverAssemblyLoader=Borland.Data.TDBXClientDriverLoader,Borland' +
         '.Data.DbxClientDriver,Version=24.0.0.0,Culture=neutral,PublicKey' +
         'Token=91d62ebb5b0d1b1b'
-      'Filters={}')
+      'Filters={}'
+      'DSProxyPort=8888')
     Connected = True
     Left = 320
     Top = 552

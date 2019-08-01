@@ -334,59 +334,81 @@ object frmEnrollment: TfrmEnrollment
     Left = 464
     Top = 40
     object cdsCoursesCODE: TIntegerField
+      DisplayLabel = #44053#51340#53076#46300
       FieldName = 'CODE'
       Origin = 'CODE'
     end
     object cdsCoursesCOACH_CODE: TIntegerField
+      DisplayLabel = #44053#49324#48264#54840
       FieldName = 'COACH_CODE'
       Origin = 'COACH_CODE'
     end
     object cdsCoursesNAME_: TWideStringField
+      DisplayLabel = #51333#47785
+      DisplayWidth = 10
       FieldName = 'NAME_'
       Origin = 'NAME_'
       Size = 24
     end
     object cdsCoursesWEEKDAYS: TWideStringField
+      DisplayLabel = #50836#51068
+      DisplayWidth = 10
       FieldName = 'WEEKDAYS'
       Origin = 'WEEKDAYS'
       Size = 12
     end
     object cdsCoursesYEAR_AND_MONTH: TStringField
+      DisplayLabel = #44592#44036
+      DisplayWidth = 10
       FieldName = 'YEAR_AND_MONTH'
       Origin = 'YEAR_AND_MONTH'
       FixedChar = True
       Size = 6
     end
     object cdsCoursesBEGIN_TIME: TTimeField
+      DisplayLabel = #49884#51089#49884#44036
+      DisplayWidth = 12
       FieldName = 'BEGIN_TIME'
       Origin = 'BEGIN_TIME'
     end
     object cdsCoursesLOCATION_: TWideStringField
+      DisplayLabel = #50948#52824
+      DisplayWidth = 10
       FieldName = 'LOCATION_'
       Origin = 'LOCATION_'
       Size = 24
     end
     object cdsCoursesMINIMUM_ENROLL: TIntegerField
+      DisplayLabel = #54224#44053#51064#50896
+      DisplayWidth = 5
       FieldName = 'MINIMUM_ENROLL'
       Origin = 'MINIMUM_ENROLL'
     end
     object cdsCoursesCURRENT_ENROLL: TIntegerField
+      DisplayLabel = #49688#44053#51064#50896
+      DisplayWidth = 5
       FieldName = 'CURRENT_ENROLL'
       Origin = 'CURRENT_ENROLL'
     end
     object cdsCoursesMAXIMUM_ENROLL: TIntegerField
+      DisplayLabel = #51221#50896
+      DisplayWidth = 5
       FieldName = 'MAXIMUM_ENROLL'
       Origin = 'MAXIMUM_ENROLL'
     end
     object cdsCoursesPRICE: TIntegerField
+      DisplayLabel = #49688#44053#47308
       FieldName = 'PRICE'
       Origin = 'PRICE'
     end
     object cdsCoursesEND_TIME: TTimeField
+      DisplayLabel = #51333#47308#49884#44036
+      DisplayWidth = 12
       FieldName = 'END_TIME'
       Origin = 'END_TIME'
     end
     object cdsCoursesIS_CANCELED: TStringField
+      DisplayLabel = #54224#44053#50668#48512
       FieldName = 'IS_CANCELED'
       Origin = 'IS_CANCELED'
       FixedChar = True

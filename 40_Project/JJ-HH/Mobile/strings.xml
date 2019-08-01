@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="gcm_defaultSenderId" translatable="false">1020894256099</string> <!-- project_info/project_number -->
+	<string name="google_app_id" translatable="false">1:1020894256099:android:56a0788c40e3b125</string> <!-- {YOUR_CLIENT}/client_info/mobilesdk_app_id -->
+	
+    <string name="fcm_fallback_notification_channel_label" translatable="false">Notification channel for Firebase</string> <!-- NOTE: Add this --> 
+</resources>

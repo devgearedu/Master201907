@@ -154,15 +154,6 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="google-services.json" Condition="'$(Config)'=='Debug'">
-            <RemoteDir>MobileGym\assets\internal\</RemoteDir>
-            <RemoteName>google-services.json</RemoteName>
-            <DeployClass>ProjectFile</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="Android\Debug\libMobileGym.so" Condition="'$(Config)'=='Debug'">
             <RemoteDir>MobileGym\library\lib\armeabi-v7a\</RemoteDir>
             <RemoteName>libMobileGym.so</RemoteName>

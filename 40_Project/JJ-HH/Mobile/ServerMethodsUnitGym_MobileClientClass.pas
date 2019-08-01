@@ -1,7 +1,7 @@
-// 
+//
 // Created by the DataSnap proxy generator.
-// 2019-07-31 오후 2:18:17
-// 
+// 2019-08-01 오전 4:24:01
+//
 
 unit ServerMethodsUnitGym_MobileClientClass;
 
@@ -415,3 +415,4 @@ begin
 end;
 
 end.
+
