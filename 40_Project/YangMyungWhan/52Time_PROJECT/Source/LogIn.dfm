@@ -2,8 +2,8 @@ object frmLogin: TfrmLogin
   Left = 0
   Top = 0
   Caption = 'frmLogin'
-  ClientHeight = 409
-  ClientWidth = 635
+  ClientHeight = 384
+  ClientWidth = 549
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,13 +16,10 @@ object frmLogin: TfrmLogin
   object pnlLogin: TPanel
     Left = 0
     Top = 0
-    Width = 635
+    Width = 549
     Height = 41
     Align = alTop
     TabOrder = 0
-    ExplicitLeft = 232
-    ExplicitTop = 208
-    ExplicitWidth = 185
     object Label1: TLabel
       Left = 8
       Top = 12
@@ -36,5 +33,104 @@ object frmLogin: TfrmLogin
       Font.Style = [fsBold]
       ParentFont = False
     end
+  end
+  object pnlLoginMain: TPanel
+    Left = 0
+    Top = 41
+    Width = 549
+    Height = 343
+    Align = alClient
+    TabOrder = 1
+    object Label2: TLabel
+      Left = 88
+      Top = 50
+      Width = 42
+      Height = 21
+      Caption = #51060#47492
+      Font.Charset = HANGEUL_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -21
+      Font.Name = 'HY'#49688#54217#49440'M'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label3: TLabel
+      Left = 88
+      Top = 110
+      Width = 42
+      Height = 21
+      Caption = #49324#48264
+      Font.Charset = HANGEUL_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -21
+      Font.Name = 'HY'#49688#54217#49440'M'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label4: TLabel
+      Left = 88
+      Top = 170
+      Width = 84
+      Height = 21
+      Caption = #48708#48128#48264#54840
+      Font.Charset = HANGEUL_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -21
+      Font.Name = 'HY'#49688#54217#49440'M'
+      Font.Style = []
+      ParentFont = False
+    end
+    object edtLoginName: TEdit
+      Left = 224
+      Top = 50
+      Width = 121
+      Height = 21
+      TabOrder = 0
+    end
+    object edtLoginCode: TEdit
+      Left = 224
+      Top = 110
+      Width = 121
+      Height = 21
+      TabOrder = 1
+    end
+    object edtLoginPw: TEdit
+      Left = 224
+      Top = 170
+      Width = 121
+      Height = 21
+      PasswordChar = '*'
+      TabOrder = 2
+    end
+    object btnLogin: TButton
+      Left = 88
+      Top = 224
+      Width = 257
+      Height = 65
+      Caption = #47196#44536#51064
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -27
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 3
+      OnClick = btnLoginClick
+    end
+  end
+  object btnNewMember: TButton
+    Left = 384
+    Top = 89
+    Width = 89
+    Height = 241
+    Caption = #54924#50896#44032#51077
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -21
+    Font.Name = 'Arial'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 2
+    OnClick = btnNewMemberClick
   end
 end

@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{E56D181C-965C-46B7-A3EF-DF7CB0A06431}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Project_52TIME.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Project8.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Project_52TIME">
+        <MSBuild Projects="Project_52TIME.dproj"/>
+    </Target>
+    <Target Name="Project_52TIME:Clean">
+        <MSBuild Projects="Project_52TIME.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Project_52TIME:Make">
+        <MSBuild Projects="Project_52TIME.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Project8">
+        <MSBuild Projects="Project8.dproj"/>
+    </Target>
+    <Target Name="Project8:Clean">
+        <MSBuild Projects="Project8.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Project8:Make">
+        <MSBuild Projects="Project8.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Project_52TIME;Project8"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Project_52TIME:Clean;Project8:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Project_52TIME:Make;Project8:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

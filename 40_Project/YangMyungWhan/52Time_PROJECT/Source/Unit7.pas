@@ -1,15 +1,14 @@
-unit DBFrame;
+unit Unit7;
 
 interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, DataAccessModule, Data.DB, Vcl.Grids,
-  Vcl.DBGrids;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.Grids, Vcl.DBGrids;
 
 type
-  TfrmDb = class(TForm)
-    DBGrid3: TDBGrid;
+  TForm7 = class(TForm)
+    DBGrid1: TDBGrid;
   private
     { Private declarations }
   public
@@ -17,7 +16,7 @@ type
   end;
 
 var
-  frmDb: TfrmDb;
+  Form7: TForm7;
 
 implementation
 

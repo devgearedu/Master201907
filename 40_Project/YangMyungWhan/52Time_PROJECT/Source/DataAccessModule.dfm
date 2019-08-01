@@ -1,16 +1,23 @@
-object dmDataAccess: TdmDataAccess
+﻿object dmDataAccess: TdmDataAccess
   OldCreateOrder = False
   Height = 653
   Width = 825
   object con52Time: TFDConnection
     Params.Strings = (
-      'ConnectionDef=52TIME_DB_V2')
+      
+        'Database=D:\git hub\40_Project\YangMyungWhan\52Time_PROJECT\DB\5' +
+        '2TIME_DB_V2.IB'
+      'User_Name=SYSDBA'
+      'Password=masterkey'
+      'CharacterSet=UTF8'
+      'DriverID=IB')
     Connected = True
     LoginPrompt = False
     Left = 16
     Top = 24
   end
   object qry52Time: TFDQuery
+    Active = True
     Connection = con52Time
     SQL.Strings = (
       'SELECT *'
@@ -38,32 +45,27 @@ object dmDataAccess: TdmDataAccess
       FieldName = 'USERS_SEQ'
       Origin = 'USERS_SEQ'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
     end
     object qryInformationDeptUSERS_CODE: TIntegerField
       Alignment = taCenter
       FieldName = 'USERS_CODE'
       Origin = 'USERS_CODE'
-      Required = True
     end
     object qryInformationDeptUSERS_NAME: TWideStringField
       Alignment = taCenter
       FieldName = 'USERS_NAME'
       Origin = 'USERS_NAME'
-      Required = True
       Size = 40
     end
     object qryInformationDeptUSERS_PASS: TWideStringField
       FieldName = 'USERS_PASS'
       Origin = 'USERS_PASS'
-      Required = True
       Size = 60
     end
     object qryInformationDeptUSERS_NUM: TWideStringField
       Alignment = taCenter
       FieldName = 'USERS_NUM'
       Origin = 'USERS_NUM'
-      Required = True
       Size = 60
     end
     object qryInformationDeptUSERS_IMG: TBlobField
@@ -73,14 +75,12 @@ object dmDataAccess: TdmDataAccess
     object qryInformationDeptUSERS_MA: TWideStringField
       FieldName = 'USERS_MA'
       Origin = 'USERS_MA'
-      Required = True
       FixedChar = True
       Size = 4
     end
     object qryInformationDeptDEPT_SEQ: TIntegerField
       FieldName = 'DEPT_SEQ'
       Origin = 'DEPT_SEQ'
-      Required = True
     end
     object qryInformationDeptDEPT_DEPT: TWideStringField
       Alignment = taCenter
@@ -138,18 +138,6 @@ object dmDataAccess: TdmDataAccess
       Origin = 'WTIT_FIWORKTIME'
       DisplayFormat = 'hh:mm'
     end
-    object qryTimeInsertWTIT_STEXCEPTTIME: TTimeField
-      Alignment = taCenter
-      FieldName = 'WTIT_STEXCEPTTIME'
-      Origin = 'WTIT_STEXCEPTTIME'
-      DisplayFormat = 'hh:mm'
-    end
-    object qryTimeInsertWTIT_FIEXCEPTTIME: TTimeField
-      Alignment = taCenter
-      FieldName = 'WTIT_FIEXCEPTTIME'
-      Origin = 'WTIT_FIEXCEPTTIME'
-      DisplayFormat = 'hh:mm'
-    end
     object qryTimeInsertWTIT_DATE: TSQLTimeStampField
       Alignment = taCenter
       FieldName = 'WTIT_DATE'
@@ -163,6 +151,12 @@ object dmDataAccess: TdmDataAccess
       ProviderFlags = []
       ReadOnly = True
       Size = 40
+    end
+    object qryTimeInsertWTIT_REALWORKTIME: TTimeField
+      Alignment = taCenter
+      FieldName = 'WTIT_REALWORKTIME'
+      Origin = 'WTIT_REALWORKTIME'
+      DisplayFormat = 'hh:mm'
     end
   end
   object qryDept: TFDQuery
@@ -249,8 +243,8 @@ object dmDataAccess: TdmDataAccess
       '  WTIT_FIEXCEPTTIME, WTIT_DATE'
       'FROM TB_WORKTIMEINSERT'
       'WHERE WTIT_SEQ = :OLD_WTIT_SEQ')
-    Left = 16
-    Top = 224
+    Left = 24
+    Top = 240
   end
   object qryAutoTimeInsert: TFDQuery
     Active = True
@@ -290,18 +284,6 @@ object dmDataAccess: TdmDataAccess
       Origin = 'WTIT_FIWORKTIME'
       DisplayFormat = 'hh:mm'
     end
-    object qryAutoTimeInsertWTIT_STEXCEPTTIME: TTimeField
-      Alignment = taCenter
-      FieldName = 'WTIT_STEXCEPTTIME'
-      Origin = 'WTIT_STEXCEPTTIME'
-      DisplayFormat = 'hh:mm'
-    end
-    object qryAutoTimeInsertWTIT_FIEXCEPTTIME: TTimeField
-      Alignment = taCenter
-      FieldName = 'WTIT_FIEXCEPTTIME'
-      Origin = 'WTIT_FIEXCEPTTIME'
-      DisplayFormat = 'hh:mm'
-    end
     object qryAutoTimeInsertWTIT_DATE: TSQLTimeStampField
       Alignment = taCenter
       FieldName = 'WTIT_DATE'
@@ -316,6 +298,16 @@ object dmDataAccess: TdmDataAccess
       ReadOnly = True
       Size = 40
     end
+    object qryAutoTimeInsertWTIT_REALWORKTIME: TTimeField
+      Alignment = taCenter
+      FieldName = 'WTIT_REALWORKTIME'
+      Origin = 'WTIT_REALWORKTIME'
+      DisplayFormat = 'hh:mm'
+    end
+    object qryAutoTimeInsertWTIT_DAYREALWORKTIME: TTimeField
+      FieldName = 'WTIT_DAYREALWORKTIME'
+      Origin = 'WTIT_DAYREALWORKTIME'
+    end
   end
   object dsAutoTimeInsert: TDataSource
     DataSet = qryAutoTimeInsert
@@ -323,7 +315,6 @@ object dmDataAccess: TdmDataAccess
     Top = 384
   end
   object qryWeekday: TFDQuery
-    Active = True
     Connection = con52Time
     SQL.Strings = (
       'SELECT *'
@@ -335,5 +326,202 @@ object dmDataAccess: TdmDataAccess
     DataSet = qryWeekday
     Left = 496
     Top = 32
+  end
+  object qryRealTime: TFDQuery
+    Connection = con52Time
+    SQL.Strings = (
+      'UPDATE TB_WORKTIMEINSERT'
+      'SET WTIT_REALWORKTIME = :WORKTIME'
+      'WHERE'
+      'WTIT_SEQ = :WTIT_SEQ')
+    Left = 424
+    Top = 88
+    ParamData = <
+      item
+        Name = 'WORKTIME'
+        DataType = ftTime
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'WTIT_SEQ'
+        DataType = ftInteger
+        ParamType = ptInput
+      end>
+    object qryRealTime이름: TStringField
+      FieldName = #51060#47492
+      LookupDataSet = qryInformationDept
+    end
+  end
+  object dsRealTime: TDataSource
+    DataSet = qryRealTime
+    Left = 496
+    Top = 88
+  end
+  object qryExceptTime: TFDQuery
+    Connection = con52Time
+    SQL.Strings = (
+      'SELECT*FROM TB_EXCEPTTIME')
+    Left = 424
+    Top = 152
+    object qryExceptTimeET_SEQ: TIntegerField
+      Alignment = taCenter
+      FieldName = 'ET_SEQ'
+      Origin = 'ET_SEQ'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object qryExceptTimeWTIT_SEQ: TIntegerField
+      Alignment = taCenter
+      FieldName = 'WTIT_SEQ'
+      Origin = 'WTIT_SEQ'
+    end
+    object qryExceptTimeET_STEXCEPTTIME: TTimeField
+      Alignment = taCenter
+      FieldName = 'ET_STEXCEPTTIME'
+      Origin = 'ET_STEXCEPTTIME'
+      DisplayFormat = 'hh:mm'
+    end
+    object qryExceptTimeET_FIEXCEPTTIME: TTimeField
+      Alignment = taCenter
+      FieldName = 'ET_FIEXCEPTTIME'
+      Origin = 'ET_FIEXCEPTTIME'
+      DisplayFormat = 'hh:mm'
+    end
+    object qryExceptTimeWTIT_DATE: TSQLTimeStampField
+      Alignment = taCenter
+      FieldName = 'WTIT_DATE'
+      Origin = 'WTIT_DATE'
+    end
+    object qryExceptTimeET_EXCEPTTIME: TTimeField
+      Alignment = taCenter
+      FieldName = 'ET_EXCEPTTIME'
+      Origin = 'ET_EXCEPTTIME'
+      DisplayFormat = 'hh:mm'
+    end
+  end
+  object dsExceptTime: TDataSource
+    DataSet = qryExceptTime
+    Left = 496
+    Top = 152
+  end
+  object qryUpdateExceptTime: TFDQuery
+    Connection = con52Time
+    SQL.Strings = (
+      'UPDATE TB_EXCEPTTIME'
+      'SET ET_EXCEPTTIME = :EXCEPTTIME'
+      'WHERE'
+      'ET_SEQ = :ET_SEQ')
+    Left = 424
+    Top = 216
+    ParamData = <
+      item
+        Name = 'EXCEPTTIME'
+        DataType = ftTime
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'ET_SEQ'
+        DataType = ftInteger
+        ParamType = ptInput
+      end>
+  end
+  object dsUpdateExceptTime: TDataSource
+    DataSet = qryUpdateExceptTime
+    Left = 528
+    Top = 216
+  end
+  object qryLogin: TFDQuery
+    Connection = con52Time
+    SQL.Strings = (
+      'SELECT '
+      'TB_USERS.USERS_SEQ'
+      ''
+      'FROM'
+      'TB_USERS'
+      ''
+      'WHERE'
+      'TB_USERS.USERS_NAME = :AUSERS_NAME AND  '
+      'TB_USERS.USERS_CODE = :AUSERS_CODE AND'
+      'TB_USERS.USERS_PASS = :AUSERS_PW')
+    Left = 424
+    Top = 280
+    ParamData = <
+      item
+        Name = 'AUSERS_NAME'
+        DataType = ftWideString
+        ParamType = ptInput
+        Size = 40
+        Value = Null
+      end
+      item
+        Name = 'AUSERS_CODE'
+        DataType = ftInteger
+        ParamType = ptInput
+      end
+      item
+        Name = 'AUSERS_PW'
+        DataType = ftWideString
+        ParamType = ptInput
+        Size = 60
+      end>
+  end
+  object dsLogin: TDataSource
+    DataSet = qryLogin
+    Left = 504
+    Top = 280
+  end
+  object qryNewMember: TFDQuery
+    Connection = con52Time
+    SQL.Strings = (
+      'SELECT DEPT_SEQ'
+      'FROM'
+      'TB_DEPARTMENT'
+      'WHERE'
+      'TB_DEPARTMENT.DEPT_DEPT =:ADEPT_DEPT')
+    Left = 424
+    Top = 352
+    ParamData = <
+      item
+        Name = 'ADEPT_DEPT'
+        DataType = ftWideString
+        ParamType = ptInput
+        Size = 40
+        Value = Null
+      end>
+  end
+  object dsNewMember: TDataSource
+    DataSet = qryNewMember
+    Left = 504
+    Top = 352
+  end
+  object qryNameInsert: TFDQuery
+    Connection = con52Time
+    SQL.Strings = (
+      'SELECT USERS_SEQ'
+      'FROM'
+      'TB_USERS'
+      'WHERE'
+      'TB_USERS.USERS_NAME =:AUSERS_NAME')
+    Left = 424
+    Top = 416
+    ParamData = <
+      item
+        Name = 'AUSERS_NAME'
+        DataType = ftWideString
+        ParamType = ptInput
+        Size = 40
+        Value = Null
+      end>
+  end
+  object dsNameinsert: TDataSource
+    DataSet = qryNameInsert
+    Left = 504
+    Top = 416
+  end
+  object proInformationDept: TDataSetProvider
+    DataSet = qryInformationDept
+    Left = 296
+    Top = 88
   end
 end

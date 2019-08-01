@@ -2,7 +2,7 @@ object frmMainForm: TfrmMainForm
   Left = 0
   Top = 0
   AutoSize = True
-  Caption = 'frmMainForm'
+  Caption = 'e'
   ClientHeight = 623
   ClientWidth = 985
   Color = clBtnFace
@@ -13,6 +13,7 @@ object frmMainForm: TfrmMainForm
   Font.Style = []
   Menu = MainMenu1
   OldCreateOrder = False
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object tbMainMenu: TToolBar

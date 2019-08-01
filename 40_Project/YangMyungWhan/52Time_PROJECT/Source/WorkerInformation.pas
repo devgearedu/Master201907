@@ -37,6 +37,10 @@ type
     cbDept: TDBLookupComboBox;
     DBGrid1: TDBGrid;
     btnAutoDelete: TButton;
+    dsLoad: TDataSource;
+    edtSearch: TEdit;
+    Label2: TLabel;
+    Button1: TButton;
     procedure btnClearClick(Sender: TObject);
     procedure btnImageLoadClick(Sender: TObject);
     procedure btnWorkerLoadClick(Sender: TObject);
@@ -46,6 +50,10 @@ type
     procedure btnStartWorkClick(Sender: TObject);
     procedure btnFinishWorkClick(Sender: TObject);
     procedure btnAutoDeleteClick(Sender: TObject);
+    procedure dsLoadDataChange(Sender: TObject; Field: TField);
+    procedure FormCreate(Sender: TObject);
+    procedure edtSearchKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure Button1Click(Sender: TObject);
 
   private
     { Private declarations }
@@ -55,10 +63,14 @@ type
 
 var
   frmWorkerInformation: TfrmWorkerInformation;
-
+    procedure Display_USplash; stdcall;
+external 'Project8.dll';
 implementation
 
+
 {$R *.dfm}
+
+uses LogIn;
 
 procedure TfrmWorkerInformation.btnAutoDeleteClick(Sender: TObject);
 var
@@ -69,6 +81,8 @@ begin
     Exit;
 
   dmDataAccess.qryAutoTimeInsert.Delete;
+  dmDataAccess.qryAutoTimeInsert.Refresh;
+  dmDataAccess.qryTimeInsert.Refresh;
 end;
 
 procedure TfrmWorkerInformation.btncancelClick(Sender: TObject);
@@ -94,10 +108,27 @@ procedure TfrmWorkerInformation.btnFinishWorkClick(Sender: TObject);
 Var
   WorkTime_Seq: Integer;
   FiworkTime: TTime;
+  RealTime_Seq: Integer;
+  Wtit_FiWorkTime: TTime;
+  Wtit_StWorkTime:TTime;
+
 begin
+
+  //퇴근 클릭 시 출근 입력 되어있는 항목에 현재시간 추가
   WorkTime_Seq := dmDataAccess.qryAutoTimeInsert.FieldByName('WTIT_SEQ').AsInteger;
   dmDataAccess.ExecuteTime(WorkTime_Seq, now);
+  dmDataAccess.qryAutoTimeInsert.Refresh;
+  dmDataAccess.qryTimeInsert.Refresh;
+
+  //퇴근시간 - 출근시간 = 실 근무시간 계산
+  RealTime_Seq := dmDataAccess.qryAutoTimeInsert.FieldByName('WTIT_SEQ').AsInteger;
+  Wtit_StWorkTime := dmDataAccess.qryAutoTimeInsert.FieldByName('WTIT_STWORKTIME').AsDateTime;
+  Wtit_FiWorkTime := dmDataAccess.qryAutoTimeInsert.FieldByName('WTIT_FIWORKTIME').AsDateTime;
+  dmDataAccess.ExecuteRealTime(RealTime_Seq, Wtit_StworkTime, Wtit_FiWorktime);
+  dmDataAccess.qryTimeInsert.Refresh;
+  dmDataAccess.qryAutoTimeInsert.Refresh;
 end;
+
 
 procedure TfrmWorkerInformation.btnImageLoadClick(Sender: TObject);
 var
@@ -113,16 +144,21 @@ begin
 
 end;
 
-procedure TfrmWorkerInformation.btnStartWorkClick(Sender: TObject);
-
+procedure TfrmWorkerInformation.btnStartWorkClick(Sender: TObject);  // 출근 버튼 클릭 시
+var
+  seq : Integer;
 begin
   dmdataaccess.qryAutoTimeInsert.append;
-  dmDataAccess.qryAutoTimeInsert.FieldByName('USERS_SEQ').Asinteger := 2;
+  dmdataAccess.qryNameInsert.Close;
+  dmdataAccess.qryNameInsert.ParamByName('AUSERS_NAME').AsString := frmLogin.edtLoginName.Text;
+  dmdataAccess.qryNameInsert.Open;
+  seq := dmdataAccess.qryInformationDept.FieldbyName('USERS_SEQ').Asinteger;
+  dmdataAccess.qryNameInsert.Close;
+
+  dmDataAccess.qryAutoTimeInsert.FieldByName('USERS_SEQ').Asinteger := seq;
   dmDataAccess.qryAutoTimeInsert.FieldByName('WTIT_DATE').AsdateTime := date;
   dmDataAccess.qryAutoTimeInsert.FieldByName('WTIT_STWORKTIME').AsdateTime := Now;
   dmDataAccess.qryAutoTimeInsert.FieldByName('WTIT_FIWORKTIME').AsdateTime := 0;
-  dmDataAccess.qryAutoTimeInsert.FieldByName('WTIT_STEXCEPTTIME').AsdateTime := 0;
-  dmDataAccess.qryAutoTimeInsert.FieldByName('WTIT_FIEXCEPTTIME').AsdateTime := 0;
   dmDataAccess.qryAutoTimeInsert.Post;
   dmDataAccess.qryAutoTimeInsert.Refresh;
 end;
@@ -168,6 +204,58 @@ begin
   dmDataAccess.qryInformationDept.Refresh;
 end;
 
+
+
+procedure TfrmWorkerInformation.Button1Click(Sender: TObject);
+begin
+  Display_USplash;
+end;
+
+procedure TfrmWorkerInformation.dsLoadDataChange(Sender: TObject;
+  Field: TField);
+var
+  LField: TField;
+begin
+  if dmDataAccess.qryInformationDept.State = dsEdit then
+    Exit;
+
+  LField := dmDataAccess.qryInformationDept.FieldByName('USERS_IMG');
+  if LField is TBlobField then
+    LoadImageFromBlobField(imgWorkerInformation, LField as TBlobField);
+end;
+
+
+procedure TfrmWorkerInformation.edtSearchKeyUp(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+var
+  Filter: string;
+begin
+   Filter := '';
+  if edtSearch.Text <> '' then
+  begin
+    begin
+      if Filter <> '' then
+        Filter := Filter + ' or ';
+      Filter := Filter + Format('USERS_NAME like ''%%%s%%''', [edtSearch.Text]);
+    end;
+  end;
+
+  dmDataAccess.qryInformationDept.Filter := Filter;
+  dmDataAccess.qryInformationDept.Filtered := (Filter <> '');
+end;
+
+
+procedure TfrmWorkerInformation.FormCreate(Sender: TObject);
+var
+  seq : Integer;
+begin
+  dmdataaccess.qryAutoTimeInsert.append;
+  dmdataAccess.qryNameInsert.Close;
+  dmdataAccess.qryNameInsert.ParamByName('AUSERS_NAME').AsString := frmLogin.edtLoginName.Text;
+  dmdataAccess.qryNameInsert.Open;
+  seq := dmdataAccess.qryInformationDept.FieldbyName('USERS_SEQ').Asinteger;
+  dmdataAccess.qryNameInsert.Close;
+end;
 
 end.
 

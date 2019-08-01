@@ -1,0 +1,42 @@
+object SplashForm: TSplashForm
+  Left = 0
+  Top = 0
+  BorderStyle = bsSingle
+  Caption = 'SplashForm'
+  ClientHeight = 242
+  ClientWidth = 300
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poScreenCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 300
+    Height = 242
+    Align = alClient
+    BevelInner = bvLowered
+    TabOrder = 0
+    ExplicitWidth = 306
+    ExplicitHeight = 271
+    object Label1: TLabel
+      Left = 104
+      Top = 88
+      Width = 70
+      Height = 45
+      Caption = 'DLL'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -37
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+  end
+end

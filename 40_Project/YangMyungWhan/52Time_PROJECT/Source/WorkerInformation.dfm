@@ -11,6 +11,7 @@ object frmWorkerInformation: TfrmWorkerInformation
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnCreate = FormCreate
   DesignSize = (
     876
     644)
@@ -69,6 +70,15 @@ object frmWorkerInformation: TfrmWorkerInformation
       TabOrder = 2
       OnClick = btnWorkerLoadClick
     end
+    object Button1: TButton
+      Left = 399
+      Top = 9
+      Width = 75
+      Height = 25
+      Caption = 'DLL'
+      TabOrder = 3
+      OnClick = Button1Click
+    end
   end
   object pnlShowInformation: TPanel
     Left = 0
@@ -77,7 +87,6 @@ object frmWorkerInformation: TfrmWorkerInformation
     Height = 585
     Align = alClient
     TabOrder = 1
-    ExplicitHeight = 293
     DesignSize = (
       876
       585)
@@ -130,6 +139,20 @@ object frmWorkerInformation: TfrmWorkerInformation
       Height = 21
       Anchors = [akTop, akRight]
       Caption = #50672#46973#52376
+      Font.Charset = HANGEUL_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -21
+      Font.Name = 'HY'#49688#54217#49440'M'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label2: TLabel
+      Left = 411
+      Top = 271
+      Width = 42
+      Height = 21
+      Anchors = [akTop, akRight]
+      Caption = #44160#49353
       Font.Charset = HANGEUL_CHARSET
       Font.Color = clWindowText
       Font.Height = -21
@@ -294,6 +317,15 @@ object frmWorkerInformation: TfrmWorkerInformation
       TabOrder = 9
       OnClick = btnAutoDeleteClick
     end
+    object edtSearch: TEdit
+      Left = 525
+      Top = 271
+      Width = 155
+      Height = 21
+      TabOrder = 10
+      Text = 'edtSearch'
+      OnKeyUp = edtSearchKeyUp
+    end
   end
   object grdInformation: TDBGrid
     Left = 0
@@ -301,7 +333,7 @@ object frmWorkerInformation: TfrmWorkerInformation
     Width = 453
     Height = 241
     Anchors = [akLeft, akRight, akBottom]
-    DataSource = dmDataAccess.dsInformationDept
+    DataSource = dsLoad
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
@@ -387,7 +419,6 @@ object frmWorkerInformation: TfrmWorkerInformation
     Width = 876
     Height = 19
     Panels = <>
-    ExplicitTop = 333
   end
   object DBGrid1: TDBGrid
     Left = 453
@@ -459,6 +490,14 @@ object frmWorkerInformation: TfrmWorkerInformation
         Title.Font.Name = 'Arial Narrow'
         Title.Font.Style = []
         Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'WTIT_REALWORKTIME'
+        Title.Alignment = taCenter
+        Title.Caption = #49892#44540#47924#49884#44036
+        Width = 80
+        Visible = True
       end>
   end
   object dlgLoadImage: TOpenDialog
@@ -468,5 +507,11 @@ object frmWorkerInformation: TfrmWorkerInformation
   object imgWorkBtn: TImageList
     Left = 16
     Top = 256
+  end
+  object dsLoad: TDataSource
+    DataSet = dmDataAccess.qryInformationDept
+    OnDataChange = dsLoadDataChange
+    Left = 32
+    Top = 312
   end
 end
