@@ -39,6 +39,62 @@
         <%activity%>
         <%receivers%>
 
+		<service
+			 android:name="com.embarcadero.firebase.ProxyFirebaseMessagingService"
+			 android:permission="com.google.android.c2dm.permission.SEND"
+			 android:exported="false">
+			 <intent-filter>
+				 <action android:name="com.google.firebase.MESSAGING_EVENT" />
+			 </intent-filter>
+		</service>
+		
+		<!--
+             FirebaseMessagingService performs security checks at runtime,
+             but set to not exported to explicitly avoid allowing another app to call it.
+        -->
+		<service
+            android:name="com.google.firebase.messaging.FirebaseMessagingService"
+            android:exported="true" >
+            <intent-filter android:priority="-500" >
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+		
+		<service
+            android:name="com.google.firebase.components.ComponentDiscoveryService"
+            android:exported="false" >
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.iid.Registrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+        </service>
+		
+		<!--
+             FirebaseInstanceIdService performs security checks at runtime,
+             no need for explicit permissions despite exported="true"
+        -->
+        <service
+            android:name="com.google.firebase.iid.FirebaseInstanceIdService"
+            android:exported="true" >
+            <intent-filter android:priority="-500" >
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+		
+        <receiver
+            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </receiver>	
+
+        <provider
+            android:name="com.embarcadero.firebase.provider.FirebaseInitProvider"			
+            android:authorities="%package%.firebaseinitprovider"
+            android:exported="false"
+            android:initOrder="100" />	
+
     </application>
 </manifest>
 <!-- END_INCLUDE(manifest) -->

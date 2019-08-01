@@ -8,13 +8,13 @@ object frmHomeScreen: TfrmHomeScreen
   FormFactor.Devices = [Desktop]
   OnCreate = FormCreate
   DesignerMasterStyle = 3
-  object tctrlApp: TTabControl
+  object TabControl1: TTabControl
     Align = Client
     Size.Width = 380.000000000000000000
     Size.Height = 600.000000000000000000
     Size.PlatformDefault = False
     TabHeight = 49.000000000000000000
-    TabIndex = 0
+    TabIndex = 1
     TabOrder = 7
     TabPosition = None
     Sizes = (
@@ -22,11 +22,11 @@ object frmHomeScreen: TfrmHomeScreen
       600s
       380s
       600s)
-    object tItmHome: TTabItem
+    object TabItem1: TTabItem
       CustomIcon = <
         item
         end>
-      IsSelected = True
+      IsSelected = False
       Size.Width = 8.000000000000000000
       Size.Height = 8.000000000000000000
       Size.PlatformDefault = False
@@ -12539,11 +12539,11 @@ object frmHomeScreen: TfrmHomeScreen
         end
       end
     end
-    object tItmLogin: TTabItem
+    object TabItem2: TTabItem
       CustomIcon = <
         item
         end>
-      IsSelected = False
+      IsSelected = True
       Size.Width = 8.000000000000000000
       Size.Height = 8.000000000000000000
       Size.PlatformDefault = False
@@ -12622,14 +12622,12 @@ object frmHomeScreen: TfrmHomeScreen
         'Token=91d62ebb5b0d1b1b'
       'Filters={}'
       'DSProxyPort=8888')
-    Connected = True
     Left = 320
     Top = 552
     UniqueId = '{3FF80118-E2EF-43D9-8759-E6CC96086142}'
   end
   object DSpcnMobile: TDSProviderConnection
     ServerClassName = 'TServerMethodsGym'
-    Connected = True
     SQLConnection = SQLcnMobile
     Left = 264
     Top = 536
@@ -12641,15 +12639,15 @@ object frmHomeScreen: TfrmHomeScreen
   end
   object dspQryMAttend: TDataSetProvider
     DataSet = cdsQryMAttend
-    Left = 56
-    Top = 488
+    Left = 136
+    Top = 536
   end
   object cdsQryMAttend: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'dspQryEnrollments'
-    Left = 37
-    Top = 424
+    Left = 205
+    Top = 552
   end
   object BcnGym: TBeacon
     ModeExtended = [iBeacons, AltBeacons, Eddystones]
@@ -12665,7 +12663,7 @@ object frmHomeScreen: TfrmHomeScreen
     SPC = 0.500000000000000000
     OnBeaconEnter = BcnGymBeaconEnter
     OnBeaconExit = BcnGymBeaconExit
-    Left = 336
-    Top = 240
+    Left = 112
+    Top = 56
   end
 end

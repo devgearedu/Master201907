@@ -1,6 +1,6 @@
 //
 // Created by the DataSnap proxy generator.
-// 2019-08-01 오전 4:24:01
+// 2019-08-01 오후 4:26:13
 //
 
 unit ServerMethodsUnitGym_MobileClientClass;
@@ -24,6 +24,7 @@ type
     FReEnrollCommand: TDBXCommand;
     FAttendByClientCommand: TDBXCommand;
     FInsertNotPresentCommand: TDBXCommand;
+    FMobileLogInCommand: TDBXCommand;
     FSelectByFieldAndValueClientCommand: TDBXCommand;
     FSelectByFieldAndValueCoachCommand: TDBXCommand;
     FSelectByFieldAndValueCourseCommand: TDBXCommand;
@@ -48,6 +49,7 @@ type
     function ReEnroll(AClient_Code: string; ACourse_Code: string): Boolean;
     function AttendByClient(AClient_Code: string; ACourse_Code: string; ADate_of_course: string): Boolean;
     function InsertNotPresent(AClient_Code: string; ACourse_Code: string; ADate_of_course: string): Boolean;
+    function MobileLogIn(AID: string; APW: string): Boolean;
     procedure SelectByFieldAndValueClient(AFieldName: string; AValue: string);
     procedure SelectByFieldAndValueCoach(AFieldName: string; AValue: string);
     procedure SelectByFieldAndValueCourse(AFieldName: string; AValue: string);
@@ -266,6 +268,21 @@ begin
   Result := FInsertNotPresentCommand.Parameters[3].Value.GetBoolean;
 end;
 
+function TServerMethodsGymClient.MobileLogIn(AID: string; APW: string): Boolean;
+begin
+  if FMobileLogInCommand = nil then
+  begin
+    FMobileLogInCommand := FDBXConnection.CreateCommand;
+    FMobileLogInCommand.CommandType := TDBXCommandTypes.DSServerMethod;
+    FMobileLogInCommand.Text := 'TServerMethodsGym.MobileLogIn';
+    FMobileLogInCommand.Prepare;
+  end;
+  FMobileLogInCommand.Parameters[0].Value.SetWideString(AID);
+  FMobileLogInCommand.Parameters[1].Value.SetWideString(APW);
+  FMobileLogInCommand.ExecuteUpdate;
+  Result := FMobileLogInCommand.Parameters[2].Value.GetBoolean;
+end;
+
 procedure TServerMethodsGymClient.SelectByFieldAndValueClient(AFieldName: string; AValue: string);
 begin
   if FSelectByFieldAndValueClientCommand = nil then
@@ -403,6 +420,7 @@ begin
   FReEnrollCommand.DisposeOf;
   FAttendByClientCommand.DisposeOf;
   FInsertNotPresentCommand.DisposeOf;
+  FMobileLogInCommand.DisposeOf;
   FSelectByFieldAndValueClientCommand.DisposeOf;
   FSelectByFieldAndValueCoachCommand.DisposeOf;
   FSelectByFieldAndValueCourseCommand.DisposeOf;

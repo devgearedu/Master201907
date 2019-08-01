@@ -10,14 +10,13 @@ uses
   FMX.Ani, Data.DB, Data.SqlExpr, Data.DBXDataSnap, Data.DBXCommon,
   IPPeerClient, Datasnap.DBClient, Datasnap.DSConnect, Datasnap.Provider,
   ServerMethodsUnitGym_MobileClientClass, System.DateUtils, FMX.ScrollBox,
-  FMX.Memo, System.PushNotification, FMX.Edit, FMX.TabControl,
-  System.JSON;
+  FMX.Memo, System.PushNotification, FMX.Edit, FMX.TabControl;
 
 type
   TfrmHomeScreen = class(TForm)
-    tctrlApp: TTabControl;
-    tItmHome: TTabItem;
-    tItmLogin: TTabItem;
+    TabControl1: TTabControl;
+    TabItem1: TTabItem;
+    TabItem2: TTabItem;
     SQLcnMobile: TSQLConnection;
     DSpcnMobile: TDSProviderConnection;
     mvClientMenu: TMultiView;
@@ -58,10 +57,6 @@ type
   private
     { Private declarations }
     FBeacon : IBeacon;
-    FDeviceId, FDeviceToken : string;
-
-    procedure OnReceiveNotificationEvent(Sender: TObject; const ServiceNotification: TPushServiceNotification);
-    procedure OnServiceConnectionChange(Sender: TObject; PushChanges: TPushService.TChanges);
   public
     { Public declarations }
   end;
@@ -73,7 +68,6 @@ var
 implementation
 
 uses
-  FMX.PushNotification.Android,
   System.Permissions,
 {$IFDEF ANDROID}
   Androidapi.JNI.Os,
@@ -88,7 +82,7 @@ procedure TfrmHomeScreen.BcnGymBeaconEnter(const Sender: TObject;
 var
   btnTagAsString, FWeekdays : string;
 begin
-  ShowMessage('√º¿∞∞¸ ¿‘¿Â');
+  ShowMessage('Ï≤¥Ïú°Í¥Ä ÏûÖÏû•');
   FBeacon := ABeacon;
 end;
 
@@ -96,7 +90,7 @@ procedure TfrmHomeScreen.BcnGymBeaconExit(const Sender: TObject;
   const ABeacon: IBeacon; const CurrentBeaconList: TBeaconList);
 begin
   FBeacon := nil;
-  ShowMessage('√«¿∞∞¸ ≈¿Â');
+  ShowMessage('Ï≥¨Ïú°Í¥Ä Ìá¥Ïû•');
 end;
 
 procedure TfrmHomeScreen.btnAttendClick(Sender: TObject);
@@ -114,9 +108,9 @@ begin
     cdsQryMAttend.Open;
 
     if (DayOfTheWeek(Today) = 2) or (DayOfTheWeek(Today) = 4) then
-      FWeekdays := '»≠∏Ò'
+      FWeekdays := 'ÌôîÎ™©'
     else
-      FWeekdays := 'ø˘ºˆ±›';
+      FWeekdays := 'ÏõîÏàòÍ∏à';
 
     cdsQryMAttend.Filtered := False;
     cdsQryMAttend.Filter := 'weekdays = ' + QuotedStr(FWeekdays);
@@ -127,14 +121,14 @@ begin
 
     if serverClient.AttendByClient(btnTagAsString, IntToStr(cdsQryMAttend.Fields[1].Value), DateStr) then
     begin
-      ShowMessage('√‚ºÆ øœ∑·');
+      ShowMessage('Ï∂úÏÑù ÏôÑÎ£å');
     end;
 
     cdsQryMAttend.Filtered := False;
 
   end
   else
-    ShowMessage('¿‘¿Â »ƒ ¥ŸΩ√ Ω√µµ«ÿ¡÷ººø‰');
+    ShowMessage('ÏûÖÏû• ÌõÑ Îã§Ïãú ÏãúÎèÑÌï¥Ï£ºÏÑ∏Ïöî');
 end;
 
 procedure TfrmHomeScreen.btnLoginClick(Sender: TObject);
@@ -142,28 +136,14 @@ begin
   if serverclient.MobileLogIn(edtID.Text, edtPW.Text) then
   begin
     frmHomeScreen.btnAttend.Tag := StrToInt(edtID.Text);
-    tctrlApp.ActiveTab := tctrlApp.Tabs[0];
+    TabControl1.ActiveTab := TabControl1.Tabs[0];
   end;
 end;
 
 procedure TfrmHomeScreen.FormCreate(Sender: TObject);
-var
-  PushService: TPushService;
-  ServiceConnection: TPushServiceConnection;
-
 begin
-  tctrlApp.ActiveTab := tctrlApp.Tabs[1];
+  TabControl1.ActiveTab := TabControl1.Tabs[1];
   serverClient := ServerMethodsUnitGym_MobileClientClass.TServerMethodsGymClient.Create(SQLcnMobile.DBXConnection);
-
-  PushService := TPushServiceManager.Instance.GetServiceByName(TPushService.TServiceNames.GCM);
-  ServiceConnection := TPushServiceConnection.Create(PushService);
-  ServiceConnection.Active := True;
-  ServiceConnection.OnChange := OnServiceConnectionChange;
-  ServiceConnection.OnReceiveNotification := OnReceiveNotificationEvent;
-
-  FDeviceId := PushService.DeviceIDValue[TPushService.TDeviceIDNames.DeviceId];
-  MemoLog.Lines.Add('DeviceID: ' + FDeviceId);
-  MemoLog.Lines.Add('Ready to receive!');
 end;
 
 
@@ -186,7 +166,7 @@ begin
           else
           begin
             Switch1.IsChecked := False;
-            TDialogService.ShowMessage('∫Ì∑Á≈ıΩ∫ ±««—¿Ã æ¯Ω¿¥œ¥Ÿ.');
+            TDialogService.ShowMessage('Î∏îÎ£®Ìà¨Ïä§ Í∂åÌïúÏù¥ ÏóÜÏäµÎãàÎã§.');
           end;
         end);
   end
@@ -196,34 +176,6 @@ begin
   BcnGym.Enabled := Switch1.IsChecked;
 {$ENDIF}
 
-end;
-
-procedure TfrmHomeScreen.OnReceiveNotificationEvent(Sender: TObject; const ServiceNotification: TPushServiceNotification);
-var
-  MessageText: string;
-begin
-  MemoLog.Lines.Add('DataKey = ' + ServiceNotification.DataKey);
-  MemoLog.Lines.Add('Json = ' + ServiceNotification.Json.ToString);
-  MemoLog.Lines.Add('DataObject = ' + ServiceNotification.DataObject.ToString);
-{$IFDEF ANDROID}
-  MessageText := ServiceNotification.DataObject.GetValue('gcm.notification.body').Value;
-{$ENDIF};
-  MemoLog.Lines.Add(DateTimeToStr(Now) + ' Message = ' + MessageText);
-end;
-
-procedure TfrmHomeScreen.OnServiceConnectionChange(Sender: TObject; PushChanges: TPushService.TChanges);
-var
-  PushService: TPushService;
-begin
-  if TPushService.TChange.DeviceToken in PushChanges then
-  begin
-    {$IFDEF ANDROID}
-      PushService := TPushServiceManager.Instance.GetServiceByName(TPushService.TServiceNames.GCM);
-      FDeviceToken := PushService.DeviceTokenValue[TPushService.TDeviceTokenNames.DeviceToken];
-      MemoLog.Lines.Add('FireBase Token: ' + FDeviceToken);
-      Log.d('Firebase device token: token=' + FDeviceToken);
-    {$ENDIF}
-  end;
 end;
 
 end.
