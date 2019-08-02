@@ -323,7 +323,6 @@ object frmWorkerInformation: TfrmWorkerInformation
       Width = 155
       Height = 21
       TabOrder = 10
-      Text = 'edtSearch'
       OnKeyUp = edtSearchKeyUp
     end
   end
