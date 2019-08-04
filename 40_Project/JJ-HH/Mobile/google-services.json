@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1020894256099",
+    "firebase_url": "https://mobilegym-10134.firebaseio.com",
+    "project_id": "mobilegym-10134",
+    "storage_bucket": "mobilegym-10134.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1020894256099:android:56a0788c40e3b125",
+        "android_client_info": {
+          "package_name": "com.embarcadero.MobileGym"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1020894256099-l8ogh4ihfjgcp0s1tej3j7p8mj45adad.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBT6AfamFo5RwYBNsm7D8_SCJV_a2YV_a4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1020894256099-l8ogh4ihfjgcp0s1tej3j7p8mj45adad.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
