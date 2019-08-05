@@ -1,0 +1,72 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{0E30C847-3B29-48BE-B826-8E3C19B96F05}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Server\Project_Server.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Client_VCL\Project_Client_VCL.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Client_Mobile\Project_Client_Mobile.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Client_DLL\Project1.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Project_Server">
+        <MSBuild Projects="Server\Project_Server.dproj"/>
+    </Target>
+    <Target Name="Project_Server:Clean">
+        <MSBuild Projects="Server\Project_Server.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Project_Server:Make">
+        <MSBuild Projects="Server\Project_Server.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Project_Client_VCL">
+        <MSBuild Projects="Client_VCL\Project_Client_VCL.dproj"/>
+    </Target>
+    <Target Name="Project_Client_VCL:Clean">
+        <MSBuild Projects="Client_VCL\Project_Client_VCL.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Project_Client_VCL:Make">
+        <MSBuild Projects="Client_VCL\Project_Client_VCL.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Project_Client_Mobile">
+        <MSBuild Projects="Client_Mobile\Project_Client_Mobile.dproj"/>
+    </Target>
+    <Target Name="Project_Client_Mobile:Clean">
+        <MSBuild Projects="Client_Mobile\Project_Client_Mobile.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Project_Client_Mobile:Make">
+        <MSBuild Projects="Client_Mobile\Project_Client_Mobile.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Project1">
+        <MSBuild Projects="Client_DLL\Project1.dproj"/>
+    </Target>
+    <Target Name="Project1:Clean">
+        <MSBuild Projects="Client_DLL\Project1.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Project1:Make">
+        <MSBuild Projects="Client_DLL\Project1.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Project_Server;Project_Client_VCL;Project_Client_Mobile;Project1"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Project_Server:Clean;Project_Client_VCL:Clean;Project_Client_Mobile:Clean;Project1:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Project_Server:Make;Project_Client_VCL:Make;Project_Client_Mobile:Make;Project1:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
