@@ -16,14 +16,12 @@ type
     Label2: TLabel;
     procedure Button1Click(Sender: TObject);
   private
-   FSum:integer;
     // 이 폼(유닛)에서만 사용하는 변수와 함수를 선언
 
     { TODO : (1) 정수 형 FSum 변수를 선언하세요. }
 
     function AddNum(ANum: Integer): Integer;
   public
-
     // 다른 유닛에서 참조할 수 있는 변수와 함수 선언
   end;
 
@@ -36,12 +34,10 @@ implementation
 
 function TForm1.AddNum(ANum: Integer): Integer;
 begin
-  result := 0;
-  FSum := FSum + ANum;
   { TODO :
       (2) FSum 변수에 파라메터 ANum 값을 더합니다.
           FSum 변수 반환 }
-  Result := FSum;
+  Result := 0;
 end;
 
 procedure TForm1.Button1Click(Sender: TObject);

@@ -59,8 +59,7 @@ begin
 
   Memo1.Lines.Clear;
   Memo1.Lines.Add('배열 내용');
-  for I := 0 to Length(FNumArr)-1 do
-    Memo1.Lines.Add(IntToStr(FNumArr[I]));
+
   { TODO :
     (1) for 문을 이용해 배열의 내용을 출력하세요.
     배열의 크기 변경되도 동작하도록 반복의 끝은 Length(FNumArr) - 1로 설정
@@ -75,8 +74,6 @@ var
   I, Sum: Integer;
 begin
   Sum := 0;
-    for I := 0 to Length(FNumArr)-1 do
-      Sum := Sum+FNumArr[i];
   { TODO : (2) for 문을 이용해 배열의 값을 모두 더해 반환하도록 구현 }
 
   Result := Sum;
@@ -87,11 +84,6 @@ var
   I, MaxNum: Integer;
 begin
   MaxNum := 0;
-  for I := 0 to Length(FNumArr)-1 do
-    begin
-      if(MaxNum<=FNumArr[I]) then
-         MaxNum:= FNumArr[I];
-    end;
   { TODO :
     (3) for 문을 이용해 배열의 값 중 가장 큰 값을 반환하도록 구현
         if 문을 이용해 숫자를 비교  }
@@ -106,13 +98,6 @@ var
 begin
   CountOver := 0;
   CountUnder := 0;
-  for I := 0 to Length(FNumArr)-1 do
-    begin
-      if FNumArr[i]>=50 then
-        inc(CountOver)
-      else if FNumArr[i]<50 then
-        inc(CountUnder);
-    end;
   { TODO :
       (4) for 문을 이용해 배열의 값이
           50 이상(>=)인 경우 CountOver 1 증가
