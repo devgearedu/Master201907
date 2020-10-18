@@ -15,13 +15,17 @@ type
     Label2: TLabel;
     procedure Button1Click(Sender: TObject);
   private
-    // ÀÌ Æû(À¯´Ö)¿¡¼­¸¸ »ç¿ëÇÏ´Â º¯¼ö¿Í ÇÔ¼ö¸¦ ¼±¾ğ
+    // ì´ í¼(ìœ ë‹›)ì—ì„œë§Œ ì‚¬ìš©í•˜ëŠ” ë³€ìˆ˜ì™€ í•¨ìˆ˜ë¥¼ ì„ ì–¸
 
-    { TODO : (1) Á¤¼ö Çü FSum º¯¼ö¸¦ ¼±¾ğÇÏ¼¼¿ä. }
+    { TODO : (1) ì •ìˆ˜ í˜• FSum ë³€ìˆ˜ë¥¼ ì„ ì–¸í•˜ì„¸ìš”. }
+
+   var
+      FSum : Integer; {ë‚´ê°€ ì“´ê²ƒ}
 
     function AddNum(ANum: Integer): Integer;
-  public
-    // ´Ù¸¥ À¯´Ö¿¡¼­ ÂüÁ¶ÇÒ ¼ö ÀÖ´Â º¯¼ö¿Í ÇÔ¼ö ¼±¾ğ
+ 
+ public
+    // ë‹¤ë¥¸ ìœ ë‹›ì—ì„œ ì°¸ì¡°í•  ìˆ˜ ìˆëŠ” ë³€ìˆ˜ì™€ í•¨ìˆ˜ ì„ ì–¸
   end;
 
 var
@@ -34,14 +38,15 @@ implementation
 function TForm1.AddNum(ANum: Integer): Integer;
 begin
   { TODO :
-      (2) FSum º¯¼ö¿¡ ÆÄ¶ó¸ŞÅÍ ANum °ªÀ» ´õÇÕ´Ï´Ù.
-          FSum º¯¼ö ¹İÈ¯ }
-  Result := 0;
+      (2) FSum ë³€ìˆ˜ì— íŒŒë¼ë©”í„° ANum ê°’ì„ ë”í•©ë‹ˆë‹¤.
+          FSum ë³€ìˆ˜ ë°˜í™˜ }
+     FSun :=ANum+FSum;  {ë‚´ê°€ ì“´ê²ƒ}
+     Result := FSum;          {ë‚´ê°€ ì“´ê²ƒ}
 end;
 
 procedure TForm1.Button1Click(Sender: TObject);
 var
-  Num, Sum: Integer;  // ÀÌ°÷¿¡ ¼±¾ğµÈ º¯¼ö´Â ÀÌ ÇÔ¼ö¿¡¼­¸¸ »ç¿ëÇÕ´Ï´Ù.
+  Num, Sum: Integer;  // ì´ê³³ì— ì„ ì–¸ëœ ë³€ìˆ˜ëŠ” ì´ í•¨ìˆ˜ì—ì„œë§Œ ì‚¬ìš©í•©ë‹ˆë‹¤.
 begin
   Num := StrToInt(edtNum.Text);
   Sum := AddNum(Num);
