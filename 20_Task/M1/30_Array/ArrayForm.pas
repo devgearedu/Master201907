@@ -36,12 +36,12 @@ begin
   InitArray;
 end;
 
-// ¹è¿­¿¡ ÃÊ±â°ªÀ» ¼³Á¤
+// ë°°ì—´ì— ì´ˆê¸°ê°’ì„ ì„¤ì •
 procedure TForm3.InitArray;
 var
   I: Integer;
 begin
-  // ¹è¿­(FNumArr)ÀÇ ±æÀÌ¸¸Å­ ¹İº¹ÇÏ¸ç ÀÓÀÇÀÇ °ª(1~100)À» ¼³Á¤
+  // ë°°ì—´(FNumArr)ì˜ ê¸¸ì´ë§Œí¼ ë°˜ë³µí•˜ë©° ì„ì˜ì˜ ê°’(1~100)ì„ ì„¤ì •
   for I := 0 to Length(FNumArr) - 1 do
     FNumArr[I] := Random(100);
 end;
@@ -51,22 +51,28 @@ var
   I: Integer;
   Sum, MaxNum: Integer;
 begin
-  // ¹è¿­ÀÇ ÇÕ
+  // ë°°ì—´ì˜ í•©
   Sum := GetArraySum;
 
-  // ¹è¿­ Áß ÃÖ°í°ª
+  // ë°°ì—´ ì¤‘ ìµœê³ ê°’
   MaxNum := GetArrayMaxNum;
 
   Memo1.Lines.Clear;
-  Memo1.Lines.Add('¹è¿­ ³»¿ë');
+  Memo1.Lines.Add('ë°°ì—´ ë‚´ìš©');
 
   { TODO :
-    (1) for ¹®À» ÀÌ¿ëÇØ ¹è¿­ÀÇ ³»¿ëÀ» Ãâ·ÂÇÏ¼¼¿ä.
-    ¹è¿­ÀÇ Å©±â º¯°æµÇµµ µ¿ÀÛÇÏµµ·Ï ¹İº¹ÀÇ ³¡Àº Length(FNumArr) - 1·Î ¼³Á¤
-     ¿¹> for I := 0 to Length(FNumArr) - 1 do }
+    (1) for ë¬¸ì„ ì´ìš©í•´ ë°°ì—´ì˜ ë‚´ìš©ì„ ì¶œë ¥í•˜ì„¸ìš”.
+    ë°°ì—´ì˜ í¬ê¸° ë³€ê²½ë˜ë„ ë™ì‘í•˜ë„ë¡ ë°˜ë³µì˜ ëì€ Length(FNumArr) - 1ë¡œ ì„¤ì •
+     ì˜ˆ> for I := 0 to Length(FNumArr) - 1 do }
 
-  Memo1.Lines.Add('¹è¿­ÀÇ ÇÕÀº ' + IntToStr(Sum) + ' ÀÔ´Ï´Ù.');
-  Memo1.Lines.Add('¹è¿­ÀÇ ÃÖ´ë°ªÀº ' + IntToStr(MaxNum) + ' ÀÔ´Ï´Ù.');
+  for I := 0 to Length(FNumArr) - 1 do
+    begin
+     Memo1.Lines.Add(' - '+ IntToStr(FNumArr [I]));
+
+    end;
+
+  Memo1.Lines.Add('ë°°ì—´ì˜ í•©ì€ ' + IntToStr(Sum) + ' ì…ë‹ˆë‹¤.');
+  Memo1.Lines.Add('ë°°ì—´ì˜ ìµœëŒ€ê°’ì€ ' + IntToStr(MaxNum) + ' ì…ë‹ˆë‹¤.');
 end;
 
 function TForm3.GetArraySum: Integer;
@@ -74,7 +80,13 @@ var
   I, Sum: Integer;
 begin
   Sum := 0;
-  { TODO : (2) for ¹®À» ÀÌ¿ëÇØ ¹è¿­ÀÇ °ªÀ» ¸ğµÎ ´õÇØ ¹İÈ¯ÇÏµµ·Ï ±¸Çö }
+  { TODO : (2) for ë¬¸ì„ ì´ìš©í•´ ë°°ì—´ì˜ ê°’ì„ ëª¨ë‘ ë”í•´ ë°˜í™˜í•˜ë„ë¡ êµ¬í˜„ }
+ for I :=  0 to Length(FNumArr) - 1 do
+   begin
+      Sum := Sum+ FNumArr[I];
+
+   end;
+
 
   Result := Sum;
 end;
@@ -83,29 +95,52 @@ function TForm3.GetArrayMaxNum: Integer;
 var
   I, MaxNum: Integer;
 begin
-  MaxNum := 0;
+  MaxNum := 95;
   { TODO :
-    (3) for ¹®À» ÀÌ¿ëÇØ ¹è¿­ÀÇ °ª Áß °¡Àå Å« °ªÀ» ¹İÈ¯ÇÏµµ·Ï ±¸Çö
-        if ¹®À» ÀÌ¿ëÇØ ¼ıÀÚ¸¦ ºñ±³  }
+    (3) for ë¬¸ì„ ì´ìš©í•´ ë°°ì—´ì˜ ê°’ ì¤‘ ê°€ì¥ í° ê°’ì„ ë°˜í™˜í•˜ë„ë¡ êµ¬í˜„
+        if ë¬¸ì„ ì´ìš©í•´ ìˆ«ìë¥¼ ë¹„êµ  }
+ for I := 0 to Length(FNumArr) -1 do
+   begin
+     if FNumArr[I]> MaxNum then
+
+       MaxNum := FNumArr[I];
+   end;
+
+
 
   Result := MaxNum;
 end;
 
 procedure TForm3.Button2Click(Sender: TObject);
 var
-  I,
-  CountOver, CountUnder: Integer;
+  I,CountOver, CountUnder: Integer;
 begin
   CountOver := 0;
   CountUnder := 0;
   { TODO :
-      (4) for ¹®À» ÀÌ¿ëÇØ ¹è¿­ÀÇ °ªÀÌ
-          50 ÀÌ»ó(>=)ÀÎ °æ¿ì CountOver 1 Áõ°¡
-          50 ¹Ì¸¸(<)ÀÎ °æ¿ì CountUnder 1 Áõ°¡ ÇÏµµ·Ï ±¸Çö
-  }
+      (4) for ë¬¸ì„ ì´ìš©í•´ ë°°ì—´ì˜ ê°’ì´
+          50 ì´ìƒ(>=)ì¸ ê²½ìš° CountOver 1 ì¦ê°€
+          50 ë¯¸ë§Œ(<)ì¸ ê²½ìš° CountUnder 1 ì¦ê°€ í•˜ë„ë¡ êµ¬í˜„}
 
-  Memo1.Lines.Add('50 ÀÌ»óÀÎ ¼öÀÇ °¹¼ö: ' + IntToStr(CountOver));
-  Memo1.Lines.Add('50 ¹Ì¸¸ÀÎ ¼öÀÇ °¹¼ö: ' + IntToStr(CountUnder));
+for I := 0 to Length(FNumArr) - 1 do
+   begin
+      if FNumArr[I] >= 50 then
+        begin
+          Inc(CountOver);
+           end
+          else
+         begin
+           Inc(CountUnder);
+        end;
+
+        end;
+
+
+
+
+
+  Memo1.Lines.Add('50 ì´ìƒì¸ ìˆ˜ì˜ ê°¯ìˆ˜: ' + IntToStr(CountOver));
+  Memo1.Lines.Add('50 ë¯¸ë§Œì¸ ìˆ˜ì˜ ê°¯ìˆ˜: ' + IntToStr(CountUnder));
 end;
 
 end.
