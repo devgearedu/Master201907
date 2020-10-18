@@ -24,8 +24,8 @@ type
   private
     // 이 폼(유닛)에서 사용하는 변수와 함수를 선언
     function GetNameMsg(AName: string): string;
-
     function GetAgeMsg(AName: string; AAge: Integer): string;
+    function GetUserInfoMsg(AName: string; AAge: integer; isMan: Boolean): string;
     { TODO :
         (2-1) GetUserInfoMsg 함수를 선언
           파라메터: 이름(문자), 나이(숫자), 남자여부(Boolean)
@@ -66,9 +66,41 @@ begin
         문자열과 변수를 조합(더하기) 하세요.
         정수는 문자로 변환(IntToStr)하세요.
   }
+  if AAge >= 20 then
+  begin
+    Msg := Msg + AName + '님 의 나이는 ' + IntToStr(AAge) + '로 성인입니다.';
+  end
+  else
+  begin
+    Msg := Msg + AName + '님은 성인이 아닙니다.'
+  end;
 
   Result := Msg;
 end;
+
+function TForm2.GetUserInfoMsg(AName: string; AAge: integer;
+  isMan: Boolean): string;
+var
+  Msg: string;
+begin
+  Msg := GetAgeMsg(AName, AAge);
+  Msg := Msg + #13#10;
+
+  if rdoMan.Checked then
+    begin
+      isMan := true;
+      Msg := Msg + AName + '님은 남자입니다.';
+    end
+  else
+    begin
+      isMan := false;
+      Msg := Msg + AName + '님은 여자입니다.';
+    end;
+
+    Result := Msg;
+end;
+
+
 
 procedure TForm2.Button1Click(Sender: TObject);
 var
@@ -109,6 +141,7 @@ begin
         반환하는 함수(GetUserInfoMsg)를 작성하세요
   Msg := GetUserInfoMsg(Name, Age, IsMan);
 }
+  Msg := GetUserInfoMsg(Name, Age, IsMan);
 
   ShowMessage(Msg);
 end;
