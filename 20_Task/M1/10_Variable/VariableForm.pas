@@ -1,7 +1,7 @@
 unit VariableForm;
 
 interface
-
+       //깃허브 테스트
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls;
@@ -16,9 +16,9 @@ type
     procedure Button1Click(Sender: TObject);
   private
     // 이 폼(유닛)에서만 사용하는 변수와 함수를 선언
-
+    var
+     FSum:integer;
     { TODO : (1) 정수 형 FSum 변수를 선언하세요. }
-
     function AddNum(ANum: Integer): Integer;
   public
     // 다른 유닛에서 참조할 수 있는 변수와 함수 선언
@@ -36,7 +36,8 @@ begin
   { TODO :
       (2) FSum 변수에 파라메터 ANum 값을 더합니다.
           FSum 변수 반환 }
-  Result := 0;
+FSum:=FSum+ANum;
+Result := FSum;
 end;
 
 procedure TForm1.Button1Click(Sender: TObject);
@@ -45,8 +46,8 @@ var
 begin
   Num := StrToInt(edtNum.Text);
   Sum := AddNum(Num);
-
   edtSum.Text := IntToStr(Sum);
 end;
 
 end.
+
